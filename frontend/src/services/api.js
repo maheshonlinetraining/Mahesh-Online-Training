@@ -111,6 +111,7 @@ export const api = {
         email: payload.email,
         phone: payload.phone,
         courseName: payload.courseName,
+        referral: payload.referral || 'Direct',
         type: 'demo_booking'
       } : {
         fullName: payload.fullName,
@@ -121,6 +122,7 @@ export const api = {
         batchTimings: payload.batchTimings || '',
         batchPreference: payload.preferredBatch || payload.batchTimings || '',
         studentBackground: payload.studentBackground || payload.message || '',
+        referral: payload.referral || 'Direct',
         type: 'course_enrollment'
       };
 

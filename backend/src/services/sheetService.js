@@ -19,7 +19,8 @@ export async function appendDemoBooking({
   fullName,
   email,
   phone,
-  courseName
+  courseName,
+  referral
 }) {
   const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' IST';
 
@@ -29,6 +30,7 @@ export async function appendDemoBooking({
     'Email Address': email,
     'Phone / WhatsApp': phone,
     'Course Name': courseName,
+    'Referral': referral || 'Direct',
     'Status': 'New Demo Booking'
   };
 
@@ -58,6 +60,7 @@ export async function appendDemoBooking({
       { wch: 28 }, // Email
       { wch: 18 }, // Phone
       { wch: 45 }, // Course
+      { wch: 20 }, // Referral
       { wch: 18 }  // Status
     ];
 
@@ -89,6 +92,7 @@ export async function appendDemoBooking({
           email,
           phone,
           courseName,
+          referral: referral || 'Direct',
           status: 'New Demo Booking'
         }),
         redirect: 'follow'
@@ -162,7 +166,8 @@ export async function appendCourseEnrollment({
   batchStartDate,
   batchTimings,
   batchPreference,
-  studentBackground
+  studentBackground,
+  referral
 }) {
   const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' IST';
 
@@ -175,6 +180,7 @@ export async function appendCourseEnrollment({
     'Batch Start Date': batchStartDate || 'Immediate Live Batch',
     'Batch Timings': batchTimings || batchPreference || 'Weekday Batch (Mon to Fri) - 7:00 AM to 8:00 AM IST',
     'Student Background': studentBackground || 'Not Specified',
+    'Referral': referral || 'Direct',
     'Status': 'Enrolled (Pending Fee Payment)'
   };
 
@@ -204,6 +210,7 @@ export async function appendCourseEnrollment({
       { wch: 22 }, // Batch Start Date
       { wch: 45 }, // Batch Timings
       { wch: 25 }, // Background
+      { wch: 20 }, // Referral
       { wch: 25 }  // Status
     ];
 
@@ -238,6 +245,7 @@ export async function appendCourseEnrollment({
           batchTimings: batchTimings || batchPreference || 'Weekday Batch (Mon to Fri) - 7:00 AM to 8:00 AM IST',
           batchPreference: batchPreference || batchTimings || 'Immediate Live Batch',
           studentBackground: studentBackground || 'Not Specified',
+          referral: referral || 'Direct',
           status: 'Enrolled (Pending Fee Payment)'
         }),
         redirect: 'follow'

@@ -46,6 +46,7 @@ function setupSheetHeaders() {
     "Email Address", 
     "Phone / WhatsApp", 
     "Course Name", 
+    "Referral",
     "Status"
   ];
 
@@ -86,11 +87,12 @@ function doPost(e) {
         item.email || "",
         item.phone || "",
         item.courseName || "",
+        item.referral || "Direct",
         item.status || "New Demo Booking"
       ]);
     }
 
-    sheet.autoResizeColumns(1, 6);
+    sheet.autoResizeColumns(1, headers.length);
 
     return ContentService
       .createTextOutput(JSON.stringify({ 

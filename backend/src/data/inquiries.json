@@ -1,5 +1,37 @@
 [
   {
+    "id": "inq-1788971411874",
+    "fullName": "Abhi",
+    "email": "abhi@gmail.com",
+    "phone": "9100449157",
+    "courseId": "general",
+    "courseName": "Data Analytics with SQL, Power BI, Python, Excel",
+    "preferredBatch": "Flexible",
+    "demoDate": "",
+    "demoTime": "",
+    "mode": "Online Live",
+    "message": "",
+    "type": "demo_booking",
+    "createdAt": "2026-09-09T16:30:11.874Z",
+    "status": "pending_review"
+  },
+  {
+    "id": "inq-1788971194617",
+    "fullName": "Abhi",
+    "email": "abhi@gmail.com",
+    "phone": "9100449157",
+    "courseId": "general",
+    "courseName": "Data Analytics with SQL, Power BI, Python, Excel",
+    "preferredBatch": "September 15, 2026 Batch | Weekend Batch (Sat & Sun) - 6:00 PM to 8:00 PM IST",
+    "demoDate": "",
+    "demoTime": "",
+    "mode": "Online Live",
+    "message": "Working Professional (Non-IT / Switcher)",
+    "type": "course_enrollment",
+    "createdAt": "2026-09-09T16:26:34.617Z",
+    "status": "pending_review"
+  },
+  {
     "id": "inq-1788924213774",
     "fullName": "Praveen",
     "email": "praveen@gmail.com",

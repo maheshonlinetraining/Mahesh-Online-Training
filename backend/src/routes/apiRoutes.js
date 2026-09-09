@@ -114,6 +114,7 @@ router.post('/inquiries', async (req, res) => {
       demoDate, 
       demoTime, 
       message, 
+      referral,
       type 
     } = req.body;
 
@@ -153,6 +154,7 @@ router.post('/inquiries', async (req, res) => {
       batchTimings: batchTimings || '',
       demoDate: demoDate || '',
       demoTime: demoTime || '',
+      referral: referral || 'Direct',
       message,
       type: type || 'callback_request'
     });
@@ -168,14 +170,16 @@ router.post('/inquiries', async (req, res) => {
         batchStartDate: batchStartDate || 'Immediate Live Batch',
         batchTimings: batchTimings || resolvedBatch,
         batchPreference: resolvedBatch,
-        studentBackground: message || req.body.studentBackground || 'Not Specified'
+        studentBackground: message || req.body.studentBackground || 'Not Specified',
+        referral: referral || 'Direct'
       });
     } else if (type === 'demo_booking' || (!batchTimings && !batchStartDate)) {
       sheetResult = await appendDemoBooking({
         fullName,
         email: cleanEmail !== 'inquiry@student.com' ? cleanEmail : '',
         phone,
-        courseName: courseName || 'General Inquiry'
+        courseName: courseName || 'General Inquiry',
+        referral: referral || 'Direct'
       });
     }
 

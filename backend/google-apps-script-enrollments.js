@@ -52,6 +52,7 @@ function setupEnrollmentHeaders() {
     "Batch Start Date", 
     "Batch Timings", 
     "Student Background", 
+    "Referral",
     "Status"
   ];
 
@@ -95,6 +96,7 @@ function doPost(e) {
         item.batchStartDate || "Immediate Live Batch",
         item.batchTimings || item.batchPreference || "Weekday Batch (Mon to Fri) - 7:00 AM to 8:00 AM IST",
         item.studentBackground || "Not Specified",
+        item.referral || "Direct",
         item.status || "Enrolled (Pending Fee Payment)"
       ]);
     }
