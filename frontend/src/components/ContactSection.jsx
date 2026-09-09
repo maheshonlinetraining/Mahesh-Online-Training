@@ -82,8 +82,21 @@ export default function ContactSection() {
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xs text-slate-500 font-normal">Call Admissions Hotline</div>
+                  <div className="text-xs text-slate-500 font-normal">Call Admissions Hotline (India)</div>
                   <div>+91 91827 21589</div>
+                </div>
+              </a>
+
+              <a
+                href="tel:+13303304531"
+                className="flex items-center gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-orange-300 transition-colors text-slate-800 hover:text-orange-600 font-semibold text-sm"
+              >
+                <div className="w-10 h-10 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
+                  <Phone className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-xs text-slate-500 font-normal">Call Admissions Hotline (USA)</div>
+                  <div>+1 3303304531</div>
                 </div>
               </a>
 

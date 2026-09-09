@@ -49,7 +49,7 @@ export const courses = [
     title: "SQL for Data Analysts",
     category: "Data Analytics",
     tagline: "From basic SELECT statements to complex Joins, CTEs, Window Functions, and query optimization for analysts.",
-    badge: "Specialized Track",
+    badge: "Starts Sept 15",
     level: "Beginner to Intermediate",
     duration: "4 Weeks (Live Online)",
     rating: 4.92,
@@ -93,7 +93,7 @@ export const courses = [
     title: "Salesforce Administration and Developer",
     category: "Salesforce",
     tagline: "Comprehensive end-to-end program integrating Salesforce Administration (Admin 201), Security Architecture, Flow Builder Automation, Core Apex Programming, LWC & REST Integrations.",
-    badge: "Starts Sept 22",
+    badge: "Coming Soon",
     level: "Beginner to Advanced",
     duration: "14 Weeks (Live Online)",
     rating: 4.96,
@@ -102,7 +102,7 @@ export const courses = [
     originalPrice: "₹38,000",
     discount: "35% OFF",
     trainer: "Certified Salesforce Lead Architect (10+ Yrs Exp)",
-    nextBatch: "Starts Sept 22, 2026",
+    nextBatch: "Coming Soon",
     timing: "08:00 PM - 09:30 PM IST (Mon-Fri)",
     thumbnail: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&auto=format&fit=crop&q=80",
     highlights: [
@@ -157,6 +157,71 @@ export const courses = [
         ]
       }
     ]
+  },
+  {
+    id: "sap-cpi",
+    title: "SAP CPI (Cloud Platform Integration)",
+    category: "SAP",
+    tagline: "Master SAP Cloud Platform Integration (SAP CPI / SAP Integration Suite), Cloud Foundry, iFlow Design, Message Mapping, Groovy Scripting, Adapters & B2B Integrations.",
+    badge: "Coming Soon",
+    level: "Beginner to Advanced",
+    duration: "8 Weeks (Live Online)",
+    rating: 4.94,
+    studentsCount: 650,
+    price: "₹22,500",
+    originalPrice: "₹35,000",
+    discount: "36% OFF",
+    trainer: "Certified SAP Integration Architect (10+ Yrs Exp)",
+    nextBatch: "Coming Soon",
+    timing: "Weekend & Weekday Batches",
+    thumbnail: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop&q=80",
+    highlights: [
+      "100% Live Interactive Sessions with Senior SAP Integration Architect",
+      "SAP Integration Suite & CPI Architecture on SAP BTP Cloud Foundry",
+      "End-to-End iFlow Design: Splitter, Aggregator, Router & Content Modifier",
+      "Message Transformation: Graphical Mapping, XSLT & Groovy Scripting",
+      "Standard Adapters: OData, SOAP, REST, HTTP, SFTP, IDoc & RFC",
+      "Real-World S/4HANA & Third-Party Cloud Integration Scenarios"
+    ],
+    tools: ["SAP CPI", "SAP BTP", "Integration Suite", "Groovy Scripting", "Postman", "SOAP UI", "OData", "JSON / XML", "Cloud Foundry"],
+    syllabus: [
+      {
+        module: "Module 1: SAP BTP & SAP CPI Architecture",
+        topics: [
+          "SAP Business Technology Platform (BTP) & Cloud Foundry Overview",
+          "SAP Integration Suite Provisioning & Capabilities",
+          "Architecture of SAP CPI: Tenant, Runtime Node & Web UI",
+          "Security Artifacts: Keystore, Certificates, User Credentials & OAuth"
+        ]
+      },
+      {
+        module: "Module 2: Designing Integration Flows (iFlows)",
+        topics: [
+          "Integration Flow Lifecycle: Create, Configure, Deploy & Monitor",
+          "Message Routing: Multicast, Router, Splitter & Aggregator",
+          "Message Transformation: Content Modifier, Converter (XML/JSON/CSV)",
+          "Error Handling: Exception Subprocess & Error End Events"
+        ]
+      },
+      {
+        module: "Module 3: Message Mapping & Groovy Scripting",
+        topics: [
+          "Graphical Message Mapping & Standard Node Functions",
+          "Custom Functions & Context Handling in Mappings",
+          "Groovy Scripting for Complex Payload Manipulation & Headers",
+          "XSLT Mapping for Advanced XML Transformations"
+        ]
+      },
+      {
+        module: "Module 4: Adapters, B2B Integration & Real-Time Scenarios",
+        topics: [
+          "Inbound/Outbound Adapters: HTTPS, SOAP, OData, SFTP & Mail",
+          "Connecting On-Premise SAP S/4HANA via SAP Cloud Connector",
+          "Prepackaged Integration Content Discovery & Configuration",
+          "End-to-End Capstone Project & Certification Guidance"
+        ]
+      }
+    ]
   }
 ];
 
@@ -195,13 +260,29 @@ export const upcomingBatches = [
     courseName: "Salesforce Administration and Developer",
     category: "Salesforce",
     duration: "14 Weeks",
-    startDate: "Sept 22, 2026",
-    timing: "08:00 PM - 09:30 PM IST",
+    startDate: "Coming Soon",
+    timing: "Timings to be Announced",
     days: "Monday to Friday",
     mode: "Live Interactive (Zoom)",
     trainer: "Certified Salesforce Lead Architect",
-    status: "Admissions Open",
-    seatsLeft: 8
+    status: "Coming Soon",
+    seatsLeft: 8,
+    isComingSoon: true
+  },
+  {
+    id: "batch-004",
+    courseId: "sap-cpi",
+    courseName: "SAP CPI (Cloud Platform Integration)",
+    category: "SAP",
+    duration: "8 Weeks",
+    startDate: "Coming Soon",
+    timing: "Timings to be Announced",
+    days: "Weekend & Weekday Batches",
+    mode: "Live Interactive (Zoom)",
+    trainer: "Certified SAP Integration Architect",
+    status: "Coming Soon",
+    seatsLeft: 12,
+    isComingSoon: true
   }
 ];
 

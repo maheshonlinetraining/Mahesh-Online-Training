@@ -19,9 +19,7 @@ export async function appendDemoBooking({
   fullName,
   email,
   phone,
-  courseName,
-  demoDate,
-  demoTime
+  courseName
 }) {
   const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' IST';
 
@@ -31,8 +29,6 @@ export async function appendDemoBooking({
     'Email Address': email,
     'Phone / WhatsApp': phone,
     'Course Name': courseName,
-    'Demo Date': demoDate,
-    'Demo Time': demoTime,
     'Status': 'New Demo Booking'
   };
 
@@ -62,8 +58,6 @@ export async function appendDemoBooking({
       { wch: 28 }, // Email
       { wch: 18 }, // Phone
       { wch: 45 }, // Course
-      { wch: 14 }, // Demo Date
-      { wch: 14 }, // Demo Time
       { wch: 18 }  // Status
     ];
 
@@ -95,8 +89,6 @@ export async function appendDemoBooking({
           email,
           phone,
           courseName,
-          demoDate,
-          demoTime,
           status: 'New Demo Booking'
         }),
         redirect: 'follow'
@@ -167,6 +159,8 @@ export async function appendCourseEnrollment({
   email,
   phone,
   courseName,
+  batchStartDate,
+  batchTimings,
   batchPreference,
   studentBackground
 }) {
@@ -178,7 +172,8 @@ export async function appendCourseEnrollment({
     'Email Address': email,
     'Phone / WhatsApp': phone,
     'Course Name': courseName,
-    'Batch Preference': batchPreference || 'Immediate Live Batch',
+    'Batch Start Date': batchStartDate || 'Immediate Live Batch',
+    'Batch Timings': batchTimings || batchPreference || 'Weekday Batch (Mon to Fri) - 7:00 AM to 8:00 AM IST',
     'Student Background': studentBackground || 'Not Specified',
     'Status': 'Enrolled (Pending Fee Payment)'
   };
@@ -206,7 +201,8 @@ export async function appendCourseEnrollment({
       { wch: 28 }, // Email
       { wch: 18 }, // Phone
       { wch: 45 }, // Course Name
-      { wch: 30 }, // Batch Preference
+      { wch: 22 }, // Batch Start Date
+      { wch: 45 }, // Batch Timings
       { wch: 25 }, // Background
       { wch: 25 }  // Status
     ];
@@ -238,7 +234,9 @@ export async function appendCourseEnrollment({
           email,
           phone,
           courseName,
-          batchPreference: batchPreference || 'Immediate Live Batch',
+          batchStartDate: batchStartDate || 'Immediate Live Batch',
+          batchTimings: batchTimings || batchPreference || 'Weekday Batch (Mon to Fri) - 7:00 AM to 8:00 AM IST',
+          batchPreference: batchPreference || batchTimings || 'Immediate Live Batch',
           studentBackground: studentBackground || 'Not Specified',
           status: 'Enrolled (Pending Fee Payment)'
         }),

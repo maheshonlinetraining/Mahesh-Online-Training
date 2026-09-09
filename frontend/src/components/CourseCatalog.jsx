@@ -4,7 +4,7 @@ import { Clock, Star, ArrowRight, Sparkles, Check } from 'lucide-react';
 export default function CourseCatalog({ courses, onSelectCourse, onOpenDemoModal }) {
   const [activeCategory, setActiveCategory] = useState('All');
 
-  const categories = ['All', 'Data Analytics', 'Salesforce'];
+  const categories = ['All', 'Data Analytics', 'Salesforce', 'SAP'];
 
   const filteredCourses = useMemo(() => {
     if (activeCategory === 'All') return courses;
@@ -63,7 +63,11 @@ export default function CourseCatalog({ courses, onSelectCourse, onOpenDemoModal
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   {course.badge && (
-                    <span className="absolute top-3 right-3 px-2.5 py-1 rounded-md text-[11px] font-extrabold uppercase bg-red-600 text-white shadow-sm">
+                    <span className={`absolute top-3 right-3 px-2.5 py-1 rounded-md text-[11px] font-extrabold uppercase shadow-sm ${
+                      course.badge.toLowerCase().includes('soon')
+                        ? 'bg-orange-600 text-white'
+                        : 'bg-red-600 text-white'
+                    }`}>
                       {course.badge}
                     </span>
                   )}
@@ -109,8 +113,16 @@ export default function CourseCatalog({ courses, onSelectCourse, onOpenDemoModal
 
                   {/* Batch & Level Info */}
                   <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                    <span className="font-semibold text-orange-600 bg-orange-50 px-2 py-1 rounded-md text-[11px] flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span className={`font-semibold px-2 py-1 rounded-md text-[11px] flex items-center gap-1.5 ${
+                      course.nextBatch?.toLowerCase().includes('soon')
+                        ? 'text-amber-700 bg-amber-50 border border-amber-200/60'
+                        : 'text-orange-600 bg-orange-50'
+                    }`}>
+                      <span className={`w-1.5 h-1.5 rounded-full ${
+                        course.nextBatch?.toLowerCase().includes('soon')
+                          ? 'bg-amber-500'
+                          : 'bg-emerald-500 animate-pulse'
+                      }`}></span>
                       {course.nextBatch || 'Live Batch'}
                     </span>
                     <span className="font-medium text-slate-500 text-[11px]">

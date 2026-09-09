@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { X, CheckCircle2, Loader2, Sparkles, GraduationCap, Clock, Phone, Mail, User } from 'lucide-react';
+import { X, CheckCircle2, Loader2, Sparkles, GraduationCap, Clock, Phone, Mail, User, Calendar } from 'lucide-react';
 import { api } from '../services/api.js';
+
+const BATCH_TIMING_OPTIONS = [
+  'Weekday Batch (Mon to Fri) - 7:00 AM to 8:00 AM IST',
+  'Weekend Batch (Sat & Sun) - 6:00 PM to 8:00 PM IST'
+];
 
 export default function CourseEnrollmentModal({ 
   isOpen, 
@@ -14,7 +19,7 @@ export default function CourseEnrollmentModal({
     email: '',
     phone: '',
     courseName: defaultCourseTitle || (courses[0]?.title || 'Data Analytics with SQL, Power BI, Python, Excel'),
-    batchPreference: defaultBatch || 'Starts September 15, 2026 (07:00 AM - 08:00 AM IST)',
+    batchTimings: BATCH_TIMING_OPTIONS[0],
     studentBackground: 'Working Professional (IT)'
   });
 
@@ -27,17 +32,33 @@ export default function CourseEnrollmentModal({
     if (!isInvalid) {
       setFormData(prev => ({
         ...prev,
-        courseName: defaultCourseTitle,
-        batchPreference: defaultBatch || prev.batchPreference
+        courseName: defaultCourseTitle
       }));
     } else if (courses.length > 0) {
       setFormData(prev => ({
         ...prev,
-        courseName: courses[0].title,
-        batchPreference: defaultBatch || prev.batchPreference
+        courseName: courses[0].title
       }));
     }
-  }, [defaultCourseTitle, defaultBatch, courses]);
+  }, [defaultCourseTitle, courses]);
+
+  // Compute batch start date based on selected course or defaultBatch prop
+  const getBatchStartDate = () => {
+    if (defaultBatch && (defaultBatch.includes('Sept') || defaultBatch.includes('Oct') || defaultBatch.includes('2026'))) {
+      const cleaned = defaultBatch.replace(/^Starts\s+/i, '').split('(')[0].trim();
+      if (cleaned) return cleaned;
+    }
+    const courseObj = courses.find(c => c.title === formData.courseName);
+    if (courseObj?.nextBatch) {
+      return courseObj.nextBatch.replace(/^Starts\s+/i, '').trim();
+    }
+    if (courseObj?.badge && courseObj.badge.includes('Starts')) {
+      return courseObj.badge.replace(/^Starts\s+/i, '').trim() + ', 2026';
+    }
+    return 'Sept 15, 2026';
+  };
+
+  const batchStartDate = getBatchStartDate();
 
   if (!isOpen) return null;
 
@@ -52,10 +73,12 @@ export default function CourseEnrollmentModal({
         email: formData.email,
         phone: formData.phone,
         courseName: formData.courseName,
-        preferredBatch: formData.batchPreference,
+        batchStartDate: batchStartDate,
+        batchTimings: formData.batchTimings,
+        preferredBatch: `${batchStartDate} | ${formData.batchTimings}`,
+        studentBackground: formData.studentBackground,
         message: formData.studentBackground,
-        type: 'course_enrollment',
-        studentBackground: formData.studentBackground
+        type: 'course_enrollment'
       });
 
       setIsSuccess(true);
@@ -109,8 +132,19 @@ export default function CourseEnrollmentModal({
 
             <p className="text-sm text-slate-600 max-w-sm mx-auto leading-relaxed">
               Thank you <strong className="text-slate-900">{formData.fullName}</strong>! We have recorded your registration for{' '}
-              <strong className="text-orange-600">{formData.courseName}</strong> ({formData.batchPreference}).
+              <strong className="text-orange-600">{formData.courseName}</strong>.
             </p>
+
+            <div className="bg-orange-50/70 border border-orange-200/80 rounded-2xl p-3.5 text-xs text-slate-700 max-w-sm mx-auto text-left space-y-1.5">
+              <div className="flex items-center justify-between font-semibold">
+                <span className="text-slate-500">Batch Start Date:</span>
+                <span className="text-orange-700 font-bold">{batchStartDate}</span>
+              </div>
+              <div className="flex items-center justify-between font-semibold">
+                <span className="text-slate-500">Selected Timings:</span>
+                <span className="text-slate-900 font-bold">{formData.batchTimings}</span>
+              </div>
+            </div>
 
             <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-xs text-slate-600 text-left space-y-1 max-w-sm mx-auto">
               <p className="font-bold text-slate-800 flex items-center gap-1.5">
@@ -118,7 +152,7 @@ export default function CourseEnrollmentModal({
                 Next Steps from Our Admissions Team:
               </p>
               <p className="pl-3.5 text-slate-500">
-                Our counselor will contact you shortly at <strong className="text-slate-800">{formData.phone}</strong> with course onboarding details and alternative fee payment options.
+                Our counselor will contact you shortly at <strong className="text-slate-800">{formData.phone}</strong> with course onboarding details and fee payment options.
               </p>
             </div>
 
@@ -139,10 +173,17 @@ export default function CourseEnrollmentModal({
                 <GraduationCap className="w-3.5 h-3.5 text-orange-600" />
                 Live Batch Admission
               </span>
-              <h3 className="text-2xl font-extrabold text-slate-900">
-                Register for Live Batch
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-500 mt-1 leading-relaxed">
+              {/* Title with Batch Start Date placed right to the title */}
+              <div className="flex flex-wrap items-center gap-2.5">
+                <h3 className="text-2xl font-extrabold text-slate-900">
+                  Register for Live Batch
+                </h3>
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold bg-orange-100 text-orange-700 border border-orange-200 shadow-xs">
+                  <Calendar className="w-3.5 h-3.5 text-orange-600" />
+                  Starts: {batchStartDate}
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-500 mt-1.5 leading-relaxed">
                 Attended our demo or ready to start? Confirm your enrollment here. Our counselor will contact you for onboarding and fee payment options.
               </p>
             </div>
@@ -226,20 +267,24 @@ export default function CourseEnrollmentModal({
                 </select>
               </div>
 
-              {/* Batch Preference & Background */}
+              {/* Batch Timings & Background */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-1 flex items-center gap-1.5">
                     <Clock className="w-3.5 h-3.5 text-orange-600" />
-                    Batch Preference
+                    Batch Timings <span className="text-orange-600">*</span>
                   </label>
-                  <input
-                    type="text"
-                    value={formData.batchPreference}
-                    onChange={(e) => setFormData({ ...formData, batchPreference: e.target.value })}
-                    placeholder="e.g. Sept 15, 2026 - Morning Batch"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm focus:border-orange-500 outline-none transition-all bg-white"
-                  />
+                  <select
+                    value={formData.batchTimings}
+                    onChange={(e) => setFormData({ ...formData, batchTimings: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none transition-all bg-white font-medium"
+                  >
+                    {BATCH_TIMING_OPTIONS.map((timing) => (
+                      <option key={timing} value={timing}>
+                        {timing}
+                      </option>
+                    ))}
+                  </select>
                 </div>
 
                 <div>

@@ -82,7 +82,10 @@ export default function App() {
     <div className="min-h-screen bg-white text-slate-800 font-['Plus_Jakarta_Sans',sans-serif] relative selection:bg-orange-500 selection:text-white">
       
       {/* Navigation Bar */}
-      <Navbar onOpenDemoModal={handleOpenDemoModal} />
+      <Navbar 
+        onOpenDemoModal={handleOpenDemoModal} 
+        onOpenEnrollModal={handleOpenEnrollModal} 
+      />
 
       {/* Main Sections - Clean, Uncluttered, Spaced */}
       <main>
@@ -90,6 +93,8 @@ export default function App() {
           onOpenDemoModal={handleOpenDemoModal}
           onOpenEnrollModal={handleOpenEnrollModal}
           stats={stats}
+          courses={courses}
+          onSelectCourse={(course) => setSelectedCourse(course)}
         />
 
         <Features

@@ -49,9 +49,19 @@ export default function Footer() {
               <a
                 href="tel:+919182721589"
                 className="flex items-center gap-1.5 text-orange-400 hover:text-orange-300 transition-colors font-semibold"
+                title="Call India Admissions"
               >
                 <Phone className="w-3.5 h-3.5 text-orange-500" />
-                <span>+91 91827 21589</span>
+                <span>+91 91827 21589 (India)</span>
+              </a>
+              <span className="text-slate-700 hidden sm:inline">•</span>
+              <a
+                href="tel:+13303304531"
+                className="flex items-center gap-1.5 text-orange-400 hover:text-orange-300 transition-colors font-semibold"
+                title="Call USA Admissions"
+              >
+                <Phone className="w-3.5 h-3.5 text-orange-500" />
+                <span>+1 3303304531 (USA)</span>
               </a>
               <span className="text-slate-700 hidden sm:inline">•</span>
               <a

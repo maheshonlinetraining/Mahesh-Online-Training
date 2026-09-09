@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Sparkles, Phone, Menu, X } from 'lucide-react';
 import logoImg from '../assets/logo.png';
 
-export default function Navbar({ onOpenDemoModal }) {
+export default function Navbar({ onOpenDemoModal, onOpenEnrollModal }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
@@ -21,10 +21,11 @@ export default function Navbar({ onOpenDemoModal }) {
         <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
         <span>Admissions Open for Next Week Batches! 100% Live Interactive Classes.</span>
         <button
-          onClick={() => onOpenDemoModal()}
-          className="hidden sm:inline underline font-bold hover:text-orange-100 ml-1 cursor-pointer"
+          onClick={() => (onOpenEnrollModal ? onOpenEnrollModal() : onOpenDemoModal())}
+          className="hidden sm:inline-flex items-center gap-1 bg-white/20 hover:bg-white/30 text-white px-2.5 py-0.5 rounded-full font-bold text-xs ml-1.5 transition-colors cursor-pointer border border-white/30 shadow-xs"
         >
-          Reserve Free Demo
+          <span>Register for Course</span>
+          <span>→</span>
         </button>
       </div>
 
@@ -56,14 +57,29 @@ export default function Navbar({ onOpenDemoModal }) {
             </nav>
 
             {/* Right Action CTA */}
-            <div className="hidden sm:flex items-center gap-4">
-              <a
-                href="tel:+919182721589"
-                className="flex items-center gap-2 text-xs font-bold text-slate-700 hover:text-orange-600 px-3 py-2 rounded-lg hover:bg-orange-50 transition-colors"
-              >
-                <Phone className="w-4 h-4 text-orange-600" />
-                <span>+91 91827 21589</span>
-              </a>
+            <div className="hidden sm:flex items-center gap-3.5">
+              {/* Dual Contact Phone Numbers: India & USA */}
+              <div className="flex items-center gap-2 text-xs font-bold text-slate-700 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                <Phone className="w-4 h-4 text-orange-600 shrink-0" />
+                <div className="flex flex-col text-[11px] font-bold leading-tight">
+                  <a 
+                    href="tel:+919182721589" 
+                    className="hover:text-orange-600 transition-colors flex items-center gap-1"
+                    title="Call India Admissions"
+                  >
+                    <span>+91 91827 21589</span>
+                    <span className="text-[9px] font-semibold text-slate-400 uppercase">(IN)</span>
+                  </a>
+                  <a 
+                    href="tel:+13303304531" 
+                    className="hover:text-orange-600 transition-colors flex items-center gap-1"
+                    title="Call USA Admissions"
+                  >
+                    <span>+1 3303304531</span>
+                    <span className="text-[9px] font-semibold text-slate-400 uppercase">(US)</span>
+                  </a>
+                </div>
+              </div>
 
               <button
                 onClick={() => onOpenDemoModal()}
@@ -106,7 +122,30 @@ export default function Navbar({ onOpenDemoModal }) {
                 {link.label}
               </a>
             ))}
-            <div className="pt-3">
+
+            {/* Mobile Phone Contacts */}
+            <div className="pt-2 pb-1 border-b border-slate-100 flex flex-col gap-2 text-xs font-bold text-slate-700">
+              <a href="tel:+919182721589" className="flex items-center gap-2 hover:text-orange-600">
+                <Phone className="w-3.5 h-3.5 text-orange-600" />
+                <span>+91 91827 21589 (India)</span>
+              </a>
+              <a href="tel:+13303304531" className="flex items-center gap-2 hover:text-orange-600">
+                <Phone className="w-3.5 h-3.5 text-orange-600" />
+                <span>+1 3303304531 (USA)</span>
+              </a>
+            </div>
+
+            <div className="pt-2 flex flex-col gap-2">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (onOpenEnrollModal) onOpenEnrollModal();
+                  else onOpenDemoModal();
+                }}
+                className="w-full py-2.5 rounded-xl bg-orange-50 text-orange-700 border border-orange-200 text-xs font-bold text-center"
+              >
+                Register for Course
+              </button>
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);

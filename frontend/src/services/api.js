@@ -111,15 +111,15 @@ export const api = {
         email: payload.email,
         phone: payload.phone,
         courseName: payload.courseName,
-        demoDate: payload.demoDate || '',
-        demoTime: payload.demoTime || '',
         type: 'demo_booking'
       } : {
         fullName: payload.fullName,
         email: payload.email,
         phone: payload.phone,
         courseName: payload.courseName,
-        batchPreference: payload.preferredBatch || '',
+        batchStartDate: payload.batchStartDate || '',
+        batchTimings: payload.batchTimings || '',
+        batchPreference: payload.preferredBatch || payload.batchTimings || '',
         studentBackground: payload.studentBackground || payload.message || '',
         type: 'course_enrollment'
       };

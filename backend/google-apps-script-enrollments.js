@@ -49,7 +49,8 @@ function setupEnrollmentHeaders() {
     "Email Address", 
     "Phone / WhatsApp", 
     "Course Name", 
-    "Batch Preference", 
+    "Batch Start Date", 
+    "Batch Timings", 
     "Student Background", 
     "Status"
   ];
@@ -91,13 +92,14 @@ function doPost(e) {
         item.email || "",
         item.phone || "",
         item.courseName || "",
-        item.batchPreference || "Immediate Live Batch",
+        item.batchStartDate || "Immediate Live Batch",
+        item.batchTimings || item.batchPreference || "Weekday Batch (Mon to Fri) - 7:00 AM to 8:00 AM IST",
         item.studentBackground || "Not Specified",
         item.status || "Enrolled (Pending Fee Payment)"
       ]);
     }
 
-    sheet.autoResizeColumns(1, 8);
+    sheet.autoResizeColumns(1, headers.length);
 
     return ContentService
       .createTextOutput(JSON.stringify({ 

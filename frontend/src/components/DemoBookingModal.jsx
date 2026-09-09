@@ -7,9 +7,7 @@ export default function DemoBookingModal({ isOpen, onClose, defaultCourseTitle =
     fullName: '',
     email: '',
     phone: '',
-    courseName: defaultCourseTitle || (courses[0]?.title || 'Data Analytics with SQL, Power BI, Python, Excel'),
-    demoDate: '',
-    demoTime: '10:00'
+    courseName: defaultCourseTitle || (courses[0]?.title || 'Data Analytics with SQL, Power BI, Python, Excel')
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -38,9 +36,6 @@ export default function DemoBookingModal({ isOpen, onClose, defaultCourseTitle =
         email: formData.email,
         phone: formData.phone,
         courseName: formData.courseName,
-        demoDate: formData.demoDate,
-        demoTime: formData.demoTime,
-        preferredBatch: `${formData.demoDate} at ${formData.demoTime}`,
         type: 'demo_booking'
       });
 
@@ -87,7 +82,7 @@ export default function DemoBookingModal({ isOpen, onClose, defaultCourseTitle =
             </h3>
 
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-xs mx-auto">
-              Thank you <strong className="text-slate-900">{formData.fullName}</strong>! Our counselor will contact you regarding the demo class for <strong className="text-orange-600">{formData.courseName}</strong> scheduled on <span className="font-semibold text-slate-900">{formData.demoDate} at {formData.demoTime}</span>.
+              Thank you <strong className="text-slate-900">{formData.fullName}</strong>! Our counselor will contact you shortly regarding the demo class for <strong className="text-orange-600">{formData.courseName}</strong>.
             </p>
 
             <div className="pt-2">
@@ -184,34 +179,6 @@ export default function DemoBookingModal({ isOpen, onClose, defaultCourseTitle =
                 </select>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">
-                    Demo Date <span className="text-orange-600">*</span>
-                  </label>
-                  <input
-                    type="date"
-                    required
-                    min={new Date().toISOString().split('T')[0]}
-                    value={formData.demoDate}
-                    onChange={(e) => setFormData({ ...formData, demoDate: e.target.value })}
-                    className="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm focus:border-orange-500 outline-none transition-all bg-white"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">
-                    Demo Time <span className="text-orange-600">*</span>
-                  </label>
-                  <input
-                    type="time"
-                    required
-                    value={formData.demoTime}
-                    onChange={(e) => setFormData({ ...formData, demoTime: e.target.value })}
-                    className="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm focus:border-orange-500 outline-none transition-all bg-white"
-                  />
-                </div>
-              </div>
 
               <div className="pt-2">
                 <button

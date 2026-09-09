@@ -109,6 +109,8 @@ router.post('/inquiries', async (req, res) => {
       courseId, 
       courseName, 
       preferredBatch, 
+      batchStartDate,
+      batchTimings,
       demoDate, 
       demoTime, 
       message, 
@@ -137,7 +139,7 @@ router.post('/inquiries', async (req, res) => {
       cleanEmail = 'inquiry@student.com';
     }
 
-    const resolvedBatch = preferredBatch || (demoDate && demoTime ? `${demoDate} at ${demoTime}` : 'Flexible');
+    const resolvedBatch = preferredBatch || batchTimings || 'Flexible';
 
     // 1. Save inquiry record to JSON
     const inquiry = await dataService.createInquiry({
@@ -147,6 +149,8 @@ router.post('/inquiries', async (req, res) => {
       courseId,
       courseName,
       preferredBatch: resolvedBatch,
+      batchStartDate: batchStartDate || '',
+      batchTimings: batchTimings || '',
       demoDate: demoDate || '',
       demoTime: demoTime || '',
       message,
@@ -161,17 +165,17 @@ router.post('/inquiries', async (req, res) => {
         email: cleanEmail !== 'inquiry@student.com' ? cleanEmail : '',
         phone,
         courseName: courseName || 'General Course Enrollment',
+        batchStartDate: batchStartDate || 'Immediate Live Batch',
+        batchTimings: batchTimings || resolvedBatch,
         batchPreference: resolvedBatch,
         studentBackground: message || req.body.studentBackground || 'Not Specified'
       });
-    } else if (type === 'demo_booking' || demoDate || demoTime) {
+    } else if (type === 'demo_booking' || (!batchTimings && !batchStartDate)) {
       sheetResult = await appendDemoBooking({
         fullName,
         email: cleanEmail !== 'inquiry@student.com' ? cleanEmail : '',
         phone,
-        courseName: courseName || 'General Inquiry',
-        demoDate: demoDate || 'Immediate',
-        demoTime: demoTime || 'Flexible'
+        courseName: courseName || 'General Inquiry'
       });
     }
 
