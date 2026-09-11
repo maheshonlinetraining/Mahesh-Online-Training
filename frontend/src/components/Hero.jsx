@@ -189,11 +189,11 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
 
   const current = slides[activeSlide];
 
-  // Auto slide transition every 6 seconds (resets timer on manual change)
+  // Auto slide transition every 30 seconds (resets timer on manual change)
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % slides.length);
-    }, 6000);
+    }, 30000);
     return () => clearInterval(interval);
   }, [activeSlide, slides.length]);
 
