@@ -61,24 +61,24 @@ export default function NewsTicker({ onOpenDemoModal, onOpenEnrollModal }) {
   const TickerItems = () => (
     <div className="flex items-center gap-7 text-xs sm:text-[13px] tracking-wide font-medium">
       
-      {/* 1. DATA ANALYTICS */}
+      {/* 1. DATA ANALYTICS LIVE BATCH URGENCY */}
       <div className="flex items-center gap-2">
         <span className="flex items-center gap-1 bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded-md font-bold text-[10px] sm:text-xs uppercase border border-amber-500/40">
           <Flame className="w-3.5 h-3.5 text-orange-500 fill-orange-500 animate-pulse" />
           <span>{countdown.headline}</span>
         </span>
         <span className="text-white font-semibold">
-          Data Analytics (SQL • Power BI • Python • Excel):
+          Data Analytics (SQL • Power BI • Python • Advanced Excel):
         </span>
         <span className="text-amber-300 font-extrabold">
-          Starts Sept 15th ({countdown.daysText})
+          Live Batch Starts Sept 15th ({countdown.daysText})
         </span>
         <span className="bg-orange-600/30 text-orange-300 px-2 py-0.5 rounded-full text-[11px] font-bold border border-orange-500/40">
-          22/25 Seats Filled
+          22/25 Seats Completed (Only 3 Left!)
         </span>
         <button
           onClick={(e) => handleEnrollClick(e, 'Data Analytics with SQL, Power BI, Python, Excel')}
-          className="inline-flex items-center gap-1 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white font-bold px-2.5 py-0.5 rounded-full text-[11px] transition-all transform hover:scale-105 shadow-xs cursor-pointer"
+          className="inline-flex items-center gap-1 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white font-bold px-2.5 py-0.5 rounded-full text-[11px] transition-all transform hover:scale-105 shadow-xs cursor-pointer ml-1"
         >
           <span>Register Now</span>
           <ArrowRight className="w-3 h-3" />
@@ -87,21 +87,18 @@ export default function NewsTicker({ onOpenDemoModal, onOpenEnrollModal }) {
 
       <span className="text-amber-500/60 font-bold select-none text-base">✦</span>
 
-      {/* 2. SALESFORCE (Concise pre-registration without Sept 15 start date) */}
+      {/* 2. DATA ANALYTICS DEMO & TRAINING HIGHLIGHT */}
       <div className="flex items-center gap-2">
-        <span className="flex items-center gap-1 bg-sky-500/20 text-sky-400 px-2 py-0.5 rounded-md font-bold text-[10px] sm:text-xs uppercase border border-sky-500/40">
-          <Zap className="w-3.5 h-3.5 text-sky-400 fill-sky-400" />
-          <span>PRE-REGISTRATIONS OPEN</span>
+        <span className="flex items-center gap-1 bg-orange-500/20 text-orange-400 px-2 py-0.5 rounded-md font-bold text-[10px] sm:text-xs uppercase border border-orange-500/40">
+          <Sparkles className="w-3.5 h-3.5 text-orange-400 fill-orange-400" />
+          <span>100% PRACTICAL</span>
         </span>
-        <span className="text-white font-semibold">
-          Salesforce Admin & Developer:
-        </span>
-        <span className="text-sky-300 font-extrabold">
-          19/25 Seats Reserved (Only 6 Left!)
+        <span className="text-slate-100 font-semibold">
+          Live Classes with Abhi (8+ Yrs Exp) • Real-Time Business Intelligence & Placement Support
         </span>
         <button
-          onClick={(e) => handleDemoClick(e, 'Salesforce Administration and Developer')}
-          className="inline-flex items-center gap-1 bg-sky-600 hover:bg-sky-500 text-white font-bold px-2.5 py-0.5 rounded-full text-[11px] transition-all transform hover:scale-105 shadow-xs cursor-pointer"
+          onClick={(e) => handleDemoClick(e, 'Data Analytics with SQL, Power BI, Python, Excel')}
+          className="inline-flex items-center gap-1 bg-white/15 hover:bg-white/25 text-white font-bold px-2.5 py-0.5 rounded-full text-[11px] transition-all transform hover:scale-105 shadow-xs cursor-pointer ml-1 border border-white/30"
         >
           <span>Book Free Demo</span>
           <ArrowRight className="w-3 h-3" />
@@ -110,16 +107,16 @@ export default function NewsTicker({ onOpenDemoModal, onOpenEnrollModal }) {
 
       <span className="text-amber-500/60 font-bold select-none text-base">✦</span>
 
-      {/* 3. HIGHLIGHTS & HELPLINES */}
+      {/* 3. ADMISSIONS HELPLINE */}
       <div className="flex items-center gap-2 text-slate-300">
         <span className="flex items-center gap-1 text-orange-400 font-semibold">
           <GraduationCap className="w-3.5 h-3.5" />
-          <span>Live Interactive Classes • On-Demand Recordings</span>
+          <span>Interactive Zoom Batches • On-Demand Recordings</span>
         </span>
         <span className="text-slate-500">•</span>
-        <span className="flex items-center gap-1 text-slate-200 font-medium">
+        <span className="flex items-center gap-1.5 text-slate-200 font-medium">
           <Phone className="w-3 h-3 text-orange-400" />
-          <span>Helpline: +91 91827 21589 / +1 3303304531</span>
+          <span>Direct Helpline: +91 91827 21589 (India) | +1 3303304531 (USA)</span>
         </span>
       </div>
 
