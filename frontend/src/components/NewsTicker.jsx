@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Flame, Zap, ArrowRight, GraduationCap, Phone } from 'lucide-react';
+import { Flame, Zap, ArrowRight, GraduationCap, Phone, Sparkles } from 'lucide-react';
 
 export default function NewsTicker({ onOpenDemoModal, onOpenEnrollModal }) {
   // Dynamic calculation for Sept 15, 2026 batch countdown
