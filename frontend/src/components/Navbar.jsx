@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Sparkles, Phone, Menu, X } from 'lucide-react';
 import logoImg from '../assets/logo.png';
+import NewsTicker from './NewsTicker';
 
 export default function Navbar({ onOpenDemoModal, onOpenEnrollModal }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -16,18 +17,12 @@ export default function Navbar({ onOpenDemoModal, onOpenEnrollModal }) {
 
   return (
     <>
-      {/* Top Banner - Clean Orange Accent */}
-      <div className="bg-gradient-to-r from-orange-600 to-red-600 text-white text-xs sm:text-sm py-2 px-4 text-center font-semibold flex items-center justify-center gap-2">
-        <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
-        <span>Admissions Open for Next Week Batches! 100% Live Interactive Classes.</span>
-        <button
-          onClick={() => (onOpenEnrollModal ? onOpenEnrollModal() : onOpenDemoModal())}
-          className="hidden sm:inline-flex items-center gap-1 bg-white/20 hover:bg-white/30 text-white px-2.5 py-0.5 rounded-full font-bold text-xs ml-1.5 transition-colors cursor-pointer border border-white/30 shadow-xs"
-        >
-          <span>Register for Course</span>
-          <span>→</span>
-        </button>
-      </div>
+      {/* Top News-Channel Broadcast Ticker Scroller */}
+      <NewsTicker 
+        onOpenDemoModal={onOpenDemoModal} 
+        onOpenEnrollModal={onOpenEnrollModal} 
+      />
+
 
       {/* Main Navbar - Pure White with Slate Border */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">

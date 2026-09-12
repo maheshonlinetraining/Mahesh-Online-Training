@@ -56,3 +56,25 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+/* News Broadcast Ticker Continuous Marquee */
+@keyframes newsTicker {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-news-ticker {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: newsTicker 32s linear infinite;
+  will-change: transform;
+}
+
+.news-ticker-wrapper:hover .animate-news-ticker {
+  animation-play-state: paused;
+}
+

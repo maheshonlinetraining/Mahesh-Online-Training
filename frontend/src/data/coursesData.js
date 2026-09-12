@@ -238,7 +238,7 @@ export const upcomingBatches = [
     mode: "Live Interactive (Zoom)",
     trainer: "Abhi (8+ Yrs Exp)",
     status: "Filling Fast",
-    seatsLeft: 6
+    seatsLeft: 3
   },
   {
     id: "batch-002",
@@ -266,7 +266,7 @@ export const upcomingBatches = [
     mode: "Live Interactive (Zoom)",
     trainer: "Certified Salesforce Lead Architect",
     status: "Coming Soon",
-    seatsLeft: 8,
+    seatsLeft: 6,
     isComingSoon: true
   },
   {
