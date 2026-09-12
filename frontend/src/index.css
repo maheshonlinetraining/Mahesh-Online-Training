@@ -70,7 +70,7 @@
 .animate-news-ticker {
   display: inline-flex;
   white-space: nowrap;
-  animation: newsTicker 32s linear infinite;
+  animation: newsTicker 45s linear infinite;
   will-change: transform;
 }
 
