@@ -59,21 +59,19 @@ export default function NewsTicker({ onOpenDemoModal, onOpenEnrollModal }) {
   };
 
   const TickerItems = () => (
-    <div className="flex items-center gap-7 text-xs sm:text-[13px] tracking-wide font-medium">
-      
-      {/* 1. DATA ANALYTICS LIVE BATCH URGENCY */}
+    <div className="flex items-center gap-6 text-xs sm:text-[13px] tracking-wide font-medium">
       <div className="flex items-center gap-2">
         <span className="flex items-center gap-1 bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded-md font-bold text-[10px] sm:text-xs uppercase border border-amber-500/40">
           <Flame className="w-3.5 h-3.5 text-orange-500 fill-orange-500 animate-pulse" />
           <span>{countdown.headline}</span>
         </span>
         <span className="text-white font-semibold">
-          Data Analytics (SQL • Power BI • Python • Advanced Excel):
+          Data Analytics:
         </span>
         <span className="text-amber-300 font-extrabold">
           Live Batch Starts Sept 15th ({countdown.daysText})
         </span>
-        <span className="bg-orange-600/30 text-orange-300 px-2 py-0.5 rounded-full text-[11px] font-bold border border-orange-500/40">
+        <span className="bg-orange-600/30 text-orange-300 px-2.5 py-0.5 rounded-full text-[11px] font-bold border border-orange-500/40">
           22/25 Seats Completed (Only 3 Left!)
         </span>
         <button
@@ -85,42 +83,7 @@ export default function NewsTicker({ onOpenDemoModal, onOpenEnrollModal }) {
         </button>
       </div>
 
-      <span className="text-amber-500/60 font-bold select-none text-base">✦</span>
-
-      {/* 2. DATA ANALYTICS DEMO & TRAINING HIGHLIGHT */}
-      <div className="flex items-center gap-2">
-        <span className="flex items-center gap-1 bg-orange-500/20 text-orange-400 px-2 py-0.5 rounded-md font-bold text-[10px] sm:text-xs uppercase border border-orange-500/40">
-          <Sparkles className="w-3.5 h-3.5 text-orange-400 fill-orange-400" />
-          <span>100% PRACTICAL</span>
-        </span>
-        <span className="text-slate-100 font-semibold">
-          Live Classes with Abhi (8+ Yrs Exp) • Real-Time Business Intelligence & Placement Support
-        </span>
-        <button
-          onClick={(e) => handleDemoClick(e, 'Data Analytics with SQL, Power BI, Python, Excel')}
-          className="inline-flex items-center gap-1 bg-white/15 hover:bg-white/25 text-white font-bold px-2.5 py-0.5 rounded-full text-[11px] transition-all transform hover:scale-105 shadow-xs cursor-pointer ml-1 border border-white/30"
-        >
-          <span>Book Free Demo</span>
-          <ArrowRight className="w-3 h-3" />
-        </button>
-      </div>
-
-      <span className="text-amber-500/60 font-bold select-none text-base">✦</span>
-
-      {/* 3. ADMISSIONS HELPLINE */}
-      <div className="flex items-center gap-2 text-slate-300">
-        <span className="flex items-center gap-1 text-orange-400 font-semibold">
-          <GraduationCap className="w-3.5 h-3.5" />
-          <span>Interactive Zoom Batches • On-Demand Recordings</span>
-        </span>
-        <span className="text-slate-500">•</span>
-        <span className="flex items-center gap-1.5 text-slate-200 font-medium">
-          <Phone className="w-3 h-3 text-orange-400" />
-          <span>Direct Helpline: +91 91827 21589 (India) | +1 3303304531 (USA)</span>
-        </span>
-      </div>
-
-      <span className="text-amber-500/60 font-bold select-none text-base mr-5">✦</span>
+      <span className="text-amber-500/60 font-bold select-none text-base mr-3">✦</span>
     </div>
   );
 
@@ -146,8 +109,10 @@ export default function NewsTicker({ onOpenDemoModal, onOpenEnrollModal }) {
         <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-6 sm:w-10 bg-gradient-to-r from-[#070b14] to-transparent z-20" />
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-14 bg-gradient-to-l from-[#070b14] to-transparent z-20" />
 
-        {/* Continuous Marquee Track (Duplicated for 100% seamless infinite scroll) */}
+        {/* Continuous Marquee Track (Seamless infinite scroll with 4 repeated hurry messages) */}
         <div className="animate-news-ticker flex items-center">
+          <TickerItems />
+          <TickerItems />
           <TickerItems />
           <TickerItems />
         </div>
