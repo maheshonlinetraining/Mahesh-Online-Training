@@ -34,12 +34,12 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
       courseId: "salesforce-administration-and-developer",
       courseTitle: "Salesforce Administration and Developer",
       tabLabel: "Salesforce Admin & Dev",
-      tabSub: "Demo Starts Today",
-      badgeText: "⚡ Free Live Demo Starts Today (Sept 15) — Salesforce 2-in-1 Masterclass",
+      tabSub: "Demo Registrations Open",
+      badgeText: "⚡ Free Demo Registrations Started Today (Sept 15) — Salesforce 2-in-1 Masterclass",
       isComingSoon: false,
       accentColor: "sky",
       headlinePrefix: "Salesforce Admin & Developer",
-      headlineHighlight: "Free Live Demo Starts Today",
+      headlineHighlight: "Comprehensive 2-in-1 Masterclass",
       subtitle: (
         <>
           Master end-to-end <strong className="text-slate-900">Salesforce Administration</strong>, Flow Automation, <strong className="text-slate-900">Core Apex</strong>, LWC & REST APIs. To ensure thorough master-level coverage of both Administration and Development, this course is taught by <strong className="text-orange-600">2 dedicated industry specialists</strong>.
@@ -69,10 +69,10 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
       ],
       seatsBooked: 19,
       totalSeats: 25,
-      urgencyText: "Live Demo Starts Today • 19 seats reserved • Only 6 seats remaining!",
+      urgencyText: "Demo Registrations Open Today • 19 seats reserved • Only 6 seats remaining!",
       alumniCompanies: ["Salesforce Ecosystem", "Deloitte Digital", "Capgemini", "PwC", "Wipro"],
       primaryButtonText: "Register for Free Demo",
-      startDateText: "Demo: Sept 15 (Today)",
+      startDateText: "Batch Coming Soon",
       modeText: "100% Live Online",
       ambientBg: "from-[#f0f9ff] via-[#e0f2fe]/60 to-[#fffaf5]",
       haloColor: "bg-sky-500/20",
@@ -618,7 +618,7 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                   <div className="flex items-center justify-between text-xs font-bold mb-1.5">
                     <span className="text-slate-700 flex items-center gap-1.5">
                       <Flame className="w-3.5 h-3.5 text-orange-600" />
-                      <span>{current.isComingSoon ? "Pre-Registration Status" : "Live Demo Class Seats"}</span>
+                      <span>{current.isComingSoon ? "Pre-Registration Status" : "Demo Registrations Status"}</span>
                     </span>
                     <span className="text-orange-700 font-extrabold">
                       {current.seatsBooked} / {current.totalSeats} Seats Reserved ({Math.round((current.seatsBooked / current.totalSeats) * 100)}%)
@@ -637,7 +637,7 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                   <div className="p-3 rounded-xl bg-gradient-to-br from-orange-50/70 to-amber-50/40 border border-orange-100/90 text-center flex flex-col items-center justify-center">
                     <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider flex items-center justify-center gap-1">
                       <Calendar className="w-3.5 h-3.5 text-orange-500" />
-                      <span>Start Date</span>
+                      <span>Batch Schedule</span>
                     </div>
                     <div className="text-sm sm:text-base font-black text-orange-600 mt-1">{current.startDateText}</div>
                   </div>
@@ -657,7 +657,7 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                     className="w-full py-3 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white font-bold text-xs sm:text-sm transition-all cursor-pointer shadow-brand-soft flex items-center justify-center gap-2 transform active:scale-98"
                   >
                     <Sparkles className="w-4 h-4" />
-                    <span>Register for Free Demo Class</span>
+                    <span>Register for Free Demo</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>

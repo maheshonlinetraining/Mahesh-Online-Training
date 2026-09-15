@@ -14,13 +14,13 @@ export default function NewsTicker({ onOpenDemoModal, onOpenEnrollModal }) {
       <div className="flex items-center gap-2">
         <span className="flex items-center gap-1 bg-sky-500/20 text-sky-400 px-2 py-0.5 rounded-md font-bold text-[10px] sm:text-xs uppercase border border-sky-500/40">
           <Zap className="w-3.5 h-3.5 text-sky-400 fill-sky-400" />
-          <span>FREE LIVE DEMO TODAY</span>
+          <span>DEMO REGISTRATIONS OPEN</span>
         </span>
         <span className="text-white font-semibold">
-          Salesforce Admin & Developer (2-in-1 Masterclass): Free Demo Starts Today (Sept 15)!
+          Salesforce Admin & Developer (2-in-1 Masterclass): Free Demo Registrations Started Today (Sept 15)!
         </span>
         <span className="text-sky-300 font-extrabold">
-          19/25 Seats Reserved (Only 6 Seats Left!)
+          19/25 Demo Seats Reserved (Only 6 Seats Remaining!)
         </span>
         <button
           onClick={(e) => handleDemoClick(e, 'Salesforce Administration and Developer')}
