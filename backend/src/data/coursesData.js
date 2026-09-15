@@ -237,8 +237,9 @@ export const upcomingBatches = [
     days: "Monday to Friday",
     mode: "Live Interactive (Zoom)",
     trainer: "Abhi (8+ Yrs Exp)",
-    status: "Filling Fast",
-    seatsLeft: 6
+    status: "Registrations Closed",
+    seatsLeft: 0,
+    isClosed: true
   },
   {
     id: "batch-002",
@@ -251,8 +252,9 @@ export const upcomingBatches = [
     days: "Monday to Friday",
     mode: "Live Interactive (Zoom)",
     trainer: "Abhi (8+ Yrs Exp)",
-    status: "Admissions Open",
-    seatsLeft: 10
+    status: "Registrations Closed",
+    seatsLeft: 0,
+    isClosed: true
   },
   {
     id: "batch-003",

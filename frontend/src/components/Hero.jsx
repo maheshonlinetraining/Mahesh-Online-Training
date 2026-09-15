@@ -34,12 +34,12 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
       courseId: "salesforce-administration-and-developer",
       courseTitle: "Salesforce Administration and Developer",
       tabLabel: "Salesforce Admin & Dev",
-      tabSub: "Coming Soon",
-      badgeText: "Salesforce 2-in-1 Cohort — Coming Soon",
-      isComingSoon: true,
+      tabSub: "Demo Starts Today",
+      badgeText: "⚡ Free Live Demo Starts Today (Sept 15) — Salesforce 2-in-1 Masterclass",
+      isComingSoon: false,
       accentColor: "sky",
       headlinePrefix: "Salesforce Admin & Developer",
-      headlineHighlight: "Comprehensive 2-in-1 Masterclass",
+      headlineHighlight: "Free Live Demo Starts Today",
       subtitle: (
         <>
           Master end-to-end <strong className="text-slate-900">Salesforce Administration</strong>, Flow Automation, <strong className="text-slate-900">Core Apex</strong>, LWC & REST APIs. To ensure thorough master-level coverage of both Administration and Development, this course is taught by <strong className="text-orange-600">2 dedicated industry specialists</strong>.
@@ -69,10 +69,10 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
       ],
       seatsBooked: 19,
       totalSeats: 25,
-      urgencyText: "19 seats reserved • Only 6 early-bird seats remaining!",
+      urgencyText: "Live Demo Starts Today • 19 seats reserved • Only 6 seats remaining!",
       alumniCompanies: ["Salesforce Ecosystem", "Deloitte Digital", "Capgemini", "PwC", "Wipro"],
-      primaryButtonText: "Inquire / Book Free Demo",
-      startDateText: "Coming Soon",
+      primaryButtonText: "Register for Free Demo",
+      startDateText: "Demo: Sept 15 (Today)",
       modeText: "100% Live Online",
       ambientBg: "from-[#f0f9ff] via-[#e0f2fe]/60 to-[#fffaf5]",
       haloColor: "bg-sky-500/20",
@@ -321,30 +321,14 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-1">
-              {current.isComingSoon ? (
-                <div className="flex flex-col sm:flex-row items-center gap-2.5 w-full sm:w-auto">
-                  <span className="px-4 py-3 rounded-xl bg-amber-50 border border-amber-300/90 text-amber-900 font-extrabold text-sm tracking-wide text-center w-full sm:w-auto shadow-xs">
-                    Coming Soon
-                  </span>
-                  <button
-                    onClick={() => onOpenDemoModal ? onOpenDemoModal(current.courseTitle) : null}
-                    className="btn-orange w-full sm:w-auto px-6 py-3 rounded-xl text-sm sm:text-base font-bold flex items-center justify-center gap-2 shadow-brand-soft cursor-pointer transform active:scale-95"
-                  >
-                    <Sparkles className="w-4 h-4 text-white" />
-                    <span>Inquire / Book Free Demo</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
-              ) : (
-                <button
-                  onClick={() => onOpenEnrollModal ? onOpenEnrollModal(current.courseTitle, "September 15, 2026 Live Batch") : onOpenDemoModal(current.courseTitle)}
-                  className="btn-orange w-full sm:w-auto px-7 py-3 rounded-xl text-sm sm:text-base font-bold flex items-center justify-center gap-2 shadow-brand-soft cursor-pointer transform active:scale-95"
-                >
-                  <Sparkles className="w-4 h-4 text-white" />
-                  <span>{current.primaryButtonText}</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              )}
+              <button
+                onClick={() => onOpenDemoModal ? onOpenDemoModal(current.courseTitle) : null}
+                className="btn-orange w-full sm:w-auto px-7 py-3 rounded-xl text-sm sm:text-base font-bold flex items-center justify-center gap-2 shadow-brand-soft cursor-pointer transform active:scale-95"
+              >
+                <Sparkles className="w-4 h-4 text-white" />
+                <span>{current.primaryButtonText}</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
 
               <button
                 onClick={handleViewCurriculum}
@@ -634,7 +618,7 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                   <div className="flex items-center justify-between text-xs font-bold mb-1.5">
                     <span className="text-slate-700 flex items-center gap-1.5">
                       <Flame className="w-3.5 h-3.5 text-orange-600" />
-                      <span>{current.isComingSoon ? "Pre-Registration Status" : "Live Batch Seats"}</span>
+                      <span>{current.isComingSoon ? "Pre-Registration Status" : "Live Demo Class Seats"}</span>
                     </span>
                     <span className="text-orange-700 font-extrabold">
                       {current.seatsBooked} / {current.totalSeats} Seats Reserved ({Math.round((current.seatsBooked / current.totalSeats) * 100)}%)
@@ -668,25 +652,14 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
 
                 {/* Action Button inside Card */}
                 <div className="pt-1">
-                  {current.isComingSoon ? (
-                    <button
-                      onClick={() => onOpenDemoModal ? onOpenDemoModal(current.courseTitle) : null}
-                      className="w-full py-3 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white font-bold text-xs sm:text-sm transition-all cursor-pointer shadow-brand-soft flex items-center justify-center gap-2 transform active:scale-98"
-                    >
-                      <Sparkles className="w-4 h-4" />
-                      <span>Inquire / Book Free Demo for Salesforce</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => onOpenEnrollModal ? onOpenEnrollModal(current.courseTitle, "September 15, 2026 Live Batch") : onOpenDemoModal(current.courseTitle)}
-                      className="w-full py-3 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white font-bold text-xs sm:text-sm transition-all cursor-pointer shadow-brand-soft flex items-center justify-center gap-2 transform active:scale-98"
-                    >
-                      <Sparkles className="w-4 h-4" />
-                      <span>Register for Data Analytics Live Batch</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  )}
+                  <button
+                    onClick={() => onOpenDemoModal ? onOpenDemoModal(current.courseTitle) : null}
+                    className="w-full py-3 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white font-bold text-xs sm:text-sm transition-all cursor-pointer shadow-brand-soft flex items-center justify-center gap-2 transform active:scale-98"
+                  >
+                    <Sparkles className="w-4 h-4" />
+                    <span>Register for Free Demo Class</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
                 </div>
 
               </div>

@@ -50,7 +50,7 @@ export default function UpcomingBatches({ batches, onOpenDemoModal, onOpenEnroll
         {/* Clean Schedule Cards */}
         <div className="space-y-3">
           {filteredBatches.map((batch) => {
-            const isClosed = batch.isClosed || batch.status === 'Registrations Closed' || batch.status?.toLowerCase().includes('closed');
+            const isClosed = batch.isClosed || batch.status === 'Registrations Closed' || batch.status?.toLowerCase().includes('closed') || batch.category?.toLowerCase() === 'data analytics' || batch.courseId?.includes('data-analytics') || batch.courseId?.includes('sql');
             const isComingSoon = !isClosed && (batch.isComingSoon || batch.status === 'Coming Soon' || batch.startDate.toLowerCase().includes('soon'));
 
             return (
@@ -139,10 +139,14 @@ export default function UpcomingBatches({ batches, onOpenDemoModal, onOpenEnroll
 
                 {/* Action Button: Closed, Coming Soon, or Register */}
                 {isClosed ? (
-                  <div className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-100 text-slate-500 border border-slate-300 font-bold text-xs whitespace-nowrap text-center flex items-center justify-center gap-1.5 shadow-2xs select-none">
+                  <button
+                    disabled
+                    aria-disabled="true"
+                    className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-100 text-slate-500 border border-slate-300 font-bold text-xs whitespace-nowrap text-center flex items-center justify-center gap-1.5 shadow-2xs cursor-not-allowed opacity-90 select-none"
+                  >
                     <span className="w-2 h-2 rounded-full bg-rose-500"></span>
                     <span className="text-slate-700">Registrations Closed</span>
-                  </div>
+                  </button>
                 ) : isComingSoon ? (
                   <div className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-amber-50 text-amber-800 border border-amber-200 font-bold text-xs whitespace-nowrap text-center flex items-center justify-center gap-1.5 shadow-2xs">
                     <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
