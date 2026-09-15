@@ -112,21 +112,32 @@ export default function CourseModal({ course, onClose, onOpenDemoModal }) {
           <div>
             <div className="text-[11px] font-bold text-orange-600 uppercase tracking-wider">Next Live Batch</div>
             <div className="text-sm font-extrabold text-slate-900 flex items-center gap-1.5 mt-0.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-              {course.nextBatch || 'Admissions Open'}
+              <span className={`w-2 h-2 rounded-full ${
+                course.category === 'SAP' || course.id === 'sap-cpi' || course.nextBatch?.toLowerCase().includes('soon')
+                  ? 'bg-amber-500'
+                  : 'bg-emerald-500'
+              }`}></span>
+              {course.category === 'SAP' || course.id === 'sap-cpi' ? 'Coming Soon' : (course.nextBatch || 'Admissions Open')}
             </div>
           </div>
 
           <div className="w-full sm:w-auto">
-            <button
-              onClick={() => {
-                onClose();
-                onOpenDemoModal(course.title);
-              }}
-              className="w-full sm:w-auto px-7 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs sm:text-sm cursor-pointer transition-colors shadow-sm text-center"
-            >
-              Book Free Demo
-            </button>
+            {course.category === 'SAP' || course.id === 'sap-cpi' || course.title?.toLowerCase().includes('sap') ? (
+              <div className="w-full sm:w-auto px-7 py-2.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 select-none shadow-2xs cursor-not-allowed">
+                <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                <span>Coming Soon</span>
+              </div>
+            ) : (
+              <button
+                onClick={() => {
+                  onClose();
+                  onOpenDemoModal(course.title);
+                }}
+                className="w-full sm:w-auto px-7 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs sm:text-sm cursor-pointer transition-colors shadow-sm text-center"
+              >
+                Book Free Demo
+              </button>
+            )}
           </div>
         </div>
 

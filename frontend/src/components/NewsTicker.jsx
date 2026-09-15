@@ -20,7 +20,7 @@ export default function NewsTicker({ onOpenDemoModal, onOpenEnrollModal }) {
           Salesforce Admin & Developer (2-in-1 Masterclass): Free Demo Registrations Started Today (Sept 15)!
         </span>
         <span className="text-sky-300 font-extrabold">
-          19/25 Demo Seats Reserved (Only 6 Seats Remaining!)
+          21/25 Demo Seats Reserved (Only 4 Seats Remaining!)
         </span>
         <button
           onClick={(e) => handleDemoClick(e, 'Salesforce Administration and Developer')}

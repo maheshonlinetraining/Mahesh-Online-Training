@@ -140,12 +140,19 @@ export default function CourseCatalog({ courses, onSelectCourse, onOpenDemoModal
                 >
                   View Syllabus
                 </button>
-                <button
-                  onClick={() => onOpenDemoModal(course.title)}
-                  className="w-full py-2.5 px-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs transition-colors cursor-pointer shadow-sm"
-                >
-                  Book Demo
-                </button>
+                {course.category === 'SAP' || course.id === 'sap-cpi' || course.title?.toLowerCase().includes('sap') ? (
+                  <div className="w-full py-2.5 px-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 font-bold text-xs flex items-center justify-center gap-1.5 select-none shadow-2xs cursor-not-allowed">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                    <span>Coming Soon</span>
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => onOpenDemoModal(course.title)}
+                    className="w-full py-2.5 px-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs transition-colors cursor-pointer shadow-sm"
+                  >
+                    Book Demo
+                  </button>
+                )}
               </div>
 
             </div>

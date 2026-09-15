@@ -79,25 +79,53 @@ function doPost(e) {
     var data = JSON.parse(e.postData.contents);
     var items = Array.isArray(data) ? data : [data];
 
+    // Read headers from Row 1
+    var lastCol = Math.max(sheet.getLastColumn(), 1);
+    var headerValues = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
+
     for (var i = 0; i < items.length; i++) {
       var item = items[i];
-      sheet.appendRow([
-        item.timestamp || new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }) + " IST",
-        item.fullName || "",
-        item.email || "",
-        item.phone || "",
-        item.courseName || "",
-        item.referral || "Direct",
-        item.status || "New Demo Booking"
-      ]);
+      var row = [];
+
+      var timestampVal = item.timestamp || new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }) + " IST";
+      var nameVal = item.fullName || item.name || "";
+      var emailVal = item.email || "";
+      var phoneVal = item.phone || item.mobile || "";
+      var courseVal = item.courseName || item.course || "";
+      var referralVal = item.referral || "Direct";
+      var statusVal = item.status || "New Demo Booking";
+
+      for (var c = 0; c < headerValues.length; c++) {
+        var h = String(headerValues[c]).toLowerCase().trim();
+
+        if (h.includes("time") || h.includes("timestamp") || (h.includes("date") && !h.includes("batch"))) {
+          row.push(timestampVal);
+        } else if (h.includes("student name") || h === "name" || (h.includes("name") && !h.includes("course"))) {
+          row.push(nameVal);
+        } else if (h.includes("email") || h.includes("mail")) {
+          row.push(emailVal);
+        } else if (h.includes("phone") || h.includes("whats") || h.includes("mobile") || h.includes("contact")) {
+          row.push(phoneVal);
+        } else if (h.includes("course")) {
+          row.push(courseVal);
+        } else if (h.includes("referral") || h.includes("source")) {
+          row.push(referralVal);
+        } else if (h.includes("status")) {
+          row.push(statusVal);
+        } else {
+          row.push("");
+        }
+      }
+
+      sheet.appendRow(row);
     }
 
-    sheet.autoResizeColumns(1, headers.length);
+    sheet.autoResizeColumns(1, Math.max(sheet.getLastColumn(), 1));
 
     return ContentService
       .createTextOutput(JSON.stringify({ 
         status: "success", 
-        message: "Recorded " + items.length + " rows successfully",
+        message: "Recorded " + items.length + " demo bookings with exact header matching",
         totalRows: sheet.getLastRow()
       }))
       .setMimeType(ContentService.MimeType.JSON);

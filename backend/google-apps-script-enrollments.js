@@ -85,28 +85,63 @@ function doPost(e) {
     var data = JSON.parse(e.postData.contents);
     var items = Array.isArray(data) ? data : [data];
 
+    // Read the actual headers present in Row 1 of the user's sheet
+    var lastCol = Math.max(sheet.getLastColumn(), 1);
+    var headerValues = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
+
     for (var i = 0; i < items.length; i++) {
       var item = items[i];
-      sheet.appendRow([
-        item.timestamp || new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }) + " IST",
-        item.fullName || "",
-        item.email || "",
-        item.phone || "",
-        item.courseName || "",
-        item.batchStartDate || "Immediate Live Batch",
-        item.batchTimings || item.batchPreference || "Weekday Batch (Mon to Fri) - 7:00 AM to 8:00 AM IST",
-        item.studentBackground || "Not Specified",
-        item.referral || "Direct",
-        item.status || "Enrolled (Pending Fee Payment)"
-      ]);
+      var row = [];
+
+      var timestampVal = item.timestamp || new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }) + " IST";
+      var nameVal = item.fullName || item.name || "";
+      var emailVal = item.email || "";
+      var phoneVal = item.phone || item.mobile || "";
+      var courseVal = item.courseName || item.course || "";
+      var dateVal = item.batchStartDate || "Immediate Live Batch";
+      var timingsVal = item.batchTimings || item.batchPreference || item.preferredBatch || "Weekday Batch (Mon to Fri) - 7:00 AM to 8:00 AM IST";
+      var bgVal = item.studentBackground || item.message || "Not Specified";
+      var referralVal = item.referral || "Direct";
+      var statusVal = item.status || "Enrolled (Pending Fee Payment)";
+
+      // Dynamically match each column header in Row 1
+      for (var c = 0; c < headerValues.length; c++) {
+        var h = String(headerValues[c]).toLowerCase().trim();
+
+        if (h.includes("time") && !h.includes("batch") && !h.includes("timing") || h.includes("timestamp")) {
+          row.push(timestampVal);
+        } else if (h.includes("student name") || h === "name" || (h.includes("name") && !h.includes("course"))) {
+          row.push(nameVal);
+        } else if (h.includes("email") || h.includes("mail")) {
+          row.push(emailVal);
+        } else if (h.includes("phone") || h.includes("whats") || h.includes("mobile") || h.includes("contact")) {
+          row.push(phoneVal);
+        } else if (h.includes("course")) {
+          row.push(courseVal);
+        } else if (h.includes("batch start") || h.includes("start date")) {
+          row.push(dateVal);
+        } else if (h.includes("timing") || h.includes("preference") || h.includes("batch timing")) {
+          row.push(timingsVal);
+        } else if (h.includes("background") || h.includes("experience") || h.includes("message")) {
+          row.push(bgVal);
+        } else if (h.includes("referral") || h.includes("source")) {
+          row.push(referralVal);
+        } else if (h.includes("status")) {
+          row.push(statusVal);
+        } else {
+          row.push("");
+        }
+      }
+
+      sheet.appendRow(row);
     }
 
-    sheet.autoResizeColumns(1, headers.length);
+    sheet.autoResizeColumns(1, Math.max(sheet.getLastColumn(), 1));
 
     return ContentService
       .createTextOutput(JSON.stringify({ 
         status: "success", 
-        message: "Recorded " + items.length + " course enrollments successfully",
+        message: "Recorded " + items.length + " course enrollments with exact header matching",
         totalRows: sheet.getLastRow()
       }))
       .setMimeType(ContentService.MimeType.JSON);

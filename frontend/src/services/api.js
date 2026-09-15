@@ -106,23 +106,29 @@ export const api = {
       const isDemo = payload.type === 'demo_booking';
       const webhookUrl = isDemo ? GOOGLE_SHEET_DEMO_WEBHOOK : GOOGLE_SHEET_ENROLLMENTS_WEBHOOK;
 
+      const timestamp = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }) + " IST";
+
       const sheetPayload = isDemo ? {
+        timestamp,
         fullName: payload.fullName,
         email: payload.email,
         phone: payload.phone,
         courseName: payload.courseName,
         referral: payload.referral || 'Direct',
+        status: 'New Demo Booking',
         type: 'demo_booking'
       } : {
+        timestamp,
         fullName: payload.fullName,
         email: payload.email,
         phone: payload.phone,
         courseName: payload.courseName,
-        batchStartDate: payload.batchStartDate || '',
-        batchTimings: payload.batchTimings || '',
-        batchPreference: payload.preferredBatch || payload.batchTimings || '',
-        studentBackground: payload.studentBackground || payload.message || '',
+        batchStartDate: payload.batchStartDate || 'Immediate Live Batch',
+        batchTimings: payload.batchTimings || payload.preferredBatch || 'Weekday Batch (Mon to Fri) - 7:00 AM to 8:00 AM IST',
+        batchPreference: payload.preferredBatch || payload.batchTimings || 'Immediate Live Batch',
+        studentBackground: payload.studentBackground || payload.message || 'Not Specified',
         referral: payload.referral || 'Direct',
+        status: 'Enrolled (Pending Fee Payment)',
         type: 'course_enrollment'
       };
 
