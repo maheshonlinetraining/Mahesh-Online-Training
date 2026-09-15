@@ -62,7 +62,7 @@ export default function CourseCatalog({ courses, onSelectCourse, onOpenDemoModal
                     alt={course.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  {course.badge && (
+                  {course.badge && !course.badge.toLowerCase().includes('sept') && !course.badge.toLowerCase().includes('start') && (
                     <span className={`absolute top-3 right-3 px-2.5 py-1 rounded-md text-[11px] font-extrabold uppercase shadow-sm ${
                       course.badge.toLowerCase().includes('soon')
                         ? 'bg-orange-600 text-white'

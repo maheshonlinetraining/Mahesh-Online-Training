@@ -63,8 +63,31 @@ function setupSheetHeaders() {
   sheet.setFrozenRows(1);
   sheet.setRowHeight(1, 35);
   sheet.autoResizeColumns(1, headers.length);
-  
+  Logger.log("✅ Demo Booking headers created successfully!");
   return "Headers created successfully!";
+}
+
+// Alias to prevent error if dropdown has setupEnrollmentHeaders selected
+function setupEnrollmentHeaders() {
+  return setupSheetHeaders();
+}
+
+// Test function
+function testDemoBooking() {
+  var mockEvent = {
+    postData: {
+      contents: JSON.stringify({
+        fullName: "Test Demo Student",
+        email: "test.demo@example.com",
+        phone: "+91 9876543210",
+        courseName: "Salesforce Administration and Developer",
+        referral: "Direct",
+        status: "New Demo Booking"
+      })
+    }
+  };
+  var res = doPost(mockEvent);
+  Logger.log("Test execution result: " + res.getContent());
 }
 
 function doPost(e) {

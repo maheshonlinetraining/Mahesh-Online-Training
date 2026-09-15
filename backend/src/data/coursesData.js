@@ -4,7 +4,6 @@ export const courses = [
     title: "Data Analytics with SQL, Power BI, Python, Excel",
     category: "Data Analytics",
     tagline: "Master Power BI dashboards, SQL querying, Python for data analysis, Excel, DAX formulas, and real-time business intelligence.",
-    badge: "Starts Sept 15",
     level: "Beginner to Advanced",
     duration: "12 Weeks (Live Online)",
     rating: 4.95,
@@ -13,7 +12,7 @@ export const courses = [
     originalPrice: "₹28,000",
     discount: "34% OFF",
     trainer: "Abhi (8+ Yrs Exp)",
-    nextBatch: "Starts Sept 15, 2026",
+    nextBatch: "Demo Registrations Open",
     timing: "07:00 AM - 08:00 AM IST (Mon-Fri)",
     thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
     highlights: [
@@ -49,7 +48,6 @@ export const courses = [
     title: "SQL for Data Analysts",
     category: "Data Analytics",
     tagline: "From basic SELECT statements to complex Joins, CTEs, Window Functions, and query optimization for analysts.",
-    badge: "Starts Sept 15",
     level: "Beginner to Intermediate",
     duration: "4 Weeks (Live Online)",
     rating: 4.92,
@@ -58,7 +56,7 @@ export const courses = [
     originalPrice: "₹14,000",
     discount: "36% OFF",
     trainer: "Abhi (8+ Yrs Exp)",
-    nextBatch: "Starts Sept 15, 2026",
+    nextBatch: "Demo Registrations Open",
     timing: "07:00 AM - 08:00 AM IST (Mon-Fri)",
     thumbnail: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&auto=format&fit=crop&q=80",
     highlights: [
@@ -227,6 +225,36 @@ export const courses = [
 
 export const upcomingBatches = [
   {
+    id: "batch-003",
+    courseId: "salesforce-administration-and-developer",
+    courseName: "Salesforce Administration and Developer",
+    category: "Salesforce",
+    duration: "14 Weeks",
+    startDate: "Coming Soon",
+    timing: "Timings to be Announced",
+    days: "Monday to Friday",
+    mode: "Live Interactive (Zoom)",
+    trainer: "Certified Salesforce Lead Architect",
+    status: "Coming Soon",
+    seatsLeft: 4,
+    isComingSoon: true
+  },
+  {
+    id: "batch-004",
+    courseId: "sap-cpi",
+    courseName: "SAP CPI (Cloud Platform Integration)",
+    category: "SAP",
+    duration: "8 Weeks",
+    startDate: "Coming Soon",
+    timing: "Timings to be Announced",
+    days: "Weekend & Weekday Batches",
+    mode: "Live Interactive (Zoom)",
+    trainer: "Certified SAP Integration Architect",
+    status: "Coming Soon",
+    seatsLeft: 12,
+    isComingSoon: true
+  },
+  {
     id: "batch-001",
     courseId: "data-analytics-powerbi-sql",
     courseName: "Data Analytics with SQL, Power BI, Python, Excel",
@@ -255,36 +283,6 @@ export const upcomingBatches = [
     status: "Registrations Closed",
     seatsLeft: 0,
     isClosed: true
-  },
-  {
-    id: "batch-003",
-    courseId: "salesforce-administration-and-developer",
-    courseName: "Salesforce Administration and Developer",
-    category: "Salesforce",
-    duration: "14 Weeks",
-    startDate: "Coming Soon",
-    timing: "Timings to be Announced",
-    days: "Monday to Friday",
-    mode: "Live Interactive (Zoom)",
-    trainer: "Certified Salesforce Lead Architect",
-    status: "Coming Soon",
-    seatsLeft: 8,
-    isComingSoon: true
-  },
-  {
-    id: "batch-004",
-    courseId: "sap-cpi",
-    courseName: "SAP CPI (Cloud Platform Integration)",
-    category: "SAP",
-    duration: "8 Weeks",
-    startDate: "Coming Soon",
-    timing: "Timings to be Announced",
-    days: "Weekend & Weekday Batches",
-    mode: "Live Interactive (Zoom)",
-    trainer: "Certified SAP Integration Architect",
-    status: "Coming Soon",
-    seatsLeft: 12,
-    isComingSoon: true
   }
 ];
 

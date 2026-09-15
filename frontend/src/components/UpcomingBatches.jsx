@@ -6,11 +6,30 @@ export default function UpcomingBatches({ batches, onOpenDemoModal, onOpenEnroll
 
   const categories = ['All', 'Data Analytics', 'Salesforce', 'SAP'];
 
-  const filteredBatches = useMemo(() => {
-    if (activeCategory === 'All') return batches;
-    return batches.filter(
-      (b) => b.category?.toLowerCase() === activeCategory.toLowerCase()
+  const isBatchClosed = (b) => {
+    return Boolean(
+      b.isClosed ||
+      b.status === 'Registrations Closed' ||
+      b.status?.toLowerCase().includes('closed') ||
+      b.category?.toLowerCase() === 'data analytics' ||
+      b.courseId?.includes('data-analytics') ||
+      b.courseId?.includes('sql')
     );
+  };
+
+  const sortedBatches = useMemo(() => {
+    const list = activeCategory === 'All'
+      ? batches
+      : batches.filter((b) => b.category?.toLowerCase() === activeCategory.toLowerCase());
+
+    return [...list].sort((a, b) => {
+      const aClosed = isBatchClosed(a);
+      const bClosed = isBatchClosed(b);
+      // Closed batches always move to the bottom below available and coming soon batches
+      if (aClosed && !bClosed) return 1;
+      if (!aClosed && bClosed) return -1;
+      return 0;
+    });
   }, [batches, activeCategory]);
 
   return (
@@ -49,8 +68,8 @@ export default function UpcomingBatches({ batches, onOpenDemoModal, onOpenEnroll
 
         {/* Clean Schedule Cards */}
         <div className="space-y-3">
-          {filteredBatches.map((batch) => {
-            const isClosed = batch.isClosed || batch.status === 'Registrations Closed' || batch.status?.toLowerCase().includes('closed') || batch.category?.toLowerCase() === 'data analytics' || batch.courseId?.includes('data-analytics') || batch.courseId?.includes('sql');
+          {sortedBatches.map((batch) => {
+            const isClosed = isBatchClosed(batch);
             const isComingSoon = !isClosed && (batch.isComingSoon || batch.status === 'Coming Soon' || batch.startDate.toLowerCase().includes('soon'));
 
             return (

@@ -69,8 +69,34 @@ function setupEnrollmentHeaders() {
   sheet.setFrozenRows(1);
   sheet.setRowHeight(1, 38);
   sheet.autoResizeColumns(1, headers.length);
-  
+  Logger.log("✅ Enrollment headers created successfully!");
   return "Enrollment headers created successfully!";
+}
+
+// Alias to prevent error if dropdown has setupSheetHeaders selected
+function setupSheetHeaders() {
+  return setupEnrollmentHeaders();
+}
+
+// Quick 1-click test function you can run inside Apps Script to verify rows append properly
+function testEnrollment() {
+  var mockEvent = {
+    postData: {
+      contents: JSON.stringify({
+        fullName: "Test Student",
+        email: "test.student@example.com",
+        phone: "+91 9876543210",
+        courseName: "Salesforce Administration and Developer",
+        batchStartDate: "Immediate Live Batch",
+        batchTimings: "Weekday Batch (Mon to Fri) - 7:00 AM to 8:00 AM IST",
+        studentBackground: "IT Graduate",
+        referral: "Direct",
+        status: "Test Entry"
+      })
+    }
+  };
+  var res = doPost(mockEvent);
+  Logger.log("Test execution result: " + res.getContent());
 }
 
 function doPost(e) {

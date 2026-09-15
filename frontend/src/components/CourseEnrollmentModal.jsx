@@ -56,7 +56,7 @@ export default function CourseEnrollmentModal({
     if (courseObj?.badge && courseObj.badge.includes('Starts')) {
       return courseObj.badge.replace(/^Starts\s+/i, '').trim() + ', 2026';
     }
-    return 'Sept 15, 2026';
+    return 'Upcoming Batch';
   };
 
   const batchStartDate = getBatchStartDate();
