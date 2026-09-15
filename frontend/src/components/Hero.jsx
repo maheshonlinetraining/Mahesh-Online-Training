@@ -30,80 +30,6 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
 
   const slides = [
     {
-      id: "data-analytics",
-      courseId: "data-analytics-powerbi-sql",
-      courseTitle: "Data Analytics with SQL, Power BI, Python, Excel",
-      tabLabel: "Data Analytics",
-      tabSub: "Starts Sept 15",
-      badgeText: "Live Batch Starts September 15, 2026",
-      isComingSoon: false,
-      accentColor: "orange",
-      headlinePrefix: "Data Analytics Masterclass",
-      headlineHighlight: "Become an Industry-Ready Analyst",
-      subtitle: (
-        <>
-          Attended our free demo session on <strong className="text-slate-900">5th September</strong>? Fast-track your career with mentor-led interactive training in <strong className="text-slate-900">SQL, Power BI, Python & Excel</strong>, complete with 3 production-grade capstone projects and end-to-end placement guidance.
-        </>
-      ),
-      features: [
-        {
-          icon: "zap",
-          title: "100% Live Mentorship",
-          desc: "Interactive 2-way screen sharing, live doubt clearing & daily practice labs."
-        },
-        {
-          icon: "layers",
-          title: "3 Enterprise Capstones",
-          desc: "Real-world Power BI dashboards, SQL ETL pipelines & business intelligence."
-        },
-        {
-          icon: "briefcase",
-          title: "Placement & Mock Prep",
-          desc: "Resume reviews, LinkedIn optimization, interview mock drills & referrals."
-        }
-      ],
-      points: [
-        "100% Live Interactive Classes with Abhi",
-        "Real-Time Business Intelligence & SQL Capstones",
-        "Placement Support & Resume Portfolio Reviews"
-      ],
-      seatsBooked: 22,
-      totalSeats: 25,
-      urgencyText: "Only 3 seats remaining for Sept 15 batch - Closing Soon!",
-      alumniCompanies: ["Deloitte", "TCS", "Infosys", "Accenture", "Cognizant"],
-      primaryButtonText: "Register for Live Batch",
-      startDateText: "Sept 15, 2026",
-      modeText: "100% Live Online",
-      ambientBg: "from-[#fff7ed] via-[#ffedd5]/60 to-[#fffaf5]",
-      haloColor: "bg-orange-500/20",
-      gridColor: "#ea580c",
-      studio: {
-        tag: "POWER BI & SQL ANALYTICS SUITE",
-        querySnippet: "SELECT candidate, hike FROM placements WHERE batch = 'DA-2026';",
-        queryResult: "100% Placed • Avg 42% Hike",
-        kpiValue: "₹8.5 LPA",
-        kpiLabel: "Average Alumni Package",
-        hikeBadge: "+42% Avg Hike",
-        techStack: [
-          { name: "Power BI", color: "bg-amber-500/20 text-amber-300 border-amber-500/40" },
-          { name: "SQL Querying", color: "bg-blue-500/20 text-blue-300 border-blue-500/40" },
-          { name: "Python", color: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40" },
-          { name: "Excel & DAX", color: "bg-purple-500/20 text-purple-300 border-purple-500/40" },
-          { name: "Pandas", color: "bg-sky-500/20 text-sky-300 border-sky-500/40" }
-        ]
-      },
-      trainers: [
-        {
-          name: "Abhi (8+ Yrs Exp)",
-          role: "Lead Data Analyst & Industry Mentor",
-          subtitle: "Mentored 100+ students • Power BI, SQL & Python Specialist",
-          initials: "AB",
-          rating: "4.9/5",
-          avatarGradient: "from-orange-600 to-amber-500"
-        }
-      ]
-    },
-    {
       id: "salesforce",
       courseId: "salesforce-administration-and-developer",
       courseTitle: "Salesforce Administration and Developer",
@@ -189,8 +115,9 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
 
   const current = slides[activeSlide];
 
-  // Auto slide transition every 30 seconds (resets timer on manual change)
+  // Auto slide transition (disabled when only 1 slide present)
   useEffect(() => {
+    if (slides.length <= 1) return;
     const interval = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % slides.length);
     }, 30000);
@@ -278,7 +205,9 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                   onClick={() => setActiveSlide(idx)}
                   className={`px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer flex items-center gap-2.5 ${
                     isActive
-                      ? 'bg-gradient-to-r from-orange-600 to-amber-600 text-white shadow-brand-soft ring-2 ring-orange-400/30'
+                      ? s.id === 'salesforce'
+                        ? 'bg-gradient-to-r from-sky-600 to-blue-600 text-white shadow-md ring-2 ring-sky-400/30'
+                        : 'bg-gradient-to-r from-orange-600 to-amber-600 text-white shadow-brand-soft ring-2 ring-orange-400/30'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80'
                   }`}
                 >
@@ -308,29 +237,31 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
           <div className="flex items-center gap-3">
             <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 border border-slate-200/80 text-[11px] font-bold text-slate-700 shadow-2xs">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
               </span>
               <span>{current.urgencyText}</span>
             </div>
-            <div className="flex items-center gap-1">
-              <button
-                onClick={handlePrev}
-                className="p-2 rounded-xl bg-white hover:bg-orange-50 border border-slate-200 hover:border-orange-300 text-slate-600 hover:text-orange-600 shadow-xs transition-colors cursor-pointer"
-                title="Previous Cohort"
-                aria-label="Previous Cohort"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                onClick={handleNext}
-                className="p-2 rounded-xl bg-white hover:bg-orange-50 border border-slate-200 hover:border-orange-300 text-slate-600 hover:text-orange-600 shadow-xs transition-colors cursor-pointer"
-                title="Next Cohort"
-                aria-label="Next Cohort"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
+            {slides.length > 1 && (
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={handlePrev}
+                  className="p-2 rounded-xl bg-white hover:bg-orange-50 border border-slate-200 hover:border-orange-300 text-slate-600 hover:text-orange-600 shadow-xs transition-colors cursor-pointer"
+                  title="Previous Cohort"
+                  aria-label="Previous Cohort"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={handleNext}
+                  className="p-2 rounded-xl bg-white hover:bg-orange-50 border border-slate-200 hover:border-orange-300 text-slate-600 hover:text-orange-600 shadow-xs transition-colors cursor-pointer"
+                  title="Next Cohort"
+                  aria-label="Next Cohort"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            )}
           </div>
 
         </div>
