@@ -10,6 +10,7 @@ export default function Navbar({ onOpenDemoModal, onOpenEnrollModal }) {
     { label: 'Courses', href: '#courses' },
     { label: 'Batches', href: '#batches' },
     { label: 'Why Us', href: '#features' },
+    { label: 'Refer & Earn', href: '#refer-earn', badge: '₹1,000' },
     { label: 'Placements', href: '#placements' },
     { label: 'FAQs', href: '#faqs' },
     { label: 'Contact', href: '#contact' },
@@ -39,14 +40,19 @@ export default function Navbar({ onOpenDemoModal, onOpenEnrollModal }) {
             </a>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-8">
+            <nav className="hidden lg:flex items-center gap-6">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-sm font-semibold text-slate-600 hover:text-orange-600 transition-colors"
+                  className="text-sm font-semibold text-slate-600 hover:text-orange-600 transition-colors flex items-center gap-1.5"
                 >
-                  {link.label}
+                  <span>{link.label}</span>
+                  {link.badge && (
+                    <span className="bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 text-[10px] font-black px-1.5 py-0.2 rounded-full shadow-xs animate-pulse">
+                      {link.badge}
+                    </span>
+                  )}
                 </a>
               ))}
             </nav>
@@ -112,9 +118,14 @@ export default function Navbar({ onOpenDemoModal, onOpenEnrollModal }) {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block py-2 text-base font-semibold text-slate-700 hover:text-orange-600 border-b border-slate-100"
+                className="flex items-center justify-between py-2 text-base font-semibold text-slate-700 hover:text-orange-600 border-b border-slate-100"
               >
-                {link.label}
+                <span>{link.label}</span>
+                {link.badge && (
+                  <span className="bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 text-xs font-black px-2 py-0.5 rounded-full shadow-xs">
+                    {link.badge} Reward
+                  </span>
+                )}
               </a>
             ))}
 

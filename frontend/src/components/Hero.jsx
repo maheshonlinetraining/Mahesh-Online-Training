@@ -35,14 +35,14 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
       courseTitle: "Salesforce Administration and Developer",
       tabLabel: "Salesforce Admin & Dev",
       tabSub: "Demo Registrations Open",
-      badgeText: "⚡ Free Demo Registrations Started Today (Sept 15) — Salesforce 2-in-1 Masterclass",
+      badgeText: "⚡ Free Demo Registrations Open — Salesforce 2-in-1 Masterclass",
       isComingSoon: false,
       accentColor: "sky",
       headlinePrefix: "Salesforce Admin & Developer",
       headlineHighlight: "Comprehensive 2-in-1 Masterclass",
       subtitle: (
         <>
-          Master end-to-end <strong className="text-slate-900">Salesforce Administration</strong>, Flow Automation, <strong className="text-slate-900">Core Apex</strong>, LWC & REST APIs. To ensure thorough master-level coverage of both Administration and Development, this course is taught by <strong className="text-orange-600">2 dedicated industry specialists</strong>.
+          Master end-to-end <strong className="text-slate-900">Salesforce Administration</strong>, Flow Automation, <strong className="text-slate-900">Core Apex</strong>, LWC & REST APIs. To ensure thorough master-level coverage of both Administration and Development, this course is taught by <strong className="text-sky-700">2 dedicated industry specialists</strong>.
         </>
       ),
       features: [
@@ -67,9 +67,7 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
         "2 Dedicated Industry Mentors (Admin & Dev Specialists)",
         "Enterprise Trailhead, Flow Builder & LWC Projects"
       ],
-      seatsBooked: 21,
-      totalSeats: 25,
-      urgencyText: "Demo Registrations Open Today • 21 seats reserved • Only 4 seats remaining!",
+      urgencyText: "⚡ Free Demo Registrations Open • Live Masterclass",
       alumniCompanies: ["Salesforce Ecosystem", "Deloitte Digital", "Capgemini", "PwC", "Wipro"],
       primaryButtonText: "Register for Free Demo",
       startDateText: "Batch Coming Soon",
@@ -110,17 +108,89 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
           avatarGradient: "from-indigo-600 to-purple-500"
         }
       ]
+    },
+    {
+      id: "sap-cpi",
+      courseId: "sap-cpi",
+      courseTitle: "SAP CPI (Cloud Platform Integration)",
+      tabLabel: "SAP CPI Integration",
+      tabSub: "Coming Soon",
+      badgeText: "🚀 Upcoming Masterclass — SAP CPI (Cloud Platform Integration & BTP)",
+      isComingSoon: true,
+      accentColor: "purple",
+      headlinePrefix: "SAP CPI (Cloud Platform Integration)",
+      headlineHighlight: "Enterprise Integration Suite on SAP BTP",
+      subtitle: (
+        <>
+          Master end-to-end <strong className="text-slate-900">SAP Integration Suite</strong> on SAP BTP, iFlow Design, Message Mapping, <strong className="text-slate-900">Groovy Scripting</strong>, Standard Adapters & S/4HANA connectivity. Mentored live by a <strong className="text-purple-700">Senior SAP CPI Developer (10+ Yrs Exp)</strong>.
+        </>
+      ),
+      features: [
+        {
+          icon: "layers",
+          title: "End-to-End iFlows",
+          desc: "Design Splitter, Aggregator, Content Modifier, Routers & Error Handling."
+        },
+        {
+          icon: "code",
+          title: "Groovy & Data Mapping",
+          desc: "Hands-on Graphical Message Mapping, XSLT, and complex Groovy Scripting."
+        },
+        {
+          icon: "cloud",
+          title: "Hybrid Cloud Connectivity",
+          desc: "OData, REST, SOAP, SFTP, IDoc & RFC adapters connecting S/4HANA."
+        }
+      ],
+      points: [
+        "Complete SAP BTP Integration Suite Architecture",
+        "Hands-on Groovy Scripting & Graphical Message Mapping",
+        "Real-World S/4HANA & Cloud Integration Scenarios"
+      ],
+      urgencyText: "🚀 Batch Coming Soon • Pre-Registrations Open",
+      alumniCompanies: ["SAP Labs Ecosystem", "Accenture", "TCS", "Infosys", "IBM"],
+      primaryButtonText: "Pre-Register for Demo",
+      startDateText: "Coming Soon",
+      modeText: "100% Live Online",
+      ambientBg: "from-[#faf5ff] via-[#f3e8ff]/85 to-[#fdf4ff]",
+      haloColor: "bg-purple-600/25",
+      gridColor: "#7c3aed",
+      studio: {
+        tag: "SAP BTP INTEGRATION SUITE",
+        querySnippet: "iFlow.deploy(BTP_CloudConnector.process); // CPI",
+        queryResult: "SAP iFlow Runtime Active",
+        kpiValue: "SAP CPI / BTP",
+        kpiLabel: "Enterprise Integration Suite",
+        hikeBadge: "High-Demand Cloud Skill",
+        techStack: [
+          { name: "SAP CPI", color: "bg-purple-500/20 text-purple-300 border-purple-500/40" },
+          { name: "SAP BTP", color: "bg-indigo-500/20 text-indigo-300 border-indigo-500/40" },
+          { name: "Groovy Script", color: "bg-violet-500/20 text-violet-300 border-violet-500/40" },
+          { name: "OData APIs", color: "bg-teal-500/20 text-teal-300 border-teal-500/40" },
+          { name: "Cloud Connector", color: "bg-fuchsia-500/20 text-fuchsia-300 border-fuchsia-500/40" }
+        ]
+      },
+      trainers: [
+        {
+          name: "Ramesh (10+ Yrs Exp)",
+          role: "Senior SAP CPI Developer",
+          subtitle: "SAP BTP Integration Suite, iFlows, Groovy Scripting & S/4HANA",
+          initials: "RM",
+          rating: "4.95/5",
+          avatarGradient: "from-purple-700 via-indigo-600 to-violet-700"
+        }
+      ]
     }
   ];
 
   const current = slides[activeSlide];
 
-  // Auto slide transition (disabled when only 1 slide present)
+  // Auto slide transition (cycles every 1 minute)
   useEffect(() => {
     if (slides.length <= 1) return;
     const interval = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % slides.length);
-    }, 30000);
+    }, 60000);
     return () => clearInterval(interval);
   }, [activeSlide, slides.length]);
 
@@ -207,14 +277,14 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                     isActive
                       ? s.id === 'salesforce'
                         ? 'bg-gradient-to-r from-sky-600 to-blue-600 text-white shadow-md ring-2 ring-sky-400/30'
-                        : 'bg-gradient-to-r from-orange-600 to-amber-600 text-white shadow-brand-soft ring-2 ring-orange-400/30'
+                        : 'bg-gradient-to-r from-purple-700 via-indigo-700 to-violet-800 text-white shadow-md ring-2 ring-purple-400/30'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80'
                   }`}
                 >
-                  {s.id === 'data-analytics' ? (
-                    <BarChart3 className={`w-4 h-4 ${isActive ? 'text-white' : 'text-orange-600'}`} />
-                  ) : (
+                  {s.id === 'salesforce' ? (
                     <Cloud className={`w-4 h-4 ${isActive ? 'text-white' : 'text-sky-600'}`} />
+                  ) : (
+                    <Layers className={`w-4 h-4 ${isActive ? 'text-white' : 'text-purple-700'}`} />
                   )}
                   <span>{s.tabLabel}</span>
                   <span
@@ -222,8 +292,8 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                       isActive
                         ? 'bg-white/25 text-white'
                         : s.isComingSoon
-                        ? 'bg-amber-100 text-amber-800'
-                        : 'bg-orange-100 text-orange-700'
+                        ? 'bg-purple-100 text-purple-800'
+                        : 'bg-sky-100 text-sky-800'
                     }`}
                   >
                     {s.tabSub}
@@ -233,37 +303,27 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
             })}
           </div>
 
-          {/* Slicer Step Indicator & Live urgency */}
-          <div className="flex items-center gap-3">
-            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 border border-slate-200/80 text-[11px] font-bold text-slate-700 shadow-2xs">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
-              </span>
-              <span>{current.urgencyText}</span>
+          {/* Slicer Slide Navigation Buttons */}
+          {slides.length > 1 && (
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={handlePrev}
+                className="p-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 hover:border-slate-300 text-slate-600 hover:text-slate-900 shadow-xs transition-colors cursor-pointer"
+                title="Previous Course"
+                aria-label="Previous Course"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={handleNext}
+                className="p-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 hover:border-slate-300 text-slate-600 hover:text-slate-900 shadow-xs transition-colors cursor-pointer"
+                title="Next Course"
+                aria-label="Next Course"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
             </div>
-            {slides.length > 1 && (
-              <div className="flex items-center gap-1">
-                <button
-                  onClick={handlePrev}
-                  className="p-2 rounded-xl bg-white hover:bg-orange-50 border border-slate-200 hover:border-orange-300 text-slate-600 hover:text-orange-600 shadow-xs transition-colors cursor-pointer"
-                  title="Previous Cohort"
-                  aria-label="Previous Cohort"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={handleNext}
-                  className="p-2 rounded-xl bg-white hover:bg-orange-50 border border-slate-200 hover:border-orange-300 text-slate-600 hover:text-orange-600 shadow-xs transition-colors cursor-pointer"
-                  title="Next Cohort"
-                  aria-label="Next Cohort"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-            )}
-          </div>
-
+          )}
         </div>
 
         {/* Slide Content Grid */}
@@ -273,18 +333,18 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
           <div className="lg:col-span-7 space-y-4 md:space-y-4 text-center lg:text-left transition-all duration-300">
             
             {/* Blinking Live Beacon Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-orange-200/90 text-slate-800 text-xs sm:text-sm font-bold shadow-xs">
+            <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border ${current.id === 'sap-cpi' ? 'border-purple-200/90 text-purple-900' : 'border-sky-200/90 text-sky-900'} text-xs sm:text-sm font-bold shadow-xs`}>
               <span className="relative flex h-2.5 w-2.5">
-                <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${current.isComingSoon ? 'bg-amber-400' : 'bg-orange-500'}`}></span>
-                <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${current.isComingSoon ? 'bg-amber-500' : 'bg-orange-600'}`}></span>
+                <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${current.isComingSoon ? 'bg-amber-400' : 'bg-sky-500'}`}></span>
+                <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${current.isComingSoon ? 'bg-amber-500' : 'bg-sky-600'}`}></span>
               </span>
-              <span className="font-extrabold text-orange-700">{current.badgeText}</span>
+              <span className={`font-extrabold ${current.id === 'sap-cpi' ? 'text-purple-800' : 'text-sky-700'}`}>{current.badgeText}</span>
             </div>
 
             {/* Headline with Dual-Tone Gradient */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-[1.14]">
               {current.headlinePrefix} <br />
-              <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-orange-500 bg-clip-text text-transparent">
+              <span className={`bg-gradient-to-r ${current.id === 'sap-cpi' ? 'from-purple-700 via-indigo-600 to-violet-600' : 'from-sky-600 via-blue-600 to-indigo-600'} bg-clip-text text-transparent`}>
                 {current.headlineHighlight}
               </span>
             </h1>
@@ -294,21 +354,23 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
               {current.subtitle}
             </p>
 
-            {/* 3 Enhanced Feature Value Cards (Replacing plain text bullets) */}
+            {/* 3 Enhanced Feature Value Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
               {current.features.map((feat, idx) => (
                 <div 
                   key={idx} 
-                  className="p-3 rounded-2xl bg-white/90 backdrop-blur-md border border-slate-200/80 hover:border-orange-300 hover:shadow-md transition-all duration-200 text-left group"
+                  className={`p-3 rounded-2xl bg-white/90 backdrop-blur-md border border-slate-200/80 ${current.id === 'sap-cpi' ? 'hover:border-purple-300' : 'hover:border-sky-300'} hover:shadow-md transition-all duration-200 text-left group`}
                 >
                   <div className="flex items-center gap-2 mb-1">
-                    <div className="w-6 h-6 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                      {feat.icon === 'zap' && <Zap className="w-3.5 h-3.5 text-orange-600" />}
-                      {feat.icon === 'layers' && <Layers className="w-3.5 h-3.5 text-orange-600" />}
-                      {feat.icon === 'briefcase' && <Briefcase className="w-3.5 h-3.5 text-orange-600" />}
-                      {feat.icon === 'users' && <Users className="w-3.5 h-3.5 text-orange-600" />}
+                    <div className={`w-6 h-6 rounded-lg ${current.id === 'sap-cpi' ? 'bg-purple-100 text-purple-700' : 'bg-sky-100 text-sky-600'} flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform`}>
+                      {feat.icon === 'zap' && <Zap className="w-3.5 h-3.5" />}
+                      {feat.icon === 'layers' && <Layers className="w-3.5 h-3.5" />}
+                      {feat.icon === 'briefcase' && <Briefcase className="w-3.5 h-3.5" />}
+                      {feat.icon === 'users' && <Users className="w-3.5 h-3.5" />}
+                      {feat.icon === 'cloud' && <Cloud className="w-3.5 h-3.5" />}
+                      {feat.icon === 'code' && <Code2 className="w-3.5 h-3.5" />}
                     </div>
-                    <span className="font-extrabold text-xs text-slate-900 group-hover:text-orange-600 transition-colors">
+                    <span className={`font-extrabold text-xs text-slate-900 ${current.id === 'sap-cpi' ? 'group-hover:text-purple-700' : 'group-hover:text-sky-600'} transition-colors`}>
                       {feat.title}
                     </span>
                   </div>
@@ -323,7 +385,11 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-1">
               <button
                 onClick={() => onOpenDemoModal ? onOpenDemoModal(current.courseTitle) : null}
-                className="btn-orange w-full sm:w-auto px-7 py-3 rounded-xl text-sm sm:text-base font-bold flex items-center justify-center gap-2 shadow-brand-soft cursor-pointer transform active:scale-95"
+                className={`w-full sm:w-auto px-7 py-3 rounded-xl text-sm sm:text-base font-bold flex items-center justify-center gap-2 shadow-md cursor-pointer transform active:scale-95 text-white ${
+                  current.id === 'sap-cpi'
+                    ? 'bg-gradient-to-r from-purple-700 via-indigo-700 to-violet-800 hover:from-purple-800 hover:to-indigo-800'
+                    : 'bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700'
+                }`}
               >
                 <Sparkles className="w-4 h-4 text-white" />
                 <span>{current.primaryButtonText}</span>
@@ -412,7 +478,7 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
             </div>
 
             {/* Main Bento Studio Card with subtle radiant outer border */}
-            <div className="relative rounded-3xl p-[1px] bg-gradient-to-b from-orange-300/70 via-amber-200/50 to-slate-200 shadow-2xl transition-all duration-300">
+            <div className={`relative rounded-3xl p-[1px] bg-gradient-to-b ${current.id === 'sap-cpi' ? 'from-purple-500/70 via-indigo-400/50 to-slate-200' : 'from-sky-400/70 via-blue-300/50 to-slate-200'} shadow-2xl transition-all duration-300`}>
               <div className="bg-white/95 backdrop-blur-xl rounded-[23px] p-5 sm:p-6 space-y-4">
                 
                 {/* Studio Component Preview Box (Show, Don't Tell!) */}
@@ -437,8 +503,8 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                   {/* Terminal / Code Query Bar */}
                   <div className="flex items-center justify-between gap-2 px-2.5 py-1.5 rounded-lg bg-slate-950/90 border border-slate-800/90 mb-3 font-mono text-[11px]">
                     <div className="flex items-center gap-1.5 text-slate-400 truncate">
-                      <Terminal className="w-3 h-3 text-orange-400 shrink-0" />
-                      <span className="text-orange-400/90 select-none">$</span>
+                      <Terminal className={`w-3 h-3 ${current.id === 'sap-cpi' ? 'text-purple-400' : 'text-sky-400'} shrink-0`} />
+                      <span className={`${current.id === 'sap-cpi' ? 'text-purple-400/90' : 'text-sky-400/90'} select-none`}>$</span>
                       <span className="text-slate-300 truncate">{current.studio.querySnippet}</span>
                     </div>
                     <div className="shrink-0 text-[10px] font-semibold text-emerald-400 flex items-center gap-1 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
@@ -448,8 +514,8 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                   </div>
 
                   {/* Course-Specific Interactive Component Content */}
-                  {current.id === 'data-analytics' ? (
-                    /* Data Analytics BI Dashboard Preview */
+                  {current.id === 'sap-cpi' ? (
+                    /* SAP CPI Architecture Preview */
                     <div className="space-y-3">
                       <div className="flex items-end justify-between">
                         <div>
@@ -458,43 +524,35 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                           </div>
                           <div className="text-2xl font-black text-white tracking-tight flex items-baseline gap-2">
                             <span>{current.studio.kpiValue}</span>
-                            <span className="text-xs font-bold text-emerald-400 flex items-center gap-0.5">
-                              <TrendingUp className="w-3.5 h-3.5" />
+                            <span className="text-xs font-bold text-fuchsia-400 flex items-center gap-0.5">
+                              <Award className="w-3.5 h-3.5" />
                               {current.studio.hikeBadge}
                             </span>
                           </div>
                         </div>
-                        <div className="text-[11px] font-mono text-orange-400 bg-orange-950/60 px-2.5 py-1 rounded border border-orange-500/30">
-                          SQL + Power BI + Python
+                        <div className="text-[11px] font-mono text-purple-300 bg-purple-950/60 px-2.5 py-1 rounded border border-purple-500/30">
+                          SAP BTP Cloud Foundry
                         </div>
                       </div>
 
-                      {/* SVG Mini Trendline Chart with Animated Ping Node */}
-                      <div className="h-16 w-full relative">
-                        <svg viewBox="0 0 320 60" fill="none" className="w-full h-full">
-                          <defs>
-                            <linearGradient id="heroChartGrad" x1="0%" y1="0%" x2="1">
-                              <stop offset="0%" stopColor="#ea580c" stopOpacity="0.45" />
-                              <stop offset="100%" stopColor="#ea580c" stopOpacity="0.0" />
-                            </linearGradient>
-                          </defs>
-                          <path 
-                            d="M0 48 Q 40 40 80 44 T 160 28 T 240 16 T 320 8 L 320 60 L 0 60 Z" 
-                            fill="url(#heroChartGrad)" 
-                          />
-                          <path 
-                            d="M0 48 Q 40 40 80 44 T 160 28 T 240 16 T 320 8" 
-                            fill="none" 
-                            stroke="#f97316" 
-                            strokeWidth="2.5" 
-                            strokeLinecap="round" 
-                          />
-                          <circle cx="80" cy="44" r="3" fill="#ffffff" />
-                          <circle cx="160" cy="28" r="3" fill="#ffffff" />
-                          <circle cx="240" cy="16" r="3" fill="#ffffff" />
-                          <circle cx="320" cy="8" r="7" fill="#f97316" fillOpacity="0.3" className="animate-ping" />
-                          <circle cx="320" cy="8" r="3.5" fill="#f97316" stroke="#ffffff" strokeWidth="1.5" />
-                        </svg>
+                      {/* Visual 4-Step Enterprise Pipeline */}
+                      <div className="grid grid-cols-4 gap-1.5 py-1 text-center font-mono">
+                        <div className="p-1.5 rounded-lg bg-slate-800/90 border border-purple-500/30 shadow-xs">
+                          <div className="text-[9px] font-bold text-purple-400">01. BTP</div>
+                          <div className="text-[10px] font-semibold text-slate-200">Integration</div>
+                        </div>
+                        <div className="p-1.5 rounded-lg bg-slate-800/90 border border-indigo-500/30 shadow-xs">
+                          <div className="text-[9px] font-bold text-indigo-400">02. iFlows</div>
+                          <div className="text-[10px] font-semibold text-slate-200">Routing</div>
+                        </div>
+                        <div className="p-1.5 rounded-lg bg-slate-800/90 border border-violet-500/30 shadow-xs">
+                          <div className="text-[9px] font-bold text-violet-400">03. Groovy</div>
+                          <div className="text-[10px] font-semibold text-slate-200">Mapping</div>
+                        </div>
+                        <div className="p-1.5 rounded-lg bg-slate-800/90 border border-teal-500/30 shadow-xs">
+                          <div className="text-[9px] font-bold text-teal-400">04. Hybrid</div>
+                          <div className="text-[10px] font-semibold text-slate-200">S/4HANA</div>
+                        </div>
                       </div>
 
                       {/* Tech Stack Pills Row */}
@@ -563,7 +621,7 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                 {/* Mentors Spotlight Section */}
                 <div className="space-y-2">
                   <div className="flex items-center justify-between pb-1.5 border-b border-slate-100">
-                    <div className="text-[11px] font-extrabold uppercase tracking-wider text-orange-600 flex items-center gap-1.5">
+                    <div className={`text-[11px] font-extrabold uppercase tracking-wider ${current.id === 'sap-cpi' ? 'text-purple-700' : 'text-sky-700'} flex items-center gap-1.5`}>
                       {current.trainers.length > 1 ? (
                         <>
                           <Users className="w-3.5 h-3.5" />
@@ -576,8 +634,8 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                         </>
                       )}
                     </div>
-                    <span className="px-2 py-0.5 rounded-md bg-orange-50 text-orange-700 text-[10px] font-extrabold border border-orange-200/60 flex items-center gap-1">
-                      <ShieldCheck className="w-3 h-3 text-orange-600" />
+                    <span className={`px-2 py-0.5 rounded-md ${current.id === 'sap-cpi' ? 'bg-purple-50 text-purple-800 border-purple-200/60' : 'bg-sky-50 text-sky-800 border-sky-200/60'} text-[10px] font-extrabold border flex items-center gap-1`}>
+                      <ShieldCheck className="w-3 h-3" />
                       <span>Industry Expert</span>
                     </span>
                   </div>
@@ -586,12 +644,12 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                     {current.trainers.map((tr, trIdx) => (
                       <div key={trIdx} className="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50/90 hover:bg-slate-50 border border-slate-100 transition-colors">
                         {/* Avatar Initials Badge with Gradient */}
-                        <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${tr.avatarGradient || 'from-orange-600 to-amber-500'} text-white font-extrabold text-xs flex items-center justify-center shadow-xs shrink-0 ring-2 ring-white`}>
+                        <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${tr.avatarGradient || 'from-sky-600 to-blue-500'} text-white font-extrabold text-xs flex items-center justify-center shadow-xs shrink-0 ring-2 ring-white`}>
                           {tr.initials}
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center justify-between gap-1">
-                            <div className="text-[10px] font-bold uppercase tracking-wider text-orange-600">
+                            <div className={`text-[10px] font-bold uppercase tracking-wider ${current.id === 'sap-cpi' ? 'text-purple-700' : 'text-sky-700'}`}>
                               {tr.role}
                             </div>
                             {tr.rating && (
@@ -613,37 +671,18 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                   </div>
                 </div>
 
-                {/* Seat Urgency & Batch Progress Bar */}
-                <div className="p-3 rounded-2xl bg-orange-50/80 border border-orange-100/90">
-                  <div className="flex items-center justify-between text-xs font-bold mb-1.5">
-                    <span className="text-slate-700 flex items-center gap-1.5">
-                      <Flame className="w-3.5 h-3.5 text-orange-600" />
-                      <span>{current.isComingSoon ? "Pre-Registration Status" : "Demo Registrations Status"}</span>
-                    </span>
-                    <span className="text-orange-700 font-extrabold">
-                      {current.seatsBooked} / {current.totalSeats} Seats Reserved ({Math.round((current.seatsBooked / current.totalSeats) * 100)}%)
-                    </span>
-                  </div>
-                  <div className="w-full bg-orange-200/70 rounded-full h-2 overflow-hidden">
-                    <div 
-                      className="bg-gradient-to-r from-orange-500 to-amber-500 h-full rounded-full transition-all duration-500"
-                      style={{ width: `${(current.seatsBooked / current.totalSeats) * 100}%` }}
-                    />
-                  </div>
-                </div>
-
                 {/* Batch Info Grid */}
                 <div className="grid grid-cols-2 gap-2.5 pt-0.5">
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-orange-50/70 to-amber-50/40 border border-orange-100/90 text-center flex flex-col items-center justify-center">
+                  <div className={`p-3 rounded-xl bg-gradient-to-br ${current.id === 'sap-cpi' ? 'from-purple-50/70 to-indigo-50/40 border-purple-100/90' : 'from-sky-50/70 to-blue-50/40 border-sky-100/90'} border text-center flex flex-col items-center justify-center`}>
                     <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider flex items-center justify-center gap-1">
-                      <Calendar className="w-3.5 h-3.5 text-orange-500" />
+                      <Calendar className={`w-3.5 h-3.5 ${current.id === 'sap-cpi' ? 'text-purple-600' : 'text-sky-600'}`} />
                       <span>Batch Schedule</span>
                     </div>
-                    <div className="text-sm sm:text-base font-black text-orange-600 mt-1">{current.startDateText}</div>
+                    <div className={`text-sm sm:text-base font-black ${current.id === 'sap-cpi' ? 'text-purple-700' : 'text-sky-700'} mt-1`}>{current.startDateText}</div>
                   </div>
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-orange-50/70 to-amber-50/40 border border-orange-100/90 text-center flex flex-col items-center justify-center">
+                  <div className={`p-3 rounded-xl bg-gradient-to-br ${current.id === 'sap-cpi' ? 'from-purple-50/70 to-indigo-50/40 border-purple-100/90' : 'from-sky-50/70 to-blue-50/40 border-sky-100/90'} border text-center flex flex-col items-center justify-center`}>
                     <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider flex items-center justify-center gap-1">
-                      <Clock className="w-3.5 h-3.5 text-orange-500" />
+                      <Clock className={`w-3.5 h-3.5 ${current.id === 'sap-cpi' ? 'text-purple-600' : 'text-sky-600'}`} />
                       <span>Training Mode</span>
                     </div>
                     <div className="text-sm sm:text-base font-black text-slate-800 mt-1">{current.modeText}</div>
@@ -654,10 +693,14 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                 <div className="pt-1">
                   <button
                     onClick={() => onOpenDemoModal ? onOpenDemoModal(current.courseTitle) : null}
-                    className="w-full py-3 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white font-bold text-xs sm:text-sm transition-all cursor-pointer shadow-brand-soft flex items-center justify-center gap-2 transform active:scale-98"
+                    className={`w-full py-3 rounded-xl text-white font-bold text-xs sm:text-sm transition-all cursor-pointer shadow-md flex items-center justify-center gap-2 transform active:scale-98 ${
+                      current.id === 'sap-cpi'
+                        ? 'bg-gradient-to-r from-purple-700 via-indigo-700 to-violet-800 hover:from-purple-800 hover:to-indigo-800'
+                        : 'bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700'
+                    }`}
                   >
                     <Sparkles className="w-4 h-4" />
-                    <span>Register for Free Demo</span>
+                    <span>{current.primaryButtonText}</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>

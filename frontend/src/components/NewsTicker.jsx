@@ -17,10 +17,7 @@ export default function NewsTicker({ onOpenDemoModal, onOpenEnrollModal }) {
           <span>DEMO REGISTRATIONS OPEN</span>
         </span>
         <span className="text-white font-semibold">
-          Salesforce Admin & Developer (2-in-1 Masterclass): Free Demo Registrations Started Today (Sept 15)!
-        </span>
-        <span className="text-sky-300 font-extrabold">
-          21/25 Demo Seats Reserved (Only 4 Seats Remaining!)
+          Salesforce Admin & Developer (2-in-1 Masterclass): Free Demo Registrations Open!
         </span>
         <button
           onClick={(e) => handleDemoClick(e, 'Salesforce Administration and Developer')}
@@ -32,6 +29,44 @@ export default function NewsTicker({ onOpenDemoModal, onOpenEnrollModal }) {
       </div>
 
       <span className="text-sky-500/60 font-bold select-none text-base mr-3">✦</span>
+
+      <div className="flex items-center gap-2">
+        <span className="flex items-center gap-1 bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded-md font-bold text-[10px] sm:text-xs uppercase border border-purple-500/40">
+          <Zap className="w-3.5 h-3.5 text-purple-400 fill-purple-400" />
+          <span>UPCOMING BATCH</span>
+        </span>
+        <span className="text-white font-semibold">
+          SAP CPI (Cloud Platform Integration & BTP): Pre-Registrations Open!
+        </span>
+        <button
+          onClick={(e) => handleDemoClick(e, 'SAP CPI (Cloud Platform Integration)')}
+          className="inline-flex items-center gap-1 bg-purple-600 hover:bg-purple-500 text-white font-bold px-3 py-0.5 rounded-full text-[11px] transition-all transform hover:scale-105 shadow-xs cursor-pointer ml-1"
+        >
+          <span>Pre-Register for Demo</span>
+          <ArrowRight className="w-3 h-3" />
+        </button>
+      </div>
+
+      <span className="text-purple-500/60 font-bold select-none text-base mr-3">✦</span>
+
+      <div className="flex items-center gap-2">
+        <span className="flex items-center gap-1 bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-md font-bold text-[10px] sm:text-xs uppercase border border-amber-500/40">
+          <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+          <span>REFER & EARN</span>
+        </span>
+        <span className="text-white font-semibold">
+          Earn ₹1,000 Direct Cash for Every Friend You Refer to Any Course!
+        </span>
+        <a
+          href="#refer-earn"
+          className="inline-flex items-center gap-1 bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-500 hover:to-yellow-600 text-slate-950 font-black px-3 py-0.5 rounded-full text-[11px] transition-all transform hover:scale-105 shadow-xs cursor-pointer ml-1"
+        >
+          <span>Claim ₹1,000</span>
+          <ArrowRight className="w-3 h-3 text-slate-950" />
+        </a>
+      </div>
+
+      <span className="text-amber-500/60 font-bold select-none text-base mr-3">✦</span>
     </div>
   );
 

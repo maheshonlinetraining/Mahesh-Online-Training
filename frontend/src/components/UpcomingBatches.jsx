@@ -10,10 +10,7 @@ export default function UpcomingBatches({ batches, onOpenDemoModal, onOpenEnroll
     return Boolean(
       b.isClosed ||
       b.status === 'Registrations Closed' ||
-      b.status?.toLowerCase().includes('closed') ||
-      b.category?.toLowerCase() === 'data analytics' ||
-      b.courseId?.includes('data-analytics') ||
-      b.courseId?.includes('sql')
+      b.status?.toLowerCase().includes('closed')
     );
   };
 
@@ -23,11 +20,19 @@ export default function UpcomingBatches({ batches, onOpenDemoModal, onOpenEnroll
       : batches.filter((b) => b.category?.toLowerCase() === activeCategory.toLowerCase());
 
     return [...list].sort((a, b) => {
+      const aComing = Boolean(a.isComingSoon || a.status === 'Coming Soon' || a.startDate?.toLowerCase().includes('soon'));
+      const bComing = Boolean(b.isComingSoon || b.status === 'Coming Soon' || b.startDate?.toLowerCase().includes('soon'));
       const aClosed = isBatchClosed(a);
       const bClosed = isBatchClosed(b);
-      // Closed batches always move to the bottom below available and coming soon batches
+
+      // Coming Soon batches (Salesforce, SAP) first
+      if (aComing && !bComing) return -1;
+      if (!aComing && bComing) return 1;
+
+      // Closed batches at the very bottom
       if (aClosed && !bClosed) return 1;
       if (!aClosed && bClosed) return -1;
+
       return 0;
     });
   }, [batches, activeCategory]);
@@ -70,7 +75,8 @@ export default function UpcomingBatches({ batches, onOpenDemoModal, onOpenEnroll
         <div className="space-y-3">
           {sortedBatches.map((batch) => {
             const isClosed = isBatchClosed(batch);
-            const isComingSoon = !isClosed && (batch.isComingSoon || batch.status === 'Coming Soon' || batch.startDate.toLowerCase().includes('soon'));
+            const isComingSoon = !isClosed && (batch.isComingSoon || batch.status === 'Coming Soon' || batch.startDate?.toLowerCase().includes('soon'));
+            const isBatch1Started = !isClosed && (batch.isBatch1Started || batch.status?.includes('Batch 1 Started') || batch.startDate === 'Batch 1 Started');
 
             return (
               <div
@@ -86,10 +92,10 @@ export default function UpcomingBatches({ batches, onOpenDemoModal, onOpenEnroll
                   {isClosed ? (
                     <div className="w-14 h-14 rounded-xl bg-slate-100 border border-slate-200 text-slate-500 flex flex-col items-center justify-center shrink-0 text-center">
                       <span className="text-xs uppercase font-bold text-slate-400">
-                        {batch.startDate.split(' ')[0]}
+                        {batch.startDate?.split(' ')[0]}
                       </span>
                       <span className="text-lg font-black text-slate-600 leading-none">
-                        {batch.startDate.split(' ')[1]?.replace(',', '')}
+                        {batch.startDate?.split(' ')[1]?.replace(',', '')}
                       </span>
                     </div>
                   ) : isComingSoon ? (
@@ -101,13 +107,22 @@ export default function UpcomingBatches({ batches, onOpenDemoModal, onOpenEnroll
                         SOON
                       </span>
                     </div>
+                  ) : isBatch1Started ? (
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 text-emerald-800 flex flex-col items-center justify-center shrink-0 text-center px-1">
+                      <span className="text-[10px] uppercase font-black tracking-wider text-emerald-600">
+                        BATCH 2
+                      </span>
+                      <span className="text-xs font-black text-emerald-800 leading-tight">
+                        DEMO
+                      </span>
+                    </div>
                   ) : (
                     <div className="w-14 h-14 rounded-xl bg-orange-50 border border-orange-200 text-orange-600 flex flex-col items-center justify-center shrink-0">
                       <span className="text-xs uppercase font-bold text-orange-500">
-                        {batch.startDate.split(' ')[0]}
+                        {batch.startDate?.split(' ')[0]}
                       </span>
                       <span className="text-lg font-black text-orange-700 leading-none">
-                        {batch.startDate.split(' ')[1]?.replace(',', '')}
+                        {batch.startDate?.split(' ')[1]?.replace(',', '')}
                       </span>
                     </div>
                   )}
@@ -146,6 +161,11 @@ export default function UpcomingBatches({ batches, onOpenDemoModal, onOpenEnroll
                           <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
                           Coming Soon
                         </span>
+                      ) : isBatch1Started ? (
+                        <span className="text-emerald-700 font-bold flex items-center gap-1.5 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200/70">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                          Batch 1 Started • Register for Batch 2 Demo
+                        </span>
                       ) : (
                         <span className="text-emerald-600 font-semibold flex items-center gap-1">
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
@@ -156,7 +176,7 @@ export default function UpcomingBatches({ batches, onOpenDemoModal, onOpenEnroll
                   </div>
                 </div>
 
-                {/* Action Button: Closed, Coming Soon, or Register */}
+                {/* Action Button: Closed, Coming Soon, Batch 2 Demo, or Register */}
                 {isClosed ? (
                   <button
                     disabled
@@ -171,6 +191,14 @@ export default function UpcomingBatches({ batches, onOpenDemoModal, onOpenEnroll
                     <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
                     <span>Coming Soon</span>
                   </div>
+                ) : isBatch1Started ? (
+                  <button
+                    onClick={() => onOpenDemoModal ? onOpenDemoModal(`${batch.courseName} (Batch 2 Demo)`) : null}
+                    className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold text-xs whitespace-nowrap transition-all cursor-pointer shadow-sm text-center flex items-center justify-center gap-1.5"
+                  >
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>Register for Batch 2 Demo</span>
+                  </button>
                 ) : (
                   <button
                     onClick={() => onOpenEnrollModal ? onOpenEnrollModal(batch.courseName, `${batch.startDate} (${batch.timing})`) : onOpenDemoModal(`${batch.courseName} (${batch.startDate})`)}

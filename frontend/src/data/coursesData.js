@@ -169,7 +169,7 @@ export const courses = [
     price: "₹22,500",
     originalPrice: "₹35,000",
     discount: "36% OFF",
-    trainer: "Certified SAP Integration Architect (10+ Yrs Exp)",
+    trainer: "Ramesh (10+ Yrs Exp, Senior SAP CPI Developer)",
     nextBatch: "Coming Soon",
     timing: "Weekend & Weekday Batches",
     thumbnail: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop&q=80",
@@ -236,7 +236,6 @@ export const upcomingBatches = [
     mode: "Live Interactive (Zoom)",
     trainer: "Certified Salesforce Lead Architect",
     status: "Coming Soon",
-    seatsLeft: 4,
     isComingSoon: true
   },
   {
@@ -249,9 +248,8 @@ export const upcomingBatches = [
     timing: "Timings to be Announced",
     days: "Weekend & Weekday Batches",
     mode: "Live Interactive (Zoom)",
-    trainer: "Certified SAP Integration Architect",
+    trainer: "Ramesh (Senior SAP CPI Developer)",
     status: "Coming Soon",
-    seatsLeft: 12,
     isComingSoon: true
   },
   {
@@ -260,14 +258,14 @@ export const upcomingBatches = [
     courseName: "Data Analytics with SQL, Power BI, Python, Excel",
     category: "Data Analytics",
     duration: "12 Weeks",
-    startDate: "Sept 15, 2026",
+    startDate: "Batch 1 Started",
     timing: "07:00 AM - 08:00 AM IST",
     days: "Monday to Friday",
     mode: "Live Interactive (Zoom)",
     trainer: "Abhi (8+ Yrs Exp)",
-    status: "Registrations Closed",
-    seatsLeft: 0,
-    isClosed: true
+    status: "Batch 1 Started • Register for Batch 2 Demo",
+    isBatch1Started: true,
+    isClosed: false
   },
   {
     id: "batch-002",
@@ -275,14 +273,14 @@ export const upcomingBatches = [
     courseName: "SQL for Data Analysts",
     category: "Data Analytics",
     duration: "4 Weeks",
-    startDate: "Sept 15, 2026",
+    startDate: "Batch 1 Started",
     timing: "07:00 AM - 08:00 AM IST",
     days: "Monday to Friday",
     mode: "Live Interactive (Zoom)",
     trainer: "Abhi (8+ Yrs Exp)",
-    status: "Registrations Closed",
-    seatsLeft: 0,
-    isClosed: true
+    status: "Batch 1 Started • Register for Batch 2 Demo",
+    isBatch1Started: true,
+    isClosed: false
   }
 ];
 

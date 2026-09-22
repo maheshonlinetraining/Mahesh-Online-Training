@@ -184,14 +184,16 @@ export default function DemoBookingModal({ isOpen, onClose, defaultCourseTitle =
               {/* Referral Field */}
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1 flex items-center justify-between">
-                  <span>Referral</span>
-                  <span className="text-[10px] text-slate-400 font-normal">Optional</span>
+                  <span>Referred by a Friend?</span>
+                  <span className="text-[10px] text-amber-700 font-bold bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200">
+                    ₹1,000 Reward Program
+                  </span>
                 </label>
                 <input
                   type="text"
                   value={formData.referral}
                   onChange={(e) => setFormData({ ...formData, referral: e.target.value })}
-                  placeholder="e.g. Friend name, Student ID, or Referral code"
+                  placeholder="Enter Friend's Name or Mobile / UPI ID"
                   className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-orange-500 outline-none transition-all"
                 />
               </div>
