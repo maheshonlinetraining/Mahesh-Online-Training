@@ -172,16 +172,20 @@ export default function ContactSection() {
                     onChange={(e) => setForm({ ...form, courseName: e.target.value })}
                     className="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-orange-500 outline-none transition-all bg-white"
                   >
-                    <option value="Data Analytics with SQL, Power BI, Python, Excel">Data Analytics with SQL, Power BI, Python, Excel (Batch 3 Starts Oct 15)</option>
+                    <option value="Data Analytics with SQL, Power BI, Python, Excel">Data Analytics with SQL, Power BI, Python, Excel - Weekday Batch Only (8:00 AM - 9:00 AM IST)</option>
                     <option value="SAP CPI (Cloud Platform Integration)">SAP CPI (Cloud Platform Integration) - Weekend Batch Only</option>
                     <option value="Salesforce Administration and Developer">Salesforce Administration and Developer</option>
-                    <option value="SQL for Data Analysts">SQL for Data Analysts</option>
+                    <option value="SQL for Data Analysts">SQL for Data Analysts - Weekday Batch Only (8:00 AM - 9:00 AM IST)</option>
                   </select>
-                  {(form.courseName?.toLowerCase().includes('sap') || form.courseName?.toLowerCase().includes('cpi')) && (
+                  {(form.courseName?.toLowerCase().includes('sap') || form.courseName?.toLowerCase().includes('cpi')) ? (
                     <p className="mt-1.5 text-xs text-purple-700 font-semibold bg-purple-50 px-2.5 py-1 rounded-lg border border-purple-200">
                       ⚡ Weekend Batch Only (Sat &amp; Sun) — Mentored by Senior SAP CPI Developer
                     </p>
-                  )}
+                  ) : (form.courseName?.toLowerCase().includes('data analytic') || form.courseName?.toLowerCase().includes('sql for data')) ? (
+                    <p className="mt-1.5 text-xs text-orange-700 font-semibold bg-orange-50 px-2.5 py-1 rounded-lg border border-orange-200">
+                      ⚡ Weekday Batch Only (Mon to Fri) • 8:00 AM to 9:00 AM IST — Mentored by Abhi (8+ Yrs Exp)
+                    </p>
+                  ) : null}
                 </div>
 
                 <button

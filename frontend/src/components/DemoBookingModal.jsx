@@ -184,10 +184,10 @@ export default function DemoBookingModal({ isOpen, onClose, defaultCourseTitle =
                     <span className="text-purple-600 font-bold shrink-0">⚡ Weekend Batch Only:</span>
                     <span>Classes for SAP CPI are conducted on <strong>Weekend Batch Only (Sat &amp; Sun)</strong> with Senior Industry Architects.</span>
                   </div>
-                ) : formData.courseName?.toLowerCase().includes('data analytics') ? (
+                ) : (formData.courseName?.toLowerCase().includes('data analytic') || formData.courseName?.toLowerCase().includes('sql for data')) ? (
                   <div className="mt-1.5 p-2 rounded-lg bg-orange-50 border border-orange-200/80 text-orange-950 text-[11px] font-medium flex items-start gap-1.5 leading-snug">
-                    <span className="text-orange-600 font-bold shrink-0">🔥 Batch 3 (Starts Oct 15):</span>
-                    <span>Full demo recording is ready! We will send you the instant session access link on WhatsApp.</span>
+                    <span className="text-orange-600 font-bold shrink-0">⚡ Weekday Batch Only (8:00 AM to 9:00 AM IST):</span>
+                    <span>Batch 3 starts Oct 15th (Mon to Fri). Full demo recording is ready! We will send you the instant session access link on WhatsApp.</span>
                   </div>
                 ) : null}
               </div>

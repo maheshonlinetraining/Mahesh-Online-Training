@@ -3,10 +3,11 @@ import { X, CheckCircle2, Loader2, Sparkles, GraduationCap, Clock, Phone, Mail, 
 import { api } from '../services/api.js';
 
 const BATCH_TIMING_OPTIONS = [
-  'Weekday Batch (Mon to Fri) - 7:00 AM to 8:00 AM IST',
+  'Weekday Batch (Mon to Fri) - 8:00 AM to 9:00 AM IST',
   'Weekend Batch (Sat & Sun) - 6:00 PM to 8:00 PM IST'
 ];
 const SAP_WEEKEND_TIMING = 'Weekend Batch Only (Sat & Sun) - 6:00 PM to 8:00 PM IST';
+const DA_WEEKDAY_TIMING = 'Weekday Batch Only (Mon to Fri) - 8:00 AM to 9:00 AM IST';
 
 export default function CourseEnrollmentModal({ 
   isOpen, 
@@ -15,12 +16,22 @@ export default function CourseEnrollmentModal({
   defaultBatch = '', 
   courses = [] 
 }) {
+  const initialCourse = defaultCourseTitle || (courses[0]?.title || 'Data Analytics with SQL, Power BI, Python, Excel');
+  const initialIsDA = Boolean(
+    initialCourse &&
+    (initialCourse.toLowerCase().includes('data analytic') || initialCourse.toLowerCase().includes('sql for data'))
+  );
+  const initialIsSAP = Boolean(
+    initialCourse &&
+    (initialCourse.toLowerCase().includes('sap') || initialCourse.toLowerCase().includes('cpi'))
+  );
+
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     phone: '',
-    courseName: defaultCourseTitle || (courses[0]?.title || 'Data Analytics with SQL, Power BI, Python, Excel'),
-    batchTimings: BATCH_TIMING_OPTIONS[0],
+    courseName: initialCourse,
+    batchTimings: initialIsDA ? DA_WEEKDAY_TIMING : initialIsSAP ? SAP_WEEKEND_TIMING : BATCH_TIMING_OPTIONS[0],
     studentBackground: 'Working Professional (IT)',
     referral: ''
   });
@@ -29,20 +40,34 @@ export default function CourseEnrollmentModal({
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
+  const isDataAnalytics = Boolean(
+    formData.courseName &&
+    (formData.courseName.toLowerCase().includes('data analytic') ||
+     formData.courseName.toLowerCase().includes('sql for data'))
+  );
+
   const isSapCpi = Boolean(
     formData.courseName &&
     (formData.courseName.toLowerCase().includes('sap') || formData.courseName.toLowerCase().includes('cpi'))
   );
 
-  const availableTimings = isSapCpi ? [SAP_WEEKEND_TIMING] : BATCH_TIMING_OPTIONS;
+  const availableTimings = isDataAnalytics
+    ? [DA_WEEKDAY_TIMING]
+    : isSapCpi
+    ? [SAP_WEEKEND_TIMING]
+    : BATCH_TIMING_OPTIONS;
 
   useEffect(() => {
-    if (isSapCpi && formData.batchTimings !== SAP_WEEKEND_TIMING) {
+    if (isDataAnalytics && formData.batchTimings !== DA_WEEKDAY_TIMING) {
+      setFormData(prev => ({ ...prev, batchTimings: DA_WEEKDAY_TIMING }));
+    } else if (isSapCpi && formData.batchTimings !== SAP_WEEKEND_TIMING) {
       setFormData(prev => ({ ...prev, batchTimings: SAP_WEEKEND_TIMING }));
-    } else if (!isSapCpi && formData.batchTimings === SAP_WEEKEND_TIMING) {
-      setFormData(prev => ({ ...prev, batchTimings: BATCH_TIMING_OPTIONS[0] }));
+    } else if (!isDataAnalytics && !isSapCpi) {
+      if (formData.batchTimings === DA_WEEKDAY_TIMING || formData.batchTimings === SAP_WEEKEND_TIMING) {
+        setFormData(prev => ({ ...prev, batchTimings: BATCH_TIMING_OPTIONS[0] }));
+      }
     }
-  }, [isSapCpi]);
+  }, [isDataAnalytics, isSapCpi]);
 
   useEffect(() => {
     const isInvalid = !defaultCourseTitle || ['Navbar', 'Top Banner', 'Mobile Top', 'Mobile Nav', 'Footer'].includes(defaultCourseTitle);
@@ -308,6 +333,12 @@ export default function CourseEnrollmentModal({
                       </option>
                     ))}
                   </select>
+                  {isDataAnalytics && (
+                    <div className="mt-1.5 p-2 rounded-lg bg-orange-50 border border-orange-200/80 text-orange-950 text-[11px] font-medium flex items-start gap-1.5 leading-snug">
+                      <span className="text-orange-600 font-bold shrink-0">⚡ Weekday Batch Only:</span>
+                      <span>Conducted exclusively on <strong>Weekday Batch Only (Mon to Fri) • 8:00 AM to 9:00 AM IST</strong> by Abhi (8+ Yrs Exp).</span>
+                    </div>
+                  )}
                   {isSapCpi && (
                     <div className="mt-1.5 p-2 rounded-lg bg-purple-50 border border-purple-200/80 text-purple-900 text-[11px] font-medium flex items-start gap-1.5 leading-snug">
                       <span className="text-purple-600 font-bold shrink-0">⚡ Weekend Batch Only:</span>
