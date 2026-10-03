@@ -25,13 +25,13 @@ export default function UpcomingBatches({ batches, onOpenDemoModal, onOpenEnroll
       const aClosed = isBatchClosed(a);
       const bClosed = isBatchClosed(b);
 
-      // Coming Soon batches (Salesforce, SAP) first
-      if (aComing && !bComing) return -1;
-      if (!aComing && bComing) return 1;
-
       // Closed batches at the very bottom
       if (aClosed && !bClosed) return 1;
       if (!aClosed && bClosed) return -1;
+
+      // Active enrolling batches (Batch 3) first, then Coming Soon
+      if (!aComing && bComing) return -1;
+      if (aComing && !bComing) return 1;
 
       return 0;
     });
@@ -187,10 +187,25 @@ export default function UpcomingBatches({ batches, onOpenDemoModal, onOpenEnroll
                     <span className="text-slate-700">Registrations Closed</span>
                   </button>
                 ) : isComingSoon ? (
-                  <div className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-amber-50 text-amber-800 border border-amber-200 font-bold text-xs whitespace-nowrap text-center flex items-center justify-center gap-1.5 shadow-2xs">
-                    <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-                    <span>Coming Soon</span>
-                  </div>
+                  batch.courseId === 'sap-cpi' ? (
+                    <button
+                      onClick={() => onOpenDemoModal ? onOpenDemoModal(batch.courseName) : null}
+                      className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-800 border border-purple-200 font-bold text-xs whitespace-nowrap text-center flex items-center justify-center gap-1.5 shadow-2xs transition-colors cursor-pointer"
+                      title="Register for Weekend Batch Only"
+                    >
+                      <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
+                      <span>Register (Weekend Batch Only)</span>
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => onOpenDemoModal ? onOpenDemoModal(batch.courseName) : null}
+                      className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 font-bold text-xs whitespace-nowrap text-center flex items-center justify-center gap-1.5 shadow-2xs transition-colors cursor-pointer"
+                      title="Register Interest"
+                    >
+                      <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                      <span>Register Interest</span>
+                    </button>
+                  )
                 ) : isBatch1Started ? (
                   <button
                     onClick={() => onOpenDemoModal ? onOpenDemoModal(`${batch.courseName} (Batch 2 Demo)`) : null}

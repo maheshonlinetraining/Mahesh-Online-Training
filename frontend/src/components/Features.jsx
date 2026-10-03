@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Video, 
   ClipboardList, 
@@ -11,10 +11,16 @@ import {
   CheckCircle2,
   Gift,
   Sparkles,
-  MessageCircle
+  MessageCircle,
+  ShieldCheck,
+  AlertCircle,
+  ChevronRight,
+  Info
 } from 'lucide-react';
+import ReferralTermsModal from './ReferralTermsModal.jsx';
 
 export default function Features({ onOpenDemoModal }) {
+  const [isTermsOpen, setIsTermsOpen] = useState(false);
   const offerings = [
     {
       icon: Video,
@@ -143,6 +149,30 @@ export default function Features({ onOpenDemoModal }) {
                   Or Adjust As Course Fee Discount
                 </span>
               </div>
+
+              {/* Highlighted Terms & Conditions Box */}
+              <div className="mt-4 p-4 rounded-2xl bg-amber-500/10 border border-amber-400/30 text-left space-y-2">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-amber-300">
+                    <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0" />
+                    <span>Important Condition (T&amp;C)</span>
+                  </div>
+                  <button
+                    onClick={() => setIsTermsOpen(true)}
+                    className="text-[11px] font-bold text-amber-300 hover:text-amber-200 underline underline-offset-2 flex items-center gap-1 cursor-pointer transition-colors shrink-0"
+                  >
+                    <span>Read Full T&amp;C</span>
+                    <ChevronRight className="w-3 h-3" />
+                  </button>
+                </div>
+                <p className="text-xs text-slate-200 leading-relaxed font-normal">
+                  <strong className="text-amber-300 font-bold">Full Course Fee Payment Rule:</strong> When you refer someone (e.g. <em>Person Z</em> refers <em>Person X</em>), the <strong className="text-white">₹1,000 cash reward</strong> is paid out to Person Z <strong>only after Person X completes 100% of their course fee payment</strong> and admission is confirmed.
+                </p>
+                <div className="pt-0.5 flex items-center gap-1.5 text-[11px] text-slate-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span>
+                  <span>Instant UPI Transfer (GPay / PhonePe) within 24–48 hrs once payment is verified.</span>
+                </div>
+              </div>
             </div>
 
             {/* Right Interactive 3-Step Process Card */}
@@ -170,9 +200,9 @@ export default function Features({ onOpenDemoModal }) {
                     2
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-white">They Attend Free Demo & Enroll</div>
+                    <div className="text-xs font-bold text-white">They Enroll &amp; Complete Full Payment</div>
                     <div className="text-[11px] text-slate-400 leading-snug">
-                      Your friend joins our interactive masterclass and confirms admission.
+                      Your friend joins the interactive batch, confirms admission, and clears full course fees.
                     </div>
                   </div>
                 </div>
@@ -182,9 +212,9 @@ export default function Features({ onOpenDemoModal }) {
                     3
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-white">Receive ₹1,000 Instant Cash</div>
+                    <div className="text-xs font-bold text-white">Receive ₹1,000 Direct Cash Transfer</div>
                     <div className="text-[11px] text-slate-400 leading-snug">
-                      We transfer ₹1,000 directly to your UPI ID or bank account!
+                      Once their full payment is verified, we transfer ₹1,000 directly to your UPI ID or bank account!
                     </div>
                   </div>
                 </div>
@@ -210,12 +240,26 @@ export default function Features({ onOpenDemoModal }) {
                 </button>
               </div>
 
+              {/* T&C Link */}
+              <div className="text-center pt-1">
+                <button
+                  onClick={() => setIsTermsOpen(true)}
+                  className="text-[11px] text-slate-400 hover:text-amber-300 underline underline-offset-2 transition-colors cursor-pointer inline-flex items-center gap-1"
+                >
+                  <FileText className="w-3 h-3 text-slate-400" />
+                  <span>View Complete Terms &amp; Conditions (T&amp;C)</span>
+                </button>
+              </div>
+
             </div>
 
           </div>
         </div>
 
       </div>
+
+      {/* Referral Terms & Conditions Modal */}
+      <ReferralTermsModal isOpen={isTermsOpen} onClose={() => setIsTermsOpen(false)} />
     </section>
   );
 }

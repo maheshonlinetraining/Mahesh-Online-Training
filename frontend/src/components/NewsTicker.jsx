@@ -9,12 +9,62 @@ export default function NewsTicker({ onOpenDemoModal, onOpenEnrollModal }) {
     }
   };
 
+  const handleEnrollClick = (e, courseName = 'Data Analytics with SQL, Power BI, Python, Excel', batch = 'Batch 3 Starts Oct 15, 2026') => {
+    e.stopPropagation();
+    if (onOpenEnrollModal) {
+      onOpenEnrollModal(courseName, batch);
+    } else if (onOpenDemoModal) {
+      onOpenDemoModal(courseName);
+    }
+  };
+
   const TickerItems = () => (
     <div className="flex items-center gap-6 text-xs sm:text-[13px] tracking-wide font-medium">
+      {/* 1. Data Analytics Batch 3 (Featured First) */}
+      <div className="flex items-center gap-2">
+        <span className="flex items-center gap-1 bg-orange-500/20 text-orange-400 px-2 py-0.5 rounded-md font-bold text-[10px] sm:text-xs uppercase border border-orange-500/40">
+          <Zap className="w-3.5 h-3.5 text-orange-400 fill-orange-400" />
+          <span>BATCH 3 (OCT 15)</span>
+        </span>
+        <span className="text-white font-semibold">
+          Data Analytics (SQL, Power BI, Python, Excel) Batch 3 Starts Oct 15th! Direct Registrations Open (Recorded Demo Available).
+        </span>
+        <button
+          onClick={(e) => handleEnrollClick(e, 'Data Analytics with SQL, Power BI, Python, Excel', 'Batch 3 Starts Oct 15, 2026')}
+          className="inline-flex items-center gap-1 bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-bold px-3 py-0.5 rounded-full text-[11px] transition-all transform hover:scale-105 shadow-xs cursor-pointer ml-1"
+        >
+          <span>Register for Batch 3</span>
+          <ArrowRight className="w-3 h-3" />
+        </button>
+      </div>
+
+      <span className="text-orange-500/60 font-bold select-none text-base mr-3">✦</span>
+
+      {/* 2. SAP CPI Weekend Batches Only */}
+      <div className="flex items-center gap-2">
+        <span className="flex items-center gap-1 bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded-md font-bold text-[10px] sm:text-xs uppercase border border-purple-500/40">
+          <Zap className="w-3.5 h-3.5 text-purple-400 fill-purple-400" />
+          <span>WEEKEND BATCH ONLY</span>
+        </span>
+        <span className="text-white font-semibold">
+          SAP CPI (Cloud Platform Integration & BTP): Registrations Open for Weekend Batch Only!
+        </span>
+        <button
+          onClick={(e) => handleDemoClick(e, 'SAP CPI (Cloud Platform Integration)')}
+          className="inline-flex items-center gap-1 bg-purple-600 hover:bg-purple-500 text-white font-bold px-3 py-0.5 rounded-full text-[11px] transition-all transform hover:scale-105 shadow-xs cursor-pointer ml-1"
+        >
+          <span>Register (Weekend Batch Only)</span>
+          <ArrowRight className="w-3 h-3" />
+        </button>
+      </div>
+
+      <span className="text-purple-500/60 font-bold select-none text-base mr-3">✦</span>
+
+      {/* 3. Salesforce Admin & Dev */}
       <div className="flex items-center gap-2">
         <span className="flex items-center gap-1 bg-sky-500/20 text-sky-400 px-2 py-0.5 rounded-md font-bold text-[10px] sm:text-xs uppercase border border-sky-500/40">
           <Zap className="w-3.5 h-3.5 text-sky-400 fill-sky-400" />
-          <span>DEMO REGISTRATIONS OPEN</span>
+          <span>DEMO REGISTRATIONS</span>
         </span>
         <span className="text-white font-semibold">
           Salesforce Admin & Developer (2-in-1 Masterclass): Free Demo Registrations Open!
@@ -30,25 +80,7 @@ export default function NewsTicker({ onOpenDemoModal, onOpenEnrollModal }) {
 
       <span className="text-sky-500/60 font-bold select-none text-base mr-3">✦</span>
 
-      <div className="flex items-center gap-2">
-        <span className="flex items-center gap-1 bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded-md font-bold text-[10px] sm:text-xs uppercase border border-purple-500/40">
-          <Zap className="w-3.5 h-3.5 text-purple-400 fill-purple-400" />
-          <span>UPCOMING BATCH</span>
-        </span>
-        <span className="text-white font-semibold">
-          SAP CPI (Cloud Platform Integration & BTP): Pre-Registrations Open!
-        </span>
-        <button
-          onClick={(e) => handleDemoClick(e, 'SAP CPI (Cloud Platform Integration)')}
-          className="inline-flex items-center gap-1 bg-purple-600 hover:bg-purple-500 text-white font-bold px-3 py-0.5 rounded-full text-[11px] transition-all transform hover:scale-105 shadow-xs cursor-pointer ml-1"
-        >
-          <span>Pre-Register for Demo</span>
-          <ArrowRight className="w-3 h-3" />
-        </button>
-      </div>
-
-      <span className="text-purple-500/60 font-bold select-none text-base mr-3">✦</span>
-
+      {/* 4. Refer & Earn ₹1,000 */}
       <div className="flex items-center gap-2">
         <span className="flex items-center gap-1 bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-md font-bold text-[10px] sm:text-xs uppercase border border-amber-500/40">
           <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />

@@ -30,13 +30,158 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
 
   const slides = [
     {
+      id: "data-analytics",
+      courseId: "data-analytics-powerbi-sql",
+      courseTitle: "Data Analytics with SQL, Power BI, Python, Excel",
+      tabLabel: "Data Analytics",
+      tabSub: "Batch 3 • Oct 15",
+      badgeText: "🔥 Batch 3 Registrations Open — Starts October 15th",
+      isComingSoon: false,
+      accentColor: "orange",
+      headlinePrefix: "Data Analytics Masterclass",
+      headlineHighlight: "Batch 3 Starting October 15th",
+      subtitle: (
+        <>
+          Direct registrations open for <strong className="text-slate-900">Batch 3 starting October 15th</strong>! Recorded demo session is ready for instant preview. Fast-track your career with live mentor-led training in <strong className="text-orange-600 font-bold">SQL, Power BI, Python & Excel</strong> with 3 real-world capstone projects.
+        </>
+      ),
+      features: [
+        {
+          icon: "zap",
+          title: "Direct Batch 3 Admission",
+          desc: "Watch the recorded demo on-demand and confirm your seat directly."
+        },
+        {
+          icon: "layers",
+          title: "3 Enterprise Capstones",
+          desc: "End-to-end Power BI dashboards, SQL ETL pipelines & analytics."
+        },
+        {
+          icon: "briefcase",
+          title: "1-on-1 Mentorship & Prep",
+          desc: "Live doubt clearing, resume building, mock interviews & job referrals."
+        }
+      ],
+      points: [
+        "Batch 3 Live Online Classes Starting October 15th",
+        "Instant Recorded Demo Session Available on Request",
+        "100% Practical Training with 3 Industry Domain Capstones"
+      ],
+      urgencyText: "🔥 Batch 3 Starts Oct 15 • Direct Registrations Open",
+      alumniCompanies: ["Deloitte", "TCS", "Infosys", "Accenture", "Cognizant"],
+      primaryButtonText: "Enroll for Batch 3",
+      secondaryButtonText: "Watch Recorded Demo",
+      startDateText: "October 15, 2026",
+      modeText: "100% Live Online",
+      ambientBg: "from-[#fff7ed] via-[#ffedd5]/60 to-[#fffaf5]",
+      haloColor: "bg-orange-500/20",
+      gridColor: "#ea580c",
+      studio: {
+        tag: "POWER BI & SQL ANALYTICS SUITE",
+        querySnippet: "SELECT candidate, hike FROM placements WHERE batch = 'DA-Batch3';",
+        queryResult: "Batch 3 • Starts Oct 15",
+        kpiValue: "Batch 3 Live",
+        kpiLabel: "Starts October 15th",
+        hikeBadge: "Recorded Demo Ready",
+        techStack: [
+          { name: "Power BI", color: "bg-amber-500/20 text-amber-300 border-amber-500/40" },
+          { name: "SQL Querying", color: "bg-blue-500/20 text-blue-300 border-blue-500/40" },
+          { name: "Python", color: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40" },
+          { name: "Excel & DAX", color: "bg-purple-500/20 text-purple-300 border-purple-500/40" },
+          { name: "Pandas", color: "bg-sky-500/20 text-sky-300 border-sky-500/40" }
+        ]
+      },
+      trainers: [
+        {
+          name: "Abhi (8+ Yrs Exp)",
+          role: "Lead Data Analyst & Industry Mentor",
+          subtitle: "Power BI, SQL, Python & Business Intelligence Specialist",
+          initials: "AB",
+          rating: "4.95/5",
+          avatarGradient: "from-orange-600 to-amber-500"
+        }
+      ]
+    },
+    {
+      id: "sap-cpi",
+      courseId: "sap-cpi",
+      courseTitle: "SAP CPI (Cloud Platform Integration)",
+      tabLabel: "SAP CPI",
+      tabSub: "Weekend Batch Only",
+      badgeText: "🚀 Weekend Batch Only — SAP CPI (Cloud Platform Integration & BTP)",
+      isComingSoon: true,
+      accentColor: "purple",
+      headlinePrefix: "SAP CPI (Cloud Platform Integration)",
+      headlineHighlight: "Enterprise Integration Suite on SAP BTP",
+      subtitle: (
+        <>
+          Master end-to-end <strong className="text-slate-900">SAP Integration Suite</strong> on SAP BTP, iFlow Design, Message Mapping, <strong className="text-slate-900">Groovy Scripting</strong>, Standard Adapters & S/4HANA connectivity. Exclusively scheduled on <strong className="text-purple-700">Weekend Batch Only (Sat & Sun)</strong> with a Senior SAP CPI Developer (10+ Yrs Exp).
+        </>
+      ),
+      features: [
+        {
+          icon: "layers",
+          title: "End-to-End iFlows",
+          desc: "Design Splitter, Aggregator, Content Modifier, Routers & Error Handling."
+        },
+        {
+          icon: "code",
+          title: "Groovy & Data Mapping",
+          desc: "Hands-on Graphical Message Mapping, XSLT, and complex Groovy Scripting."
+        },
+        {
+          icon: "cloud",
+          title: "Hybrid Cloud Connectivity",
+          desc: "OData, REST, SOAP, SFTP, IDoc & RFC adapters connecting S/4HANA."
+        }
+      ],
+      points: [
+        "Complete SAP BTP Integration Suite Architecture",
+        "Hands-on Groovy Scripting & Graphical Message Mapping",
+        "Real-World S/4HANA & Cloud Integration Scenarios"
+      ],
+      urgencyText: "🚀 Weekend Batch Only • Registrations Open",
+      alumniCompanies: ["SAP Labs Ecosystem", "Accenture", "TCS", "Infosys", "IBM"],
+      primaryButtonText: "Register (Weekend Batch Only)",
+      startDateText: "Weekend Batch Only",
+      modeText: "100% Live Online",
+      ambientBg: "from-[#faf5ff] via-[#f3e8ff]/85 to-[#fdf4ff]",
+      haloColor: "bg-purple-600/25",
+      gridColor: "#7c3aed",
+      studio: {
+        tag: "SAP BTP INTEGRATION SUITE",
+        querySnippet: "iFlow.deploy(BTP_CloudConnector.process); // CPI",
+        queryResult: "SAP iFlow Runtime Active",
+        kpiValue: "SAP CPI / BTP",
+        kpiLabel: "Enterprise Integration Suite",
+        hikeBadge: "Weekend Batch Only",
+        techStack: [
+          { name: "SAP CPI", color: "bg-purple-500/20 text-purple-300 border-purple-500/40" },
+          { name: "SAP BTP", color: "bg-indigo-500/20 text-indigo-300 border-indigo-500/40" },
+          { name: "Groovy Script", color: "bg-violet-500/20 text-violet-300 border-violet-500/40" },
+          { name: "OData APIs", color: "bg-teal-500/20 text-teal-300 border-teal-500/40" },
+          { name: "Cloud Connector", color: "bg-fuchsia-500/20 text-fuchsia-300 border-fuchsia-500/40" }
+        ]
+      },
+      trainers: [
+        {
+          name: "Ramesh (10+ Yrs Exp)",
+          role: "Senior SAP CPI Developer",
+          subtitle: "SAP BTP Integration Suite, iFlows, Groovy Scripting & S/4HANA",
+          initials: "RM",
+          rating: "4.95/5",
+          avatarGradient: "from-purple-700 via-indigo-600 to-violet-700"
+        }
+      ]
+    },
+    {
       id: "salesforce",
       courseId: "salesforce-administration-and-developer",
       courseTitle: "Salesforce Administration and Developer",
-      tabLabel: "Salesforce Admin & Dev",
-      tabSub: "Demo Registrations Open",
+      tabLabel: "Salesforce",
+      tabSub: "Coming Soon",
       badgeText: "⚡ Free Demo Registrations Open — Salesforce 2-in-1 Masterclass",
-      isComingSoon: false,
+      isComingSoon: true,
       accentColor: "sky",
       headlinePrefix: "Salesforce Admin & Developer",
       headlineHighlight: "Comprehensive 2-in-1 Masterclass",
@@ -70,7 +215,7 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
       urgencyText: "⚡ Free Demo Registrations Open • Live Masterclass",
       alumniCompanies: ["Salesforce Ecosystem", "Deloitte Digital", "Capgemini", "PwC", "Wipro"],
       primaryButtonText: "Register for Free Demo",
-      startDateText: "Batch Coming Soon",
+      startDateText: "Coming Soon",
       modeText: "100% Live Online",
       ambientBg: "from-[#f0f9ff] via-[#e0f2fe]/60 to-[#fffaf5]",
       haloColor: "bg-sky-500/20",
@@ -108,89 +253,17 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
           avatarGradient: "from-indigo-600 to-purple-500"
         }
       ]
-    },
-    {
-      id: "sap-cpi",
-      courseId: "sap-cpi",
-      courseTitle: "SAP CPI (Cloud Platform Integration)",
-      tabLabel: "SAP CPI Integration",
-      tabSub: "Coming Soon",
-      badgeText: "🚀 Upcoming Masterclass — SAP CPI (Cloud Platform Integration & BTP)",
-      isComingSoon: true,
-      accentColor: "purple",
-      headlinePrefix: "SAP CPI (Cloud Platform Integration)",
-      headlineHighlight: "Enterprise Integration Suite on SAP BTP",
-      subtitle: (
-        <>
-          Master end-to-end <strong className="text-slate-900">SAP Integration Suite</strong> on SAP BTP, iFlow Design, Message Mapping, <strong className="text-slate-900">Groovy Scripting</strong>, Standard Adapters & S/4HANA connectivity. Mentored live by a <strong className="text-purple-700">Senior SAP CPI Developer (10+ Yrs Exp)</strong>.
-        </>
-      ),
-      features: [
-        {
-          icon: "layers",
-          title: "End-to-End iFlows",
-          desc: "Design Splitter, Aggregator, Content Modifier, Routers & Error Handling."
-        },
-        {
-          icon: "code",
-          title: "Groovy & Data Mapping",
-          desc: "Hands-on Graphical Message Mapping, XSLT, and complex Groovy Scripting."
-        },
-        {
-          icon: "cloud",
-          title: "Hybrid Cloud Connectivity",
-          desc: "OData, REST, SOAP, SFTP, IDoc & RFC adapters connecting S/4HANA."
-        }
-      ],
-      points: [
-        "Complete SAP BTP Integration Suite Architecture",
-        "Hands-on Groovy Scripting & Graphical Message Mapping",
-        "Real-World S/4HANA & Cloud Integration Scenarios"
-      ],
-      urgencyText: "🚀 Batch Coming Soon • Pre-Registrations Open",
-      alumniCompanies: ["SAP Labs Ecosystem", "Accenture", "TCS", "Infosys", "IBM"],
-      primaryButtonText: "Pre-Register for Demo",
-      startDateText: "Coming Soon",
-      modeText: "100% Live Online",
-      ambientBg: "from-[#faf5ff] via-[#f3e8ff]/85 to-[#fdf4ff]",
-      haloColor: "bg-purple-600/25",
-      gridColor: "#7c3aed",
-      studio: {
-        tag: "SAP BTP INTEGRATION SUITE",
-        querySnippet: "iFlow.deploy(BTP_CloudConnector.process); // CPI",
-        queryResult: "SAP iFlow Runtime Active",
-        kpiValue: "SAP CPI / BTP",
-        kpiLabel: "Enterprise Integration Suite",
-        hikeBadge: "High-Demand Cloud Skill",
-        techStack: [
-          { name: "SAP CPI", color: "bg-purple-500/20 text-purple-300 border-purple-500/40" },
-          { name: "SAP BTP", color: "bg-indigo-500/20 text-indigo-300 border-indigo-500/40" },
-          { name: "Groovy Script", color: "bg-violet-500/20 text-violet-300 border-violet-500/40" },
-          { name: "OData APIs", color: "bg-teal-500/20 text-teal-300 border-teal-500/40" },
-          { name: "Cloud Connector", color: "bg-fuchsia-500/20 text-fuchsia-300 border-fuchsia-500/40" }
-        ]
-      },
-      trainers: [
-        {
-          name: "Ramesh (10+ Yrs Exp)",
-          role: "Senior SAP CPI Developer",
-          subtitle: "SAP BTP Integration Suite, iFlows, Groovy Scripting & S/4HANA",
-          initials: "RM",
-          rating: "4.95/5",
-          avatarGradient: "from-purple-700 via-indigo-600 to-violet-700"
-        }
-      ]
     }
   ];
 
   const current = slides[activeSlide];
 
-  // Auto slide transition (cycles every 1 minute)
+  // Auto slide transition (cycles every 30 seconds)
   useEffect(() => {
     if (slides.length <= 1) return;
     const interval = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % slides.length);
-    }, 60000);
+    }, 30000);
     return () => clearInterval(interval);
   }, [activeSlide, slides.length]);
 
@@ -263,35 +336,41 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Top Interactive Slicer Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-3 border-b border-slate-200/60">
+        <div className="flex flex-wrap items-center justify-between gap-2.5 mb-6 pb-3 border-b border-slate-200/60">
           
-          {/* Slicer Tabs */}
-          <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-white/90 backdrop-blur-md border border-slate-200/90 shadow-xs">
+          {/* Slicer Tabs - Streamlined & Compact */}
+          <div className="flex items-center gap-1.5 sm:gap-2 p-1.5 rounded-2xl bg-white/90 backdrop-blur-md border border-slate-200/90 shadow-xs max-w-full overflow-x-auto scrollbar-none">
             {slides.map((s, idx) => {
               const isActive = activeSlide === idx;
               return (
                 <button
                   key={s.id}
                   onClick={() => setActiveSlide(idx)}
-                  className={`px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer flex items-center gap-2.5 ${
+                  className={`px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer flex items-center gap-1.5 sm:gap-2 shrink-0 ${
                     isActive
-                      ? s.id === 'salesforce'
-                        ? 'bg-gradient-to-r from-sky-600 to-blue-600 text-white shadow-md ring-2 ring-sky-400/30'
-                        : 'bg-gradient-to-r from-purple-700 via-indigo-700 to-violet-800 text-white shadow-md ring-2 ring-purple-400/30'
+                      ? s.id === 'data-analytics'
+                        ? 'bg-gradient-to-r from-orange-600 to-amber-600 text-white shadow-md ring-2 ring-orange-400/30'
+                        : s.id === 'sap-cpi'
+                        ? 'bg-gradient-to-r from-purple-700 via-indigo-700 to-violet-800 text-white shadow-md ring-2 ring-purple-400/30'
+                        : 'bg-gradient-to-r from-sky-600 to-blue-600 text-white shadow-md ring-2 ring-sky-400/30'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80'
                   }`}
                 >
-                  {s.id === 'salesforce' ? (
-                    <Cloud className={`w-4 h-4 ${isActive ? 'text-white' : 'text-sky-600'}`} />
+                  {s.id === 'data-analytics' ? (
+                    <BarChart3 className={`w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 ${isActive ? 'text-white' : 'text-orange-600'}`} />
+                  ) : s.id === 'sap-cpi' ? (
+                    <Layers className={`w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 ${isActive ? 'text-white' : 'text-purple-700'}`} />
                   ) : (
-                    <Layers className={`w-4 h-4 ${isActive ? 'text-white' : 'text-purple-700'}`} />
+                    <Cloud className={`w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 ${isActive ? 'text-white' : 'text-sky-600'}`} />
                   )}
-                  <span>{s.tabLabel}</span>
+                  <span className="whitespace-nowrap">{s.tabLabel}</span>
                   <span
-                    className={`text-[10px] px-2 py-0.5 rounded-md font-extrabold uppercase tracking-wide transition-colors ${
+                    className={`hidden sm:inline-block text-[10px] px-1.5 py-0.5 rounded font-extrabold uppercase tracking-wide transition-colors whitespace-nowrap ${
                       isActive
                         ? 'bg-white/25 text-white'
-                        : s.isComingSoon
+                        : s.id === 'data-analytics'
+                        ? 'bg-orange-100 text-orange-800'
+                        : s.id === 'sap-cpi'
                         ? 'bg-purple-100 text-purple-800'
                         : 'bg-sky-100 text-sky-800'
                     }`}
@@ -303,12 +382,24 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
             })}
           </div>
 
-          {/* Slicer Slide Navigation Buttons */}
+          {/* Slicer Slide Navigation Buttons & Dot Indicator */}
           {slides.length > 1 && (
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-2">
+              <div className="hidden sm:flex items-center gap-1 mr-1">
+                {slides.map((_, dotIdx) => (
+                  <button
+                    key={dotIdx}
+                    onClick={() => setActiveSlide(dotIdx)}
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                      activeSlide === dotIdx ? 'w-5 bg-slate-900' : 'w-2 bg-slate-300 hover:bg-slate-400'
+                    }`}
+                    aria-label={`Go to slide ${dotIdx + 1}`}
+                  />
+                ))}
+              </div>
               <button
                 onClick={handlePrev}
-                className="p-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 hover:border-slate-300 text-slate-600 hover:text-slate-900 shadow-xs transition-colors cursor-pointer"
+                className="p-1.5 sm:p-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 hover:border-slate-300 text-slate-600 hover:text-slate-900 shadow-xs transition-colors cursor-pointer"
                 title="Previous Course"
                 aria-label="Previous Course"
               >
@@ -316,7 +407,7 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
               </button>
               <button
                 onClick={handleNext}
-                className="p-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 hover:border-slate-300 text-slate-600 hover:text-slate-900 shadow-xs transition-colors cursor-pointer"
+                className="p-1.5 sm:p-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 hover:border-slate-300 text-slate-600 hover:text-slate-900 shadow-xs transition-colors cursor-pointer"
                 title="Next Course"
                 aria-label="Next Course"
               >
@@ -333,18 +424,48 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
           <div className="lg:col-span-7 space-y-4 md:space-y-4 text-center lg:text-left transition-all duration-300">
             
             {/* Blinking Live Beacon Badge */}
-            <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border ${current.id === 'sap-cpi' ? 'border-purple-200/90 text-purple-900' : 'border-sky-200/90 text-sky-900'} text-xs sm:text-sm font-bold shadow-xs`}>
+            <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border ${
+              current.id === 'data-analytics'
+                ? 'border-orange-200/90 text-orange-950'
+                : current.id === 'sap-cpi'
+                ? 'border-purple-200/90 text-purple-900'
+                : 'border-sky-200/90 text-sky-900'
+            } text-xs sm:text-sm font-bold shadow-xs`}>
               <span className="relative flex h-2.5 w-2.5">
-                <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${current.isComingSoon ? 'bg-amber-400' : 'bg-sky-500'}`}></span>
-                <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${current.isComingSoon ? 'bg-amber-500' : 'bg-sky-600'}`}></span>
+                <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
+                  current.id === 'data-analytics'
+                    ? 'bg-orange-500'
+                    : current.isComingSoon
+                    ? 'bg-amber-400'
+                    : 'bg-sky-500'
+                }`}></span>
+                <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${
+                  current.id === 'data-analytics'
+                    ? 'bg-orange-600'
+                    : current.isComingSoon
+                    ? 'bg-amber-500'
+                    : 'bg-sky-600'
+                }`}></span>
               </span>
-              <span className={`font-extrabold ${current.id === 'sap-cpi' ? 'text-purple-800' : 'text-sky-700'}`}>{current.badgeText}</span>
+              <span className={`font-extrabold ${
+                current.id === 'data-analytics'
+                  ? 'text-orange-700'
+                  : current.id === 'sap-cpi'
+                  ? 'text-purple-800'
+                  : 'text-sky-700'
+              }`}>{current.badgeText}</span>
             </div>
 
             {/* Headline with Dual-Tone Gradient */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-[1.14]">
               {current.headlinePrefix} <br />
-              <span className={`bg-gradient-to-r ${current.id === 'sap-cpi' ? 'from-purple-700 via-indigo-600 to-violet-600' : 'from-sky-600 via-blue-600 to-indigo-600'} bg-clip-text text-transparent`}>
+              <span className={`bg-gradient-to-r ${
+                current.id === 'data-analytics'
+                  ? 'from-orange-600 via-amber-600 to-yellow-600'
+                  : current.id === 'sap-cpi'
+                  ? 'from-purple-700 via-indigo-600 to-violet-600'
+                  : 'from-sky-600 via-blue-600 to-indigo-600'
+              } bg-clip-text text-transparent`}>
                 {current.headlineHighlight}
               </span>
             </h1>
@@ -359,10 +480,22 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
               {current.features.map((feat, idx) => (
                 <div 
                   key={idx} 
-                  className={`p-3 rounded-2xl bg-white/90 backdrop-blur-md border border-slate-200/80 ${current.id === 'sap-cpi' ? 'hover:border-purple-300' : 'hover:border-sky-300'} hover:shadow-md transition-all duration-200 text-left group`}
+                  className={`p-3 rounded-2xl bg-white/90 backdrop-blur-md border border-slate-200/80 ${
+                    current.id === 'data-analytics'
+                      ? 'hover:border-orange-300'
+                      : current.id === 'sap-cpi'
+                      ? 'hover:border-purple-300'
+                      : 'hover:border-sky-300'
+                  } hover:shadow-md transition-all duration-200 text-left group`}
                 >
                   <div className="flex items-center gap-2 mb-1">
-                    <div className={`w-6 h-6 rounded-lg ${current.id === 'sap-cpi' ? 'bg-purple-100 text-purple-700' : 'bg-sky-100 text-sky-600'} flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform`}>
+                    <div className={`w-6 h-6 rounded-lg ${
+                      current.id === 'data-analytics'
+                        ? 'bg-orange-100 text-orange-700'
+                        : current.id === 'sap-cpi'
+                        ? 'bg-purple-100 text-purple-700'
+                        : 'bg-sky-100 text-sky-600'
+                    } flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform`}>
                       {feat.icon === 'zap' && <Zap className="w-3.5 h-3.5" />}
                       {feat.icon === 'layers' && <Layers className="w-3.5 h-3.5" />}
                       {feat.icon === 'briefcase' && <Briefcase className="w-3.5 h-3.5" />}
@@ -370,7 +503,13 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                       {feat.icon === 'cloud' && <Cloud className="w-3.5 h-3.5" />}
                       {feat.icon === 'code' && <Code2 className="w-3.5 h-3.5" />}
                     </div>
-                    <span className={`font-extrabold text-xs text-slate-900 ${current.id === 'sap-cpi' ? 'group-hover:text-purple-700' : 'group-hover:text-sky-600'} transition-colors`}>
+                    <span className={`font-extrabold text-xs text-slate-900 ${
+                      current.id === 'data-analytics'
+                        ? 'group-hover:text-orange-700'
+                        : current.id === 'sap-cpi'
+                        ? 'group-hover:text-purple-700'
+                        : 'group-hover:text-sky-600'
+                    } transition-colors`}>
                       {feat.title}
                     </span>
                   </div>
@@ -384,9 +523,17 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-1">
               <button
-                onClick={() => onOpenDemoModal ? onOpenDemoModal(current.courseTitle) : null}
+                onClick={() => {
+                  if (current.id === 'data-analytics' && onOpenEnrollModal) {
+                    onOpenEnrollModal(current.courseTitle, 'Batch 3 Starts Oct 15, 2026');
+                  } else if (onOpenDemoModal) {
+                    onOpenDemoModal(current.courseTitle);
+                  }
+                }}
                 className={`w-full sm:w-auto px-7 py-3 rounded-xl text-sm sm:text-base font-bold flex items-center justify-center gap-2 shadow-md cursor-pointer transform active:scale-95 text-white ${
-                  current.id === 'sap-cpi'
+                  current.id === 'data-analytics'
+                    ? 'bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700'
+                    : current.id === 'sap-cpi'
                     ? 'bg-gradient-to-r from-purple-700 via-indigo-700 to-violet-800 hover:from-purple-800 hover:to-indigo-800'
                     : 'bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700'
                 }`}
@@ -396,13 +543,23 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                 <ArrowRight className="w-4 h-4" />
               </button>
 
-              <button
-                onClick={handleViewCurriculum}
-                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 font-bold text-sm sm:text-base border border-slate-200 flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-xs"
-              >
-                <BookOpen className="w-4 h-4 text-slate-600" />
-                <span>View Full Curriculum</span>
-              </button>
+              {current.id === 'data-analytics' ? (
+                <button
+                  onClick={() => onOpenDemoModal ? onOpenDemoModal(current.courseTitle + ' (Recorded Demo Session)') : null}
+                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-white hover:bg-orange-50 text-orange-700 font-bold text-sm sm:text-base border border-orange-200 flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-xs"
+                >
+                  <BookOpen className="w-4 h-4 text-orange-600" />
+                  <span>Watch Recorded Demo</span>
+                </button>
+              ) : (
+                <button
+                  onClick={handleViewCurriculum}
+                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 font-bold text-sm sm:text-base border border-slate-200 flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-xs"
+                >
+                  <BookOpen className="w-4 h-4 text-slate-600" />
+                  <span>View Full Curriculum</span>
+                </button>
+              )}
             </div>
 
             {/* Reassurance Micro-Copy Trust Row */}
@@ -413,7 +570,7 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
               </span>
               <span className="flex items-center gap-1.5 font-medium">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                Class Recordings on Demand
+                {current.id === 'data-analytics' ? 'Recorded Demos Available' : 'Class Recordings on Demand'}
               </span>
               <span className="flex items-center gap-1.5 font-medium">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
@@ -478,10 +635,16 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
             </div>
 
             {/* Main Bento Studio Card with subtle radiant outer border */}
-            <div className={`relative rounded-3xl p-[1px] bg-gradient-to-b ${current.id === 'sap-cpi' ? 'from-purple-500/70 via-indigo-400/50 to-slate-200' : 'from-sky-400/70 via-blue-300/50 to-slate-200'} shadow-2xl transition-all duration-300`}>
+            <div className={`relative rounded-3xl p-[1px] bg-gradient-to-b ${
+              current.id === 'data-analytics'
+                ? 'from-orange-400/70 via-amber-300/50 to-slate-200'
+                : current.id === 'sap-cpi'
+                ? 'from-purple-500/70 via-indigo-400/50 to-slate-200'
+                : 'from-sky-400/70 via-blue-300/50 to-slate-200'
+            } shadow-2xl transition-all duration-300`}>
               <div className="bg-white/95 backdrop-blur-xl rounded-[23px] p-5 sm:p-6 space-y-4">
                 
-                {/* Studio Component Preview Box (Show, Don't Tell!) */}
+                {/* Studio Component Preview Box */}
                 <div className="rounded-2xl bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white p-4 shadow-inner relative overflow-hidden border border-slate-700/60">
                   
                   {/* Simulated Window Title Bar */}
@@ -503,8 +666,20 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                   {/* Terminal / Code Query Bar */}
                   <div className="flex items-center justify-between gap-2 px-2.5 py-1.5 rounded-lg bg-slate-950/90 border border-slate-800/90 mb-3 font-mono text-[11px]">
                     <div className="flex items-center gap-1.5 text-slate-400 truncate">
-                      <Terminal className={`w-3 h-3 ${current.id === 'sap-cpi' ? 'text-purple-400' : 'text-sky-400'} shrink-0`} />
-                      <span className={`${current.id === 'sap-cpi' ? 'text-purple-400/90' : 'text-sky-400/90'} select-none`}>$</span>
+                      <Terminal className={`w-3 h-3 ${
+                        current.id === 'data-analytics'
+                          ? 'text-amber-400'
+                          : current.id === 'sap-cpi'
+                          ? 'text-purple-400'
+                          : 'text-sky-400'
+                      } shrink-0`} />
+                      <span className={`${
+                        current.id === 'data-analytics'
+                          ? 'text-amber-400/90'
+                          : current.id === 'sap-cpi'
+                          ? 'text-purple-400/90'
+                          : 'text-sky-400/90'
+                      } select-none`}>$</span>
                       <span className="text-slate-300 truncate">{current.studio.querySnippet}</span>
                     </div>
                     <div className="shrink-0 text-[10px] font-semibold text-emerald-400 flex items-center gap-1 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
@@ -514,7 +689,57 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                   </div>
 
                   {/* Course-Specific Interactive Component Content */}
-                  {current.id === 'sap-cpi' ? (
+                  {current.id === 'data-analytics' ? (
+                    /* Data Analytics Architecture Preview */
+                    <div className="space-y-3">
+                      <div className="flex items-end justify-between">
+                        <div>
+                          <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
+                            {current.studio.kpiLabel}
+                          </div>
+                          <div className="text-2xl font-black text-white tracking-tight flex items-baseline gap-2">
+                            <span>{current.studio.kpiValue}</span>
+                            <span className="text-xs font-bold text-amber-400 flex items-center gap-0.5">
+                              <Award className="w-3.5 h-3.5" />
+                              {current.studio.hikeBadge}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="text-[11px] font-mono text-amber-300 bg-amber-950/60 px-2.5 py-1 rounded border border-amber-500/30">
+                          Power BI + SQL + Python
+                        </div>
+                      </div>
+
+                      {/* Visual 4-Step Pipeline */}
+                      <div className="grid grid-cols-4 gap-1.5 py-1 text-center font-mono">
+                        <div className="p-1.5 rounded-lg bg-slate-800/90 border border-amber-500/30 shadow-xs">
+                          <div className="text-[9px] font-bold text-amber-400">01. Excel</div>
+                          <div className="text-[10px] font-semibold text-slate-200">ETL / Pivot</div>
+                        </div>
+                        <div className="p-1.5 rounded-lg bg-slate-800/90 border border-blue-500/30 shadow-xs">
+                          <div className="text-[9px] font-bold text-blue-400">02. SQL</div>
+                          <div className="text-[10px] font-semibold text-slate-200">Window Fns</div>
+                        </div>
+                        <div className="p-1.5 rounded-lg bg-slate-800/90 border border-emerald-500/30 shadow-xs">
+                          <div className="text-[9px] font-bold text-emerald-400">03. Python</div>
+                          <div className="text-[10px] font-semibold text-slate-200">Pandas EDA</div>
+                        </div>
+                        <div className="p-1.5 rounded-lg bg-slate-800/90 border border-purple-500/30 shadow-xs">
+                          <div className="text-[9px] font-bold text-purple-400">04. Power BI</div>
+                          <div className="text-[10px] font-semibold text-slate-200">DAX Dashboards</div>
+                        </div>
+                      </div>
+
+                      {/* Tech Stack Pills Row */}
+                      <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                        {current.studio.techStack.map((tool, idx) => (
+                          <span key={idx} className={`text-[10px] font-bold px-2 py-0.5 rounded border ${tool.color}`}>
+                            {tool.name}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ) : current.id === 'sap-cpi' ? (
                     /* SAP CPI Architecture Preview */
                     <div className="space-y-3">
                       <div className="flex items-end justify-between">
@@ -621,7 +846,13 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                 {/* Mentors Spotlight Section */}
                 <div className="space-y-2">
                   <div className="flex items-center justify-between pb-1.5 border-b border-slate-100">
-                    <div className={`text-[11px] font-extrabold uppercase tracking-wider ${current.id === 'sap-cpi' ? 'text-purple-700' : 'text-sky-700'} flex items-center gap-1.5`}>
+                    <div className={`text-[11px] font-extrabold uppercase tracking-wider ${
+                      current.id === 'data-analytics'
+                        ? 'text-orange-600'
+                        : current.id === 'sap-cpi'
+                        ? 'text-purple-700'
+                        : 'text-sky-700'
+                    } flex items-center gap-1.5`}>
                       {current.trainers.length > 1 ? (
                         <>
                           <Users className="w-3.5 h-3.5" />
@@ -634,7 +865,13 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                         </>
                       )}
                     </div>
-                    <span className={`px-2 py-0.5 rounded-md ${current.id === 'sap-cpi' ? 'bg-purple-50 text-purple-800 border-purple-200/60' : 'bg-sky-50 text-sky-800 border-sky-200/60'} text-[10px] font-extrabold border flex items-center gap-1`}>
+                    <span className={`px-2 py-0.5 rounded-md ${
+                      current.id === 'data-analytics'
+                        ? 'bg-orange-50 text-orange-800 border-orange-200/60'
+                        : current.id === 'sap-cpi'
+                        ? 'bg-purple-50 text-purple-800 border-purple-200/60'
+                        : 'bg-sky-50 text-sky-800 border-sky-200/60'
+                    } text-[10px] font-extrabold border flex items-center gap-1`}>
                       <ShieldCheck className="w-3 h-3" />
                       <span>Industry Expert</span>
                     </span>
@@ -644,12 +881,20 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                     {current.trainers.map((tr, trIdx) => (
                       <div key={trIdx} className="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50/90 hover:bg-slate-50 border border-slate-100 transition-colors">
                         {/* Avatar Initials Badge with Gradient */}
-                        <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${tr.avatarGradient || 'from-sky-600 to-blue-500'} text-white font-extrabold text-xs flex items-center justify-center shadow-xs shrink-0 ring-2 ring-white`}>
+                        <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${
+                          tr.avatarGradient || (current.id === 'data-analytics' ? 'from-orange-600 to-amber-500' : 'from-sky-600 to-blue-500')
+                        } text-white font-extrabold text-xs flex items-center justify-center shadow-xs shrink-0 ring-2 ring-white`}>
                           {tr.initials}
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center justify-between gap-1">
-                            <div className={`text-[10px] font-bold uppercase tracking-wider ${current.id === 'sap-cpi' ? 'text-purple-700' : 'text-sky-700'}`}>
+                            <div className={`text-[10px] font-bold uppercase tracking-wider ${
+                              current.id === 'data-analytics'
+                                ? 'text-orange-600'
+                                : current.id === 'sap-cpi'
+                                ? 'text-purple-700'
+                                : 'text-sky-700'
+                            }`}>
                               {tr.role}
                             </div>
                             {tr.rating && (
@@ -673,16 +918,46 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
 
                 {/* Batch Info Grid */}
                 <div className="grid grid-cols-2 gap-2.5 pt-0.5">
-                  <div className={`p-3 rounded-xl bg-gradient-to-br ${current.id === 'sap-cpi' ? 'from-purple-50/70 to-indigo-50/40 border-purple-100/90' : 'from-sky-50/70 to-blue-50/40 border-sky-100/90'} border text-center flex flex-col items-center justify-center`}>
+                  <div className={`p-3 rounded-xl bg-gradient-to-br ${
+                    current.id === 'data-analytics'
+                      ? 'from-orange-50/70 to-amber-50/40 border-orange-100/90'
+                      : current.id === 'sap-cpi'
+                      ? 'from-purple-50/70 to-indigo-50/40 border-purple-100/90'
+                      : 'from-sky-50/70 to-blue-50/40 border-sky-100/90'
+                  } border text-center flex flex-col items-center justify-center`}>
                     <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider flex items-center justify-center gap-1">
-                      <Calendar className={`w-3.5 h-3.5 ${current.id === 'sap-cpi' ? 'text-purple-600' : 'text-sky-600'}`} />
+                      <Calendar className={`w-3.5 h-3.5 ${
+                        current.id === 'data-analytics'
+                          ? 'text-orange-600'
+                          : current.id === 'sap-cpi'
+                          ? 'text-purple-600'
+                          : 'text-sky-600'
+                      }`} />
                       <span>Batch Schedule</span>
                     </div>
-                    <div className={`text-sm sm:text-base font-black ${current.id === 'sap-cpi' ? 'text-purple-700' : 'text-sky-700'} mt-1`}>{current.startDateText}</div>
+                    <div className={`text-sm sm:text-base font-black ${
+                      current.id === 'data-analytics'
+                        ? 'text-orange-600'
+                        : current.id === 'sap-cpi'
+                        ? 'text-purple-700'
+                        : 'text-sky-700'
+                    } mt-1`}>{current.startDateText}</div>
                   </div>
-                  <div className={`p-3 rounded-xl bg-gradient-to-br ${current.id === 'sap-cpi' ? 'from-purple-50/70 to-indigo-50/40 border-purple-100/90' : 'from-sky-50/70 to-blue-50/40 border-sky-100/90'} border text-center flex flex-col items-center justify-center`}>
+                  <div className={`p-3 rounded-xl bg-gradient-to-br ${
+                    current.id === 'data-analytics'
+                      ? 'from-orange-50/70 to-amber-50/40 border-orange-100/90'
+                      : current.id === 'sap-cpi'
+                      ? 'from-purple-50/70 to-indigo-50/40 border-purple-100/90'
+                      : 'from-sky-50/70 to-blue-50/40 border-sky-100/90'
+                  } border text-center flex flex-col items-center justify-center`}>
                     <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider flex items-center justify-center gap-1">
-                      <Clock className={`w-3.5 h-3.5 ${current.id === 'sap-cpi' ? 'text-purple-600' : 'text-sky-600'}`} />
+                      <Clock className={`w-3.5 h-3.5 ${
+                        current.id === 'data-analytics'
+                          ? 'text-orange-600'
+                          : current.id === 'sap-cpi'
+                          ? 'text-purple-600'
+                          : 'text-sky-600'
+                      }`} />
                       <span>Training Mode</span>
                     </div>
                     <div className="text-sm sm:text-base font-black text-slate-800 mt-1">{current.modeText}</div>
@@ -692,9 +967,17 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                 {/* Action Button inside Card */}
                 <div className="pt-1">
                   <button
-                    onClick={() => onOpenDemoModal ? onOpenDemoModal(current.courseTitle) : null}
+                    onClick={() => {
+                      if (current.id === 'data-analytics' && onOpenEnrollModal) {
+                        onOpenEnrollModal(current.courseTitle, 'Batch 3 Starts Oct 15, 2026');
+                      } else if (onOpenDemoModal) {
+                        onOpenDemoModal(current.courseTitle);
+                      }
+                    }}
                     className={`w-full py-3 rounded-xl text-white font-bold text-xs sm:text-sm transition-all cursor-pointer shadow-md flex items-center justify-center gap-2 transform active:scale-98 ${
-                      current.id === 'sap-cpi'
+                      current.id === 'data-analytics'
+                        ? 'bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700'
+                        : current.id === 'sap-cpi'
                         ? 'bg-gradient-to-r from-purple-700 via-indigo-700 to-violet-800 hover:from-purple-800 hover:to-indigo-800'
                         : 'bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700'
                     }`}

@@ -170,8 +170,8 @@ export const courses = [
     originalPrice: "₹35,000",
     discount: "36% OFF",
     trainer: "Ramesh (10+ Yrs Exp, Senior SAP CPI Developer)",
-    nextBatch: "Coming Soon",
-    timing: "Weekend & Weekday Batches",
+    nextBatch: "Coming Soon (Weekend Batch Only)",
+    timing: "Weekend Batch Only (Sat & Sun)",
     thumbnail: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop&q=80",
     highlights: [
       "100% Live Interactive Sessions with Senior SAP Integration Architect",
@@ -225,6 +225,50 @@ export const courses = [
 
 export const upcomingBatches = [
   {
+    id: "batch-001",
+    courseId: "data-analytics-powerbi-sql",
+    courseName: "Data Analytics with SQL, Power BI, Python, Excel",
+    category: "Data Analytics",
+    duration: "12 Weeks",
+    startDate: "Oct 15, 2026",
+    timing: "07:00 AM - 08:00 AM IST",
+    days: "Monday to Friday",
+    mode: "Live Interactive (Zoom)",
+    trainer: "Abhi (8+ Yrs Exp)",
+    status: "Batch 3 Registrations Open",
+    isBatch1Started: false,
+    isClosed: false
+  },
+  {
+    id: "batch-002",
+    courseId: "sql-for-data-analysts",
+    courseName: "SQL for Data Analysts",
+    category: "Data Analytics",
+    duration: "4 Weeks",
+    startDate: "Oct 15, 2026",
+    timing: "07:00 AM - 08:00 AM IST",
+    days: "Monday to Friday",
+    mode: "Live Interactive (Zoom)",
+    trainer: "Abhi (8+ Yrs Exp)",
+    status: "Batch 3 Registrations Open",
+    isBatch1Started: false,
+    isClosed: false
+  },
+  {
+    id: "batch-004",
+    courseId: "sap-cpi",
+    courseName: "SAP CPI (Cloud Platform Integration)",
+    category: "SAP",
+    duration: "8 Weeks",
+    startDate: "Coming Soon",
+    timing: "Weekend Batch Only (Timings TBA)",
+    days: "Weekend Batch Only (Sat & Sun)",
+    mode: "100% Live Online (Weekend Batch Only)",
+    trainer: "Ramesh (Senior SAP CPI Developer)",
+    status: "Coming Soon (Weekend Batch Only)",
+    isComingSoon: true
+  },
+  {
     id: "batch-003",
     courseId: "salesforce-administration-and-developer",
     courseName: "Salesforce Administration and Developer",
@@ -237,50 +281,6 @@ export const upcomingBatches = [
     trainer: "Certified Salesforce Lead Architect",
     status: "Coming Soon",
     isComingSoon: true
-  },
-  {
-    id: "batch-004",
-    courseId: "sap-cpi",
-    courseName: "SAP CPI (Cloud Platform Integration)",
-    category: "SAP",
-    duration: "8 Weeks",
-    startDate: "Coming Soon",
-    timing: "Timings to be Announced",
-    days: "Weekend & Weekday Batches",
-    mode: "Live Interactive (Zoom)",
-    trainer: "Ramesh (Senior SAP CPI Developer)",
-    status: "Coming Soon",
-    isComingSoon: true
-  },
-  {
-    id: "batch-001",
-    courseId: "data-analytics-powerbi-sql",
-    courseName: "Data Analytics with SQL, Power BI, Python, Excel",
-    category: "Data Analytics",
-    duration: "12 Weeks",
-    startDate: "Batch 1 Started",
-    timing: "07:00 AM - 08:00 AM IST",
-    days: "Monday to Friday",
-    mode: "Live Interactive (Zoom)",
-    trainer: "Abhi (8+ Yrs Exp)",
-    status: "Batch 1 Started • Register for Batch 2 Demo",
-    isBatch1Started: true,
-    isClosed: false
-  },
-  {
-    id: "batch-002",
-    courseId: "sql-for-data-analysts",
-    courseName: "SQL for Data Analysts",
-    category: "Data Analytics",
-    duration: "4 Weeks",
-    startDate: "Batch 1 Started",
-    timing: "07:00 AM - 08:00 AM IST",
-    days: "Monday to Friday",
-    mode: "Live Interactive (Zoom)",
-    trainer: "Abhi (8+ Yrs Exp)",
-    status: "Batch 1 Started • Register for Batch 2 Demo",
-    isBatch1Started: true,
-    isClosed: false
   }
 ];
 
@@ -354,5 +354,9 @@ export const faqs = [
   {
     question: "Can beginners or non-IT background students enroll?",
     answer: "Yes! Over 40% of our successful alumni come from non-IT, mechanical, civil, or commerce backgrounds. Our curriculum starts from absolute ground zero and builds up to advanced production standards with dedicated mentor guidance."
+  },
+  {
+    question: "How does the Refer & Earn program work, and when do I get the ₹1,000 reward?",
+    answer: "You can refer any friend or colleague to our live masterclasses (Data Analytics, SAP CPI, Salesforce). Important Condition: When you refer a candidate, your ₹1,000 cash reward is disbursed only after the referred candidate completes 100% of their course fee payment and confirms admission. Payouts are made within 24–48 hours via UPI (GPay/PhonePe) or Bank Transfer, or can be adjusted as a fee discount on your own course."
   }
 ];

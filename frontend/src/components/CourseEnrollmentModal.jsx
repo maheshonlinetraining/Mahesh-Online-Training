@@ -6,6 +6,7 @@ const BATCH_TIMING_OPTIONS = [
   'Weekday Batch (Mon to Fri) - 7:00 AM to 8:00 AM IST',
   'Weekend Batch (Sat & Sun) - 6:00 PM to 8:00 PM IST'
 ];
+const SAP_WEEKEND_TIMING = 'Weekend Batch Only (Sat & Sun) - 6:00 PM to 8:00 PM IST';
 
 export default function CourseEnrollmentModal({ 
   isOpen, 
@@ -27,6 +28,21 @@ export default function CourseEnrollmentModal({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
+  const isSapCpi = Boolean(
+    formData.courseName &&
+    (formData.courseName.toLowerCase().includes('sap') || formData.courseName.toLowerCase().includes('cpi'))
+  );
+
+  const availableTimings = isSapCpi ? [SAP_WEEKEND_TIMING] : BATCH_TIMING_OPTIONS;
+
+  useEffect(() => {
+    if (isSapCpi && formData.batchTimings !== SAP_WEEKEND_TIMING) {
+      setFormData(prev => ({ ...prev, batchTimings: SAP_WEEKEND_TIMING }));
+    } else if (!isSapCpi && formData.batchTimings === SAP_WEEKEND_TIMING) {
+      setFormData(prev => ({ ...prev, batchTimings: BATCH_TIMING_OPTIONS[0] }));
+    }
+  }, [isSapCpi]);
 
   useEffect(() => {
     const isInvalid = !defaultCourseTitle || ['Navbar', 'Top Banner', 'Mobile Top', 'Mobile Nav', 'Footer'].includes(defaultCourseTitle);
@@ -267,6 +283,11 @@ export default function CourseEnrollmentModal({
                     <option value={formData.courseName}>{formData.courseName}</option>
                   )}
                 </select>
+                {formData.courseName?.toLowerCase().includes('data analytics') && (
+                  <p className="mt-1.5 text-[11px] font-semibold text-orange-700 bg-orange-50 px-2.5 py-1 rounded-lg border border-orange-200 flex items-center gap-1.5">
+                    <span>🔥 Batch 3 starts Oct 15th! Recorded demo session sent via WhatsApp.</span>
+                  </p>
+                )}
               </div>
 
               {/* Batch Timings & Background */}
@@ -281,12 +302,18 @@ export default function CourseEnrollmentModal({
                     onChange={(e) => setFormData({ ...formData, batchTimings: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none transition-all bg-white font-medium"
                   >
-                    {BATCH_TIMING_OPTIONS.map((timing) => (
+                    {availableTimings.map((timing) => (
                       <option key={timing} value={timing}>
                         {timing}
                       </option>
                     ))}
                   </select>
+                  {isSapCpi && (
+                    <div className="mt-1.5 p-2 rounded-lg bg-purple-50 border border-purple-200/80 text-purple-900 text-[11px] font-medium flex items-start gap-1.5 leading-snug">
+                      <span className="text-purple-600 font-bold shrink-0">⚡ Weekend Batch Only:</span>
+                      <span>Conducted exclusively on <strong>Weekend Batch Only (Sat &amp; Sun)</strong> by Senior Industry Architects.</span>
+                    </div>
+                  )}
                 </div>
 
                 <div>
@@ -310,16 +337,21 @@ export default function CourseEnrollmentModal({
               {/* Referral Field */}
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1 flex items-center justify-between">
-                  <span>Referral</span>
-                  <span className="text-[10px] text-slate-400 font-normal">Optional</span>
+                  <span>Referred by a Friend?</span>
+                  <span className="text-[10px] text-amber-700 font-bold bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200">
+                    ₹1,000 Reward Program
+                  </span>
                 </label>
                 <input
                   type="text"
                   value={formData.referral}
                   onChange={(e) => setFormData({ ...formData, referral: e.target.value })}
-                  placeholder="e.g. Friend name, Student ID, or Referral code"
+                  placeholder="e.g. Friend's Name or Mobile / UPI ID"
                   className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm focus:border-orange-500 outline-none transition-all"
                 />
+                <p className="mt-1 text-[10px] text-slate-500">
+                  * Referrer receives ₹1,000 reward upon student's full course fee clearance.
+                </p>
               </div>
 
               {/* Submit CTA */}

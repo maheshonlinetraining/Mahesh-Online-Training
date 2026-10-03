@@ -179,6 +179,17 @@ export default function DemoBookingModal({ isOpen, onClose, defaultCourseTitle =
                     <option value={formData.courseName}>{formData.courseName}</option>
                   )}
                 </select>
+                {formData.courseName?.toLowerCase().includes('sap') || formData.courseName?.toLowerCase().includes('cpi') ? (
+                  <div className="mt-1.5 p-2 rounded-lg bg-purple-50 border border-purple-200/80 text-purple-900 text-[11px] font-medium flex items-start gap-1.5 leading-snug">
+                    <span className="text-purple-600 font-bold shrink-0">⚡ Weekend Batch Only:</span>
+                    <span>Classes for SAP CPI are conducted on <strong>Weekend Batch Only (Sat &amp; Sun)</strong> with Senior Industry Architects.</span>
+                  </div>
+                ) : formData.courseName?.toLowerCase().includes('data analytics') ? (
+                  <div className="mt-1.5 p-2 rounded-lg bg-orange-50 border border-orange-200/80 text-orange-950 text-[11px] font-medium flex items-start gap-1.5 leading-snug">
+                    <span className="text-orange-600 font-bold shrink-0">🔥 Batch 3 (Starts Oct 15):</span>
+                    <span>Full demo recording is ready! We will send you the instant session access link on WhatsApp.</span>
+                  </div>
+                ) : null}
               </div>
 
               {/* Referral Field */}
@@ -196,6 +207,9 @@ export default function DemoBookingModal({ isOpen, onClose, defaultCourseTitle =
                   placeholder="Enter Friend's Name or Mobile / UPI ID"
                   className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-orange-500 outline-none transition-all"
                 />
+                <p className="mt-1 text-[10px] text-slate-500">
+                  * Referrer receives ₹1,000 reward upon student's full course fee clearance.
+                </p>
               </div>
 
               <div className="pt-2">
