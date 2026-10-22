@@ -9,7 +9,7 @@ export default function NewsTicker({ onOpenDemoModal, onOpenEnrollModal }) {
     }
   };
 
-  const handleEnrollClick = (e, courseName = 'Data Analytics with SQL, Power BI, Python, Excel', batch = 'Batch 3 Starts Oct 15, 2026') => {
+  const handleEnrollClick = (e, courseName = 'Data Analytics with SQL, Power BI, Python, Excel', batch = 'Weekday Batch Only') => {
     e.stopPropagation();
     if (onOpenEnrollModal) {
       onOpenEnrollModal(courseName, batch);
@@ -20,20 +20,20 @@ export default function NewsTicker({ onOpenDemoModal, onOpenEnrollModal }) {
 
   const TickerItems = () => (
     <div className="flex items-center gap-6 text-xs sm:text-[13px] tracking-wide font-medium">
-      {/* 1. Data Analytics Batch 3 (Featured First) */}
+      {/* 1. Data Analytics Weekday Batch Only (Featured First) */}
       <div className="flex items-center gap-2">
         <span className="flex items-center gap-1 bg-orange-500/20 text-orange-400 px-2 py-0.5 rounded-md font-bold text-[10px] sm:text-xs uppercase border border-orange-500/40">
           <Zap className="w-3.5 h-3.5 text-orange-400 fill-orange-400" />
-          <span>BATCH 3 (OCT 15)</span>
+          <span>WEEKDAY BATCH ONLY</span>
         </span>
         <span className="text-white font-semibold">
-          Data Analytics (SQL, Power BI, Python, Excel) Batch 3 Starts Oct 15th! Direct Registrations Open (Recorded Demo Available).
+          Data Analytics (SQL, Power BI, Python, Excel): Registrations Open for Weekday Batch Only! Recorded Demo Available.
         </span>
         <button
-          onClick={(e) => handleEnrollClick(e, 'Data Analytics with SQL, Power BI, Python, Excel', 'Batch 3 Starts Oct 15, 2026')}
+          onClick={(e) => handleEnrollClick(e, 'Data Analytics with SQL, Power BI, Python, Excel', 'Weekday Batch Only')}
           className="inline-flex items-center gap-1 bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-bold px-3 py-0.5 rounded-full text-[11px] transition-all transform hover:scale-105 shadow-xs cursor-pointer ml-1"
         >
-          <span>Register for Batch 3</span>
+          <span>Register (Weekday Batch Only)</span>
           <ArrowRight className="w-3 h-3" />
         </button>
       </div>

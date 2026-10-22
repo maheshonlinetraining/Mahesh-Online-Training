@@ -20,6 +20,14 @@ Thumbs.db
 *.log
 npm-debug.log*
 
+# Scratch video production files & temp tests (keep frontend/public/videos)
+video_production/
+video_production_*/
+*.mp4
+*.mp3
+!frontend/public/videos/*.mp4
+test_slide.*
+
 # Local helper scripts
 git.cmd
 gh.cmd

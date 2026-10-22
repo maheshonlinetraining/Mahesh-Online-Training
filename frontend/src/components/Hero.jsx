@@ -22,11 +22,15 @@ import {
   Layers,
   BookOpen,
   Flame,
-  FileCheck
+  FileCheck,
+  Play
 } from 'lucide-react';
+import AnalyticsHeroVideoPlayer from './AnalyticsHeroVideoPlayer';
 
 export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [], onSelectCourse }) {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [daStudioTab, setDaStudioTab] = useState('video');
+
 
   const slides = [
     {
@@ -34,21 +38,21 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
       courseId: "data-analytics-powerbi-sql",
       courseTitle: "Data Analytics with SQL, Power BI, Python, Excel",
       tabLabel: "Data Analytics",
-      tabSub: "Batch 3 • Oct 15",
-      badgeText: "🔥 Batch 3 Registrations Open — Starts October 15th",
+      tabSub: "Weekday Batch Only",
+      badgeText: "🔥 Weekday Batch Only — Data Analytics with Power BI & SQL",
       isComingSoon: false,
       accentColor: "orange",
       headlinePrefix: "Data Analytics Masterclass",
-      headlineHighlight: "Batch 3 Starting October 15th",
+      headlineHighlight: "Weekday Batch Only (Mon to Fri)",
       subtitle: (
         <>
-          Direct registrations open for <strong className="text-slate-900">Batch 3 starting October 15th</strong>! Recorded demo session is ready for instant preview. Fast-track your career with live mentor-led training in <strong className="text-orange-600 font-bold">SQL, Power BI, Python & Excel</strong> with 3 real-world capstone projects.
+          Direct registrations open for <strong className="text-slate-900">Weekday Batch Only (Mon to Fri)</strong>! Recorded demo session is ready for instant preview. Fast-track your career with live mentor-led training in <strong className="text-orange-600 font-bold">SQL, Power BI, Python & Excel</strong> with 3 real-world capstone projects.
         </>
       ),
       features: [
         {
           icon: "zap",
-          title: "Direct Batch 3 Admission",
+          title: "Weekday Batch Admission",
           desc: "Watch the recorded demo on-demand and confirm your seat directly."
         },
         {
@@ -63,26 +67,30 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
         }
       ],
       points: [
-        "Batch 3 Live Online Classes Starting October 15th",
+        "Weekday Batch Live Online Classes (Mon to Fri)",
         "Instant Recorded Demo Session Available on Request",
         "100% Practical Training with 3 Industry Domain Capstones"
       ],
-      urgencyText: "🔥 Batch 3 Starts Oct 15 • Direct Registrations Open",
+      urgencyText: "🔥 Weekday Batch Only • Direct Registrations Open",
       alumniCompanies: ["Deloitte", "TCS", "Infosys", "Accenture", "Cognizant"],
-      primaryButtonText: "Enroll for Batch 3",
+      primaryButtonText: "Register (Weekday Batch Only)",
       secondaryButtonText: "Watch Recorded Demo",
-      startDateText: "October 15, 2026",
+      startDateText: "Weekday Batch Only",
       modeText: "100% Live Online",
       ambientBg: "from-[#fff7ed] via-[#ffedd5]/60 to-[#fffaf5]",
       haloColor: "bg-orange-500/20",
       gridColor: "#ea580c",
+      videoSrc: "/videos/Data_Analytics_Video_Option_2.mp4",
+      videoTheme: "orange",
+      videoBadge: "Watch 2-Min Beginner Lesson",
+      videoTitle: "Data Analytics Masterclass",
       studio: {
         tag: "POWER BI & SQL ANALYTICS SUITE",
-        querySnippet: "SELECT candidate, hike FROM placements WHERE batch = 'DA-Batch3';",
-        queryResult: "Batch 3 • Starts Oct 15",
-        kpiValue: "Batch 3 Live",
-        kpiLabel: "Starts October 15th",
-        hikeBadge: "Recorded Demo Ready",
+        querySnippet: "SELECT candidate, hike FROM placements WHERE batch = 'DA-Weekday';",
+        queryResult: "Weekday Batch Active",
+        kpiValue: "Weekday Batch Live",
+        kpiLabel: "Weekday Batch Only",
+        hikeBadge: "8:00 AM IST (Mon-Fri)",
         techStack: [
           { name: "Power BI", color: "bg-amber-500/20 text-amber-300 border-amber-500/40" },
           { name: "SQL Querying", color: "bg-blue-500/20 text-blue-300 border-blue-500/40" },
@@ -148,6 +156,10 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
       ambientBg: "from-[#faf5ff] via-[#f3e8ff]/85 to-[#fdf4ff]",
       haloColor: "bg-purple-600/25",
       gridColor: "#7c3aed",
+      videoSrc: "/videos/SAP_CPI_Explainer_Video.mp4",
+      videoTheme: "purple",
+      videoBadge: "Watch 3-Min SAP CPI Lesson",
+      videoTitle: "SAP CPI Masterclass",
       studio: {
         tag: "SAP BTP INTEGRATION SUITE",
         querySnippet: "iFlow.deploy(BTP_CloudConnector.process); // CPI",
@@ -220,6 +232,10 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
       ambientBg: "from-[#f0f9ff] via-[#e0f2fe]/60 to-[#fffaf5]",
       haloColor: "bg-sky-500/20",
       gridColor: "#0284c7",
+      videoSrc: "/videos/Salesforce_Explainer_Video.mp4",
+      videoTheme: "blue",
+      videoBadge: "Watch 2-Min Salesforce Lesson",
+      videoTitle: "Salesforce 2-in-1 Masterclass",
       studio: {
         tag: "ENTERPRISE CRM CLOUD 360",
         querySnippet: "ApexTrigger.execute(LeadAutomation.class); // PD1 Track",
@@ -258,15 +274,7 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
 
   const current = slides[activeSlide];
 
-  // Auto slide transition (cycles every 30 seconds)
-  useEffect(() => {
-    if (slides.length <= 1) return;
-    const interval = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % slides.length);
-    }, 30000);
-    return () => clearInterval(interval);
-  }, [activeSlide, slides.length]);
-
+  // Manual slide control only: No auto-slide rotation
   const handleNext = () => {
     setActiveSlide((prev) => (prev + 1) % slides.length);
   };
@@ -288,7 +296,8 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
   };
 
   return (
-    <section className="relative pt-3 pb-8 md:pt-5 md:pb-14 overflow-hidden border-b border-slate-200/80 transition-colors duration-700 bg-white">
+    <section className="relative pt-2 pb-6 md:pt-3 md:pb-8 overflow-hidden border-b border-slate-200/80 transition-colors duration-700 bg-white">
+
       
       {/* 1. Dynamic Seamless Aurora Ambient Canvas (100% Vector & Radiant Mesh, Zero Stock Photo Clutter) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 select-none">
@@ -336,7 +345,7 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Top Interactive Slicer Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-2.5 mb-6 pb-3 border-b border-slate-200/60">
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2 border-b border-slate-200/60">
           
           {/* Slicer Tabs - Streamlined & Compact */}
           <div className="flex items-center gap-1.5 sm:gap-2 p-1.5 rounded-2xl bg-white/90 backdrop-blur-md border border-slate-200/90 shadow-xs max-w-full overflow-x-auto scrollbar-none">
@@ -417,21 +426,21 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
           )}
         </div>
 
-        {/* Slide Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        {/* Slide Content Grid: Compact, Above-The-Fold Balanced 2-Column Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-center">
           
-          {/* Left Text Block */}
-          <div className="lg:col-span-7 space-y-4 md:space-y-4 text-center lg:text-left transition-all duration-300">
+          {/* Left Column: Course Details, Mentor Spotlight & Action Buttons */}
+          <div className="lg:col-span-7 space-y-2.5 sm:space-y-3 text-center lg:text-left transition-all duration-300">
             
             {/* Blinking Live Beacon Badge */}
-            <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border ${
+            <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border ${
               current.id === 'data-analytics'
                 ? 'border-orange-200/90 text-orange-950'
                 : current.id === 'sap-cpi'
                 ? 'border-purple-200/90 text-purple-900'
                 : 'border-sky-200/90 text-sky-900'
-            } text-xs sm:text-sm font-bold shadow-xs`}>
-              <span className="relative flex h-2.5 w-2.5">
+            } text-xs font-bold shadow-xs`}>
+              <span className="relative flex h-2 w-2">
                 <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
                   current.id === 'data-analytics'
                     ? 'bg-orange-500'
@@ -439,7 +448,7 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                     ? 'bg-amber-400'
                     : 'bg-sky-500'
                 }`}></span>
-                <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${
+                <span className={`relative inline-flex rounded-full h-2 w-2 ${
                   current.id === 'data-analytics'
                     ? 'bg-orange-600'
                     : current.isComingSoon
@@ -457,8 +466,8 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
             </div>
 
             {/* Headline with Dual-Tone Gradient */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-[1.14]">
-              {current.headlinePrefix} <br />
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-tight">
+              {current.headlinePrefix} <br className="hidden sm:inline" />
               <span className={`bg-gradient-to-r ${
                 current.id === 'data-analytics'
                   ? 'from-orange-600 via-amber-600 to-yellow-600'
@@ -471,66 +480,59 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
             </h1>
 
             {/* Subtitle */}
-            <p className="text-slate-600 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
+            <p className="text-slate-600 text-xs sm:text-sm max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
               {current.subtitle}
             </p>
 
-            {/* 3 Enhanced Feature Value Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
-              {current.features.map((feat, idx) => (
-                <div 
-                  key={idx} 
-                  className={`p-3 rounded-2xl bg-white/90 backdrop-blur-md border border-slate-200/80 ${
-                    current.id === 'data-analytics'
-                      ? 'hover:border-orange-300'
-                      : current.id === 'sap-cpi'
-                      ? 'hover:border-purple-300'
-                      : 'hover:border-sky-300'
-                  } hover:shadow-md transition-all duration-200 text-left group`}
-                >
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className={`w-6 h-6 rounded-lg ${
-                      current.id === 'data-analytics'
-                        ? 'bg-orange-100 text-orange-700'
-                        : current.id === 'sap-cpi'
-                        ? 'bg-purple-100 text-purple-700'
-                        : 'bg-sky-100 text-sky-600'
-                    } flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform`}>
-                      {feat.icon === 'zap' && <Zap className="w-3.5 h-3.5" />}
-                      {feat.icon === 'layers' && <Layers className="w-3.5 h-3.5" />}
-                      {feat.icon === 'briefcase' && <Briefcase className="w-3.5 h-3.5" />}
-                      {feat.icon === 'users' && <Users className="w-3.5 h-3.5" />}
-                      {feat.icon === 'cloud' && <Cloud className="w-3.5 h-3.5" />}
-                      {feat.icon === 'code' && <Code2 className="w-3.5 h-3.5" />}
+            {/* Trainer & Batch Details Card on Left Side */}
+            <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 p-2.5 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-xs">
+              <div className="flex items-center gap-2.5 min-w-0">
+                {current.trainers.map((tr, trIdx) => (
+                  <div key={trIdx} className="flex items-center gap-2 min-w-0">
+                    <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${
+                      tr.avatarGradient || (current.id === 'data-analytics' ? 'from-orange-600 to-amber-500' : 'from-sky-600 to-blue-500')
+                    } text-white font-extrabold text-[10px] flex items-center justify-center shadow-xs shrink-0 ring-2 ring-white`}>
+                      {tr.initials}
                     </div>
-                    <span className={`font-extrabold text-xs text-slate-900 ${
-                      current.id === 'data-analytics'
-                        ? 'group-hover:text-orange-700'
-                        : current.id === 'sap-cpi'
-                        ? 'group-hover:text-purple-700'
-                        : 'group-hover:text-sky-600'
-                    } transition-colors`}>
-                      {feat.title}
-                    </span>
+                    <div className="min-w-0 text-left">
+                      <div className="flex items-center gap-1">
+                        <span className="text-xs font-bold text-slate-900 truncate">{tr.name}</span>
+                        {tr.rating && (
+                          <span className="text-[9px] font-bold text-amber-700 bg-amber-50 px-1 py-0.2 rounded border border-amber-200 flex items-center gap-0.5 shrink-0">
+                            <Star className="w-2.5 h-2.5 fill-amber-500 text-amber-500" />
+                            {tr.rating}
+                          </span>
+                        )}
+                      </div>
+                      <div className="text-[10px] text-slate-500 truncate">{tr.role}</div>
+                    </div>
                   </div>
-                  <p className="text-[11px] text-slate-500 leading-snug">
-                    {feat.desc}
-                  </p>
+                ))}
+              </div>
+
+              {/* Batch Date & Mode Info */}
+              <div className="flex items-center gap-2 pl-3 border-l border-slate-200 text-left shrink-0">
+                <div>
+                  <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
+                    <Calendar className="w-2.5 h-2.5 text-orange-600" />
+                    <span>Batch Starts</span>
+                  </div>
+                  <div className="text-xs font-black text-slate-900">{current.startDateText}</div>
                 </div>
-              ))}
+              </div>
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-1">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 pt-0.5">
               <button
                 onClick={() => {
                   if (current.id === 'data-analytics' && onOpenEnrollModal) {
-                    onOpenEnrollModal(current.courseTitle, 'Batch 3 Starts Oct 15, 2026');
+                    onOpenEnrollModal(current.courseTitle, 'Weekday Batch Only');
                   } else if (onOpenDemoModal) {
                     onOpenDemoModal(current.courseTitle);
                   }
                 }}
-                className={`w-full sm:w-auto px-7 py-3 rounded-xl text-sm sm:text-base font-bold flex items-center justify-center gap-2 shadow-md cursor-pointer transform active:scale-95 text-white ${
+                className={`px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-md cursor-pointer transform active:scale-95 text-white ${
                   current.id === 'data-analytics'
                     ? 'bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700'
                     : current.id === 'sap-cpi'
@@ -538,457 +540,119 @@ export default function Hero({ onOpenDemoModal, onOpenEnrollModal, courses = [],
                     : 'bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700'
                 }`}
               >
-                <Sparkles className="w-4 h-4 text-white" />
+                <Sparkles className="w-3.5 h-3.5 text-white" />
                 <span>{current.primaryButtonText}</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </button>
 
               {current.id === 'data-analytics' ? (
                 <button
                   onClick={() => onOpenDemoModal ? onOpenDemoModal(current.courseTitle + ' (Recorded Demo Session)') : null}
-                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-white hover:bg-orange-50 text-orange-700 font-bold text-sm sm:text-base border border-orange-200 flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-xs"
+                  className="px-5 py-2.5 rounded-xl bg-white hover:bg-orange-50 text-orange-700 font-bold text-xs sm:text-sm border border-orange-200 flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs"
                 >
-                  <BookOpen className="w-4 h-4 text-orange-600" />
+                  <BookOpen className="w-3.5 h-3.5 text-orange-600" />
                   <span>Watch Recorded Demo</span>
                 </button>
               ) : (
                 <button
                   onClick={handleViewCurriculum}
-                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 font-bold text-sm sm:text-base border border-slate-200 flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-xs"
+                  className="px-5 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 font-bold text-xs sm:text-sm border border-slate-200 flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs"
                 >
-                  <BookOpen className="w-4 h-4 text-slate-600" />
+                  <BookOpen className="w-3.5 h-3.5 text-slate-600" />
                   <span>View Full Curriculum</span>
                 </button>
               )}
             </div>
 
-            {/* Reassurance Micro-Copy Trust Row */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-4 gap-y-1 text-xs text-slate-500 pt-1">
-              <span className="flex items-center gap-1.5 font-medium">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+            {/* Compact Proof Strip */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-3 gap-y-1 text-[11px] text-slate-500 pt-0.5">
+              <span className="flex items-center gap-1 font-semibold text-slate-700">
+                <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
                 100% Practical Hands-On
               </span>
-              <span className="flex items-center gap-1.5 font-medium">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                {current.id === 'data-analytics' ? 'Recorded Demos Available' : 'Class Recordings on Demand'}
+              <span className="flex items-center gap-1 font-semibold text-slate-700">
+                <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
+                Resume & Mock Interviews
               </span>
-              <span className="flex items-center gap-1.5 font-medium">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                Resume & Interview Preparation
+              <span className="flex items-center gap-1 font-semibold text-slate-700">
+                <Star className="w-3 h-3 fill-amber-400 text-amber-400 shrink-0" />
+                4.95 Rating • 1,250+ Placed
               </span>
             </div>
-
-            {/* Learner Trust & Proof Strip */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2 border-t border-slate-200/60">
-              <div className="flex -space-x-2 overflow-hidden">
-                <div className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gradient-to-tr from-amber-500 to-orange-500 text-white text-[10px] font-bold flex items-center justify-center shadow-xs">AK</div>
-                <div className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gradient-to-tr from-blue-500 to-indigo-600 text-white text-[10px] font-bold flex items-center justify-center shadow-xs">SR</div>
-                <div className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gradient-to-tr from-emerald-500 to-teal-600 text-white text-[10px] font-bold flex items-center justify-center shadow-xs">MN</div>
-                <div className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gradient-to-tr from-purple-500 to-pink-600 text-white text-[10px] font-bold flex items-center justify-center shadow-xs">VT</div>
-                <div className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-slate-900 text-white text-[10px] font-extrabold flex items-center justify-center shadow-xs">+1.2k</div>
-              </div>
-              <div className="text-left">
-                <div className="flex items-center gap-1 text-amber-500">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                  ))}
-                  <span className="text-xs font-black text-slate-800 ml-1">4.95/5</span>
-                </div>
-                <div className="text-[11px] text-slate-500 font-medium">
-                  From 1,250+ Placed Students
-                </div>
-              </div>
-            </div>
-
-            {/* Social Proof Alumni Bar */}
-            {current.alumniCompanies && current.alumniCompanies.length > 0 && (
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xs text-slate-500 pt-1">
-                <span className="font-semibold text-slate-600 flex items-center gap-1">
-                  <Briefcase className="w-3.5 h-3.5 text-orange-600" />
-                  Alumni Placed At:
-                </span>
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-1.5">
-                  {current.alumniCompanies.map((company, i) => (
-                    <span key={i} className="px-2.5 py-0.5 rounded-md bg-white/90 border border-slate-200/80 font-semibold text-slate-700 text-[11px] shadow-2xs">
-                      {company}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
 
           </div>
 
-          {/* Right Column: The Showstopper "Course Studio Bento Card" */}
-          <div className="lg:col-span-5 relative">
-            
-            {/* Floating Trust Badge: Top Right */}
-            <div className="absolute -top-3.5 right-4 z-20 hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/95 backdrop-blur-md text-white text-xs font-extrabold shadow-xl border border-slate-700/60">
-              <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-              <span>4.95 Rating • 1,250+ Placed</span>
-            </div>
-
-            {/* Floating Trust Badge: Bottom Left */}
-            <div className="absolute -bottom-3 -left-3 z-20 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/90 text-slate-800 text-xs font-bold shadow-lg">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-              <span>100% Practical Curriculum</span>
-            </div>
-
-            {/* Main Bento Studio Card with subtle radiant outer border */}
-            <div className={`relative rounded-3xl p-[1px] bg-gradient-to-b ${
+          {/* Right Column: Clean Interactive Video Box ONLY (Minimized & Sized to Fit Screen) */}
+          <div className="lg:col-span-5 relative w-full">
+            {/* Main Video Box with subtle radiant outer border */}
+            <div className={`relative rounded-2xl p-[1px] bg-gradient-to-b ${
               current.id === 'data-analytics'
-                ? 'from-orange-400/70 via-amber-300/50 to-slate-200'
+                ? 'from-orange-400/80 via-amber-300/60 to-slate-200'
                 : current.id === 'sap-cpi'
-                ? 'from-purple-500/70 via-indigo-400/50 to-slate-200'
-                : 'from-sky-400/70 via-blue-300/50 to-slate-200'
-            } shadow-2xl transition-all duration-300`}>
-              <div className="bg-white/95 backdrop-blur-xl rounded-[23px] p-5 sm:p-6 space-y-4">
-                
-                {/* Studio Component Preview Box */}
-                <div className="rounded-2xl bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white p-4 shadow-inner relative overflow-hidden border border-slate-700/60">
-                  
-                  {/* Simulated Window Title Bar */}
-                  <div className="flex items-center justify-between pb-2.5 border-b border-slate-700/80 mb-2.5">
-                    <div className="flex items-center gap-1.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-rose-500/90"></span>
-                      <span className="w-2.5 h-2.5 rounded-full bg-amber-500/90"></span>
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/90"></span>
-                      <span className="text-[10px] font-mono text-slate-400 ml-2 tracking-wider">
-                        {current.studio.tag}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-1.5 text-[10px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                      <span>ACTIVE LAB</span>
-                    </div>
-                  </div>
-
-                  {/* Terminal / Code Query Bar */}
-                  <div className="flex items-center justify-between gap-2 px-2.5 py-1.5 rounded-lg bg-slate-950/90 border border-slate-800/90 mb-3 font-mono text-[11px]">
-                    <div className="flex items-center gap-1.5 text-slate-400 truncate">
-                      <Terminal className={`w-3 h-3 ${
-                        current.id === 'data-analytics'
-                          ? 'text-amber-400'
-                          : current.id === 'sap-cpi'
-                          ? 'text-purple-400'
-                          : 'text-sky-400'
-                      } shrink-0`} />
-                      <span className={`${
-                        current.id === 'data-analytics'
-                          ? 'text-amber-400/90'
-                          : current.id === 'sap-cpi'
-                          ? 'text-purple-400/90'
-                          : 'text-sky-400/90'
-                      } select-none`}>$</span>
-                      <span className="text-slate-300 truncate">{current.studio.querySnippet}</span>
-                    </div>
-                    <div className="shrink-0 text-[10px] font-semibold text-emerald-400 flex items-center gap-1 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
-                      <Check className="w-2.5 h-2.5" />
-                      <span>{current.studio.queryResult}</span>
-                    </div>
-                  </div>
-
-                  {/* Course-Specific Interactive Component Content */}
-                  {current.id === 'data-analytics' ? (
-                    /* Data Analytics Architecture Preview */
-                    <div className="space-y-3">
-                      <div className="flex items-end justify-between">
-                        <div>
-                          <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
-                            {current.studio.kpiLabel}
-                          </div>
-                          <div className="text-2xl font-black text-white tracking-tight flex items-baseline gap-2">
-                            <span>{current.studio.kpiValue}</span>
-                            <span className="text-xs font-bold text-amber-400 flex items-center gap-0.5">
-                              <Award className="w-3.5 h-3.5" />
-                              {current.studio.hikeBadge}
-                            </span>
-                          </div>
-                        </div>
-                        <div className="text-[11px] font-mono text-amber-300 bg-amber-950/60 px-2.5 py-1 rounded border border-amber-500/30">
-                          Power BI + SQL + Python
-                        </div>
-                      </div>
-
-                      {/* Visual 4-Step Pipeline */}
-                      <div className="grid grid-cols-4 gap-1.5 py-1 text-center font-mono">
-                        <div className="p-1.5 rounded-lg bg-slate-800/90 border border-amber-500/30 shadow-xs">
-                          <div className="text-[9px] font-bold text-amber-400">01. Excel</div>
-                          <div className="text-[10px] font-semibold text-slate-200">ETL / Pivot</div>
-                        </div>
-                        <div className="p-1.5 rounded-lg bg-slate-800/90 border border-blue-500/30 shadow-xs">
-                          <div className="text-[9px] font-bold text-blue-400">02. SQL</div>
-                          <div className="text-[10px] font-semibold text-slate-200">Window Fns</div>
-                        </div>
-                        <div className="p-1.5 rounded-lg bg-slate-800/90 border border-emerald-500/30 shadow-xs">
-                          <div className="text-[9px] font-bold text-emerald-400">03. Python</div>
-                          <div className="text-[10px] font-semibold text-slate-200">Pandas EDA</div>
-                        </div>
-                        <div className="p-1.5 rounded-lg bg-slate-800/90 border border-purple-500/30 shadow-xs">
-                          <div className="text-[9px] font-bold text-purple-400">04. Power BI</div>
-                          <div className="text-[10px] font-semibold text-slate-200">DAX Dashboards</div>
-                        </div>
-                      </div>
-
-                      {/* Tech Stack Pills Row */}
-                      <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                        {current.studio.techStack.map((tool, idx) => (
-                          <span key={idx} className={`text-[10px] font-bold px-2 py-0.5 rounded border ${tool.color}`}>
-                            {tool.name}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  ) : current.id === 'sap-cpi' ? (
-                    /* SAP CPI Architecture Preview */
-                    <div className="space-y-3">
-                      <div className="flex items-end justify-between">
-                        <div>
-                          <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
-                            {current.studio.kpiLabel}
-                          </div>
-                          <div className="text-2xl font-black text-white tracking-tight flex items-baseline gap-2">
-                            <span>{current.studio.kpiValue}</span>
-                            <span className="text-xs font-bold text-fuchsia-400 flex items-center gap-0.5">
-                              <Award className="w-3.5 h-3.5" />
-                              {current.studio.hikeBadge}
-                            </span>
-                          </div>
-                        </div>
-                        <div className="text-[11px] font-mono text-purple-300 bg-purple-950/60 px-2.5 py-1 rounded border border-purple-500/30">
-                          SAP BTP Cloud Foundry
-                        </div>
-                      </div>
-
-                      {/* Visual 4-Step Enterprise Pipeline */}
-                      <div className="grid grid-cols-4 gap-1.5 py-1 text-center font-mono">
-                        <div className="p-1.5 rounded-lg bg-slate-800/90 border border-purple-500/30 shadow-xs">
-                          <div className="text-[9px] font-bold text-purple-400">01. BTP</div>
-                          <div className="text-[10px] font-semibold text-slate-200">Integration</div>
-                        </div>
-                        <div className="p-1.5 rounded-lg bg-slate-800/90 border border-indigo-500/30 shadow-xs">
-                          <div className="text-[9px] font-bold text-indigo-400">02. iFlows</div>
-                          <div className="text-[10px] font-semibold text-slate-200">Routing</div>
-                        </div>
-                        <div className="p-1.5 rounded-lg bg-slate-800/90 border border-violet-500/30 shadow-xs">
-                          <div className="text-[9px] font-bold text-violet-400">03. Groovy</div>
-                          <div className="text-[10px] font-semibold text-slate-200">Mapping</div>
-                        </div>
-                        <div className="p-1.5 rounded-lg bg-slate-800/90 border border-teal-500/30 shadow-xs">
-                          <div className="text-[9px] font-bold text-teal-400">04. Hybrid</div>
-                          <div className="text-[10px] font-semibold text-slate-200">S/4HANA</div>
-                        </div>
-                      </div>
-
-                      {/* Tech Stack Pills Row */}
-                      <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                        {current.studio.techStack.map((tool, idx) => (
-                          <span key={idx} className={`text-[10px] font-bold px-2 py-0.5 rounded border ${tool.color}`}>
-                            {tool.name}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  ) : (
-                    /* Salesforce Cloud Architecture Preview */
-                    <div className="space-y-3">
-                      <div className="flex items-end justify-between">
-                        <div>
-                          <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
-                            {current.studio.kpiLabel}
-                          </div>
-                          <div className="text-2xl font-black text-white tracking-tight flex items-baseline gap-2">
-                            <span>{current.studio.kpiValue}</span>
-                            <span className="text-xs font-bold text-sky-400 flex items-center gap-0.5">
-                              <Award className="w-3.5 h-3.5" />
-                              {current.studio.hikeBadge}
-                            </span>
-                          </div>
-                        </div>
-                        <div className="text-[11px] font-mono text-sky-400 bg-sky-950/60 px-2.5 py-1 rounded border border-sky-500/30">
-                          Admin 201 + PD1 Track
-                        </div>
-                      </div>
-
-                      {/* Visual 4-Step Enterprise Pipeline */}
-                      <div className="grid grid-cols-4 gap-1.5 py-1 text-center font-mono">
-                        <div className="p-1.5 rounded-lg bg-slate-800/90 border border-sky-500/30 shadow-xs">
-                          <div className="text-[9px] font-bold text-sky-400">01. Config</div>
-                          <div className="text-[10px] font-semibold text-slate-200">Admin 201</div>
-                        </div>
-                        <div className="p-1.5 rounded-lg bg-slate-800/90 border border-cyan-500/30 shadow-xs">
-                          <div className="text-[9px] font-bold text-cyan-400">02. Flow</div>
-                          <div className="text-[10px] font-semibold text-slate-200">Automation</div>
-                        </div>
-                        <div className="p-1.5 rounded-lg bg-slate-800/90 border border-indigo-500/30 shadow-xs">
-                          <div className="text-[9px] font-bold text-indigo-400">03. Code</div>
-                          <div className="text-[10px] font-semibold text-slate-200">Core Apex</div>
-                        </div>
-                        <div className="p-1.5 rounded-lg bg-slate-800/90 border border-emerald-500/30 shadow-xs">
-                          <div className="text-[9px] font-bold text-emerald-400">04. Apps</div>
-                          <div className="text-[10px] font-semibold text-slate-200">LWC & API</div>
-                        </div>
-                      </div>
-
-                      {/* Tech Stack Pills Row */}
-                      <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                        {current.studio.techStack.map((tool, idx) => (
-                          <span key={idx} className={`text-[10px] font-bold px-2 py-0.5 rounded border ${tool.color}`}>
-                            {tool.name}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                </div>
-
-                {/* Mentors Spotlight Section */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between pb-1.5 border-b border-slate-100">
-                    <div className={`text-[11px] font-extrabold uppercase tracking-wider ${
-                      current.id === 'data-analytics'
-                        ? 'text-orange-600'
-                        : current.id === 'sap-cpi'
-                        ? 'text-purple-700'
-                        : 'text-sky-700'
-                    } flex items-center gap-1.5`}>
-                      {current.trainers.length > 1 ? (
-                        <>
-                          <Users className="w-3.5 h-3.5" />
-                          <span>2 Dedicated Specialist Mentors</span>
-                        </>
-                      ) : (
-                        <>
-                          <Award className="w-3.5 h-3.5" />
-                          <span>Lead Specialist Mentor</span>
-                        </>
-                      )}
-                    </div>
-                    <span className={`px-2 py-0.5 rounded-md ${
-                      current.id === 'data-analytics'
-                        ? 'bg-orange-50 text-orange-800 border-orange-200/60'
-                        : current.id === 'sap-cpi'
-                        ? 'bg-purple-50 text-purple-800 border-purple-200/60'
-                        : 'bg-sky-50 text-sky-800 border-sky-200/60'
-                    } text-[10px] font-extrabold border flex items-center gap-1`}>
-                      <ShieldCheck className="w-3 h-3" />
-                      <span>Industry Expert</span>
+                ? 'from-purple-500/80 via-indigo-400/60 to-slate-200'
+                : 'from-sky-400/80 via-blue-300/60 to-slate-200'
+            } shadow-xl transition-all duration-300`}>
+              
+              <div className="bg-slate-950 rounded-[15px] p-2.5 sm:p-3 text-white overflow-hidden shadow-inner">
+                {/* Simulated Window Title Bar */}
+                <div className="flex items-center justify-between pb-2 border-b border-slate-800 mb-2 px-1">
+                  <div className="flex items-center gap-1.5 min-w-0">
+                    <span className="w-2.5 h-2.5 rounded-full bg-rose-500/90 shrink-0"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500/90 shrink-0"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/90 shrink-0"></span>
+                    <span className="text-[10px] font-mono text-slate-400 ml-1.5 tracking-wider truncate">
+                      {current.studio.tag}
                     </span>
                   </div>
+                  <div className={`flex items-center gap-1.5 text-[10px] font-mono px-2 py-0.5 rounded border shrink-0 ${
+                    current.id === 'data-analytics'
+                      ? 'text-orange-400 bg-orange-950/60 border-orange-500/30'
+                      : current.id === 'sap-cpi'
+                      ? 'text-purple-300 bg-purple-950/60 border-purple-500/30'
+                      : 'text-sky-300 bg-sky-950/60 border-sky-500/30'
+                  }`}>
+                    <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${
+                      current.id === 'data-analytics'
+                        ? 'bg-orange-400'
+                        : current.id === 'sap-cpi'
+                        ? 'bg-purple-400'
+                        : 'bg-sky-400'
+                    }`}></span>
+                    <span>DEMO VIDEO</span>
+                  </div>
+                </div>
 
-                  <div className="space-y-2">
-                    {current.trainers.map((tr, trIdx) => (
-                      <div key={trIdx} className="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50/90 hover:bg-slate-50 border border-slate-100 transition-colors">
-                        {/* Avatar Initials Badge with Gradient */}
-                        <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${
-                          tr.avatarGradient || (current.id === 'data-analytics' ? 'from-orange-600 to-amber-500' : 'from-sky-600 to-blue-500')
-                        } text-white font-extrabold text-xs flex items-center justify-center shadow-xs shrink-0 ring-2 ring-white`}>
-                          {tr.initials}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center justify-between gap-1">
-                            <div className={`text-[10px] font-bold uppercase tracking-wider ${
-                              current.id === 'data-analytics'
-                                ? 'text-orange-600'
-                                : current.id === 'sap-cpi'
-                                ? 'text-purple-700'
-                                : 'text-sky-700'
-                            }`}>
-                              {tr.role}
-                            </div>
-                            {tr.rating && (
-                              <span className="text-[10px] font-bold text-amber-700 bg-amber-50 px-1.5 py-0.2 rounded border border-amber-200 flex items-center gap-0.5">
-                                <Star className="w-2.5 h-2.5 fill-amber-500 text-amber-500" />
-                                {tr.rating}
-                              </span>
-                            )}
-                          </div>
-                          <div className="text-xs sm:text-sm font-bold text-slate-900 truncate">
-                            {tr.name}
-                          </div>
-                          <div className="text-[10px] text-slate-500 truncate">
-                            {tr.subtitle}
-                          </div>
-                        </div>
-                      </div>
+                {/* The Custom Video Player (Course-Themed Controls & Specific Video per Slide) */}
+                <AnalyticsHeroVideoPlayer 
+                  key={current.videoSrc}
+                  videoSrc={current.videoSrc}
+                  theme={current.videoTheme}
+                  badgeText={current.videoBadge}
+                  title={current.videoTitle}
+                />
+
+                {/* Compact Tech Stack Pills underneath */}
+                <div className="flex flex-wrap items-center justify-between gap-1 pt-2 px-1 text-[10px]">
+                  <div className="flex flex-wrap items-center gap-1">
+                    {current.studio.techStack.slice(0, 4).map((tool, idx) => (
+                      <span key={idx} className={`font-bold px-1.5 py-0.5 rounded border text-[9px] ${tool.color}`}>
+                        {tool.name}
+                      </span>
                     ))}
                   </div>
-                </div>
-
-                {/* Batch Info Grid */}
-                <div className="grid grid-cols-2 gap-2.5 pt-0.5">
-                  <div className={`p-3 rounded-xl bg-gradient-to-br ${
+                  <span className={`font-mono font-bold text-[9px] flex items-center gap-1 ${
                     current.id === 'data-analytics'
-                      ? 'from-orange-50/70 to-amber-50/40 border-orange-100/90'
+                      ? 'text-orange-400'
                       : current.id === 'sap-cpi'
-                      ? 'from-purple-50/70 to-indigo-50/40 border-purple-100/90'
-                      : 'from-sky-50/70 to-blue-50/40 border-sky-100/90'
-                  } border text-center flex flex-col items-center justify-center`}>
-                    <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider flex items-center justify-center gap-1">
-                      <Calendar className={`w-3.5 h-3.5 ${
-                        current.id === 'data-analytics'
-                          ? 'text-orange-600'
-                          : current.id === 'sap-cpi'
-                          ? 'text-purple-600'
-                          : 'text-sky-600'
-                      }`} />
-                      <span>Batch Schedule</span>
-                    </div>
-                    <div className={`text-sm sm:text-base font-black ${
-                      current.id === 'data-analytics'
-                        ? 'text-orange-600'
-                        : current.id === 'sap-cpi'
-                        ? 'text-purple-700'
-                        : 'text-sky-700'
-                    } mt-1`}>{current.startDateText}</div>
-                  </div>
-                  <div className={`p-3 rounded-xl bg-gradient-to-br ${
-                    current.id === 'data-analytics'
-                      ? 'from-orange-50/70 to-amber-50/40 border-orange-100/90'
-                      : current.id === 'sap-cpi'
-                      ? 'from-purple-50/70 to-indigo-50/40 border-purple-100/90'
-                      : 'from-sky-50/70 to-blue-50/40 border-sky-100/90'
-                  } border text-center flex flex-col items-center justify-center`}>
-                    <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider flex items-center justify-center gap-1">
-                      <Clock className={`w-3.5 h-3.5 ${
-                        current.id === 'data-analytics'
-                          ? 'text-orange-600'
-                          : current.id === 'sap-cpi'
-                          ? 'text-purple-600'
-                          : 'text-sky-600'
-                      }`} />
-                      <span>Training Mode</span>
-                    </div>
-                    <div className="text-sm sm:text-base font-black text-slate-800 mt-1">{current.modeText}</div>
-                  </div>
+                      ? 'text-purple-300'
+                      : 'text-sky-400'
+                  }`}>
+                    <Sparkles className="w-2.5 h-2.5" />
+                    HD 1080P
+                  </span>
                 </div>
-
-                {/* Action Button inside Card */}
-                <div className="pt-1">
-                  <button
-                    onClick={() => {
-                      if (current.id === 'data-analytics' && onOpenEnrollModal) {
-                        onOpenEnrollModal(current.courseTitle, 'Batch 3 Starts Oct 15, 2026');
-                      } else if (onOpenDemoModal) {
-                        onOpenDemoModal(current.courseTitle);
-                      }
-                    }}
-                    className={`w-full py-3 rounded-xl text-white font-bold text-xs sm:text-sm transition-all cursor-pointer shadow-md flex items-center justify-center gap-2 transform active:scale-98 ${
-                      current.id === 'data-analytics'
-                        ? 'bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700'
-                        : current.id === 'sap-cpi'
-                        ? 'bg-gradient-to-r from-purple-700 via-indigo-700 to-violet-800 hover:from-purple-800 hover:to-indigo-800'
-                        : 'bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700'
-                    }`}
-                  >
-                    <Sparkles className="w-4 h-4" />
-                    <span>{current.primaryButtonText}</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
-
               </div>
+
             </div>
           </div>
 
